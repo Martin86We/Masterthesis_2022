@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convolutional Neural Networks (CNN) &#8212; My sample book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CNN1" href="CNN_1.html" />
+    <link rel="prev" title="NN 2: Mehrere unterscheiden" href="../02_NN/NeuralNet_2%20%28Mehrere%20Ausgaenge%29.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/intro.html">
+   Jupyter Book
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Start
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/markdown.html">
+   Herzlich Willkommen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/notebooks.html">
+   Content with notebooks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Bilderdatenbank
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Bilderdatenbank/video2frames.html">
+   Bilder aus Video
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Bilderdatenbank/imagedatagen.html">
+   Image Data Generator
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Neuronales Netz
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_NN/einzelnes_neuron.html">
+   Ein einzelnes Neuron
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_NN/NN_learning.html">
+   Wie lernt ein neuronales Netz?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_NN/NeuralNet_1.html">
+   Einfaches neuronales “from Scratch”
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_NN/NeuralNet_1_Keras.html">
+   NN1 “Einer gegen Alle”
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_NN/NeuralNet_2%20%28Mehrere%20Ausgaenge%29.html">
+   NN 2: Mehrere unterscheiden
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Convolutional Neural Net
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Convolutional Neural Networks (CNN)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CNN_1.html">
+   CNN1
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/03_CNN/CNN.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/03_CNN/CNN.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#beispiel-einer-einfachen-convolution">
+   Beispiel einer einfachen Convolution:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cnn-mit-keras">
+   CNN mit Keras
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stochastic-gradient-descent">
+   stochastic gradient descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rmsprop">
+   rmsprop
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#two-conv2d-layer">
+   Two Conv2D Layer
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Convolutional Neural Networks (CNN)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#beispiel-einer-einfachen-convolution">
+   Beispiel einer einfachen Convolution:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cnn-mit-keras">
+   CNN mit Keras
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stochastic-gradient-descent">
+   stochastic gradient descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rmsprop">
+   rmsprop
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#two-conv2d-layer">
+   Two Conv2D Layer
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="convolutional-neural-networks-cnn">
+<h1>Convolutional Neural Networks (CNN)<a class="headerlink" href="#convolutional-neural-networks-cnn" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CUDA_VISIBLE_DEVICES&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;-1&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mit Hilfe eines CNN-Layer bekommt das neuronale Netz ein “Verständnis” für Bilder “eingebaut”. Das NN ist somit auf die Erkennung von Bildern spezialisiert und demensprechend Leistungsfähiger als ein NN ohne dieses Bildverständnis.</p>
+<ul class="simple">
+<li><p>Kantenerkennung</p></li>
+</ul>
+<p>Das CNN besitzt gegenüber dem neuronalem Netz eine Intuition darüber was ein Bild ist.</p>
+<p>Das Neuronale Netz kann auf der ersten Ebene lernen, Kanten zu erkennen. Diese Ebene ist dann für die Kantenerkennung zuständig. Kante ist Kante egal wo auf dem Bild. Diese “Features” werden in den nachfolge Schichten weiterverarbeitet.</p>
+<div class="section" id="beispiel-einer-einfachen-convolution">
+<h2>Beispiel einer einfachen Convolution:<a class="headerlink" href="#beispiel-einer-einfachen-convolution" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://medium.com/swlh/image-processing-with-python-convolutional-filters-and-kernels-b9884d91a8fd">https://medium.com/swlh/image-processing-with-python-convolutional-filters-and-kernels-b9884d91a8fd</a></p>
+<p>Die Filter oder Kernels gibt man nicht vor sondern lässt die Werte vom Convolutional Layer ermitteln. Die Kernels werden dabei so bestimmt dass sie für das Problem am meisten Sinn machen.</p>
+<p>Wir möchten nicht nur vertikale Kanten finden, sondern auch schräge und waagerechte. Da jeder Filter für ein bestimmtes Feature zuständig ist, benötigt das CNN mehrere solcher Filter um alle relevanten Zusammenhänge extrahieren zu können. Die Anzahl an Filter die wir bereitstellen hängt von den Daten ab und ist ein Hyperparameter den man tunen muss.</p>
+</div>
+<div class="section" id="cnn-mit-keras">
+<h2>CNN mit Keras<a class="headerlink" href="#cnn-mit-keras" title="Permalink to this headline">¶</a></h2>
+<p>Wir wollen nun ein CNN mit Keras entwickeln.</p>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vorstellung: MNIST-Daten!</span>
+<span class="c1"># http://yann.lecun.com/exdb/mnist/</span>
+<span class="c1"># FashionMNIST: https://github.com/zalandoresearch/fashion-mnist</span>
+
+<span class="kn">import</span> <span class="nn">gzip</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">load</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.utils</span> <span class="kn">import</span> <span class="n">to_categorical</span>
+
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;../02_NN/Dataset/X_train.npy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="c1">#.reshape(-1, 784)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;../02_NN/Dataset/y_train.npy&#39;</span><span class="p">)</span>
+
+
+<span class="c1">#oh = OneHotEncoder()</span>
+<span class="c1">#y_train_oh = oh.fit_transform(y_train.reshape(-1, 1)).toarray()</span>
+
+<span class="n">X_test</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../02_NN/Dataset/X_test.npy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="c1">#.reshape(-1, 784)</span>
+<span class="n">y_test</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../02_NN/Dataset/y_test.npy&#39;</span><span class="p">)</span>
+
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_13876</span><span class="o">/</span><span class="mf">3542694572.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">load</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">tensorflow.keras.utils</span> <span class="kn">import</span> <span class="n">to_categorical</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> 
+<span class="g g-Whitespace">     </span><span class="mi">11</span> 
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;tensorflow&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0. 0. 0. 0. 1.]
+ [1. 0. 0. 0. 0.]
+ [0. 1. 0. 0. 0.]
+ ...
+ [0. 0. 1. 0. 0.]
+ [1. 0. 0. 0. 0.]
+ [0. 0. 0. 1. 0.]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10500, 28, 28)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das Format der Daten passt noch nicht zum geforderten Eingangsformat.
+Das CNN verlangt</p>
+<p>Bei einem Wert am Ausgang zwischen 0 und 1 verwendet man “binary crossentropy”. Hat man mehrere Werte / Kategorien am Ausgang, dann verwendet man categorical crossentropy.</p>
+</div>
+<div class="section" id="stochastic-gradient-descent">
+<h2>stochastic gradient descent<a class="headerlink" href="#stochastic-gradient-descent" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CNN!</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">Flatten</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="c1">#model.add(Conv2D(32, kernel_size=(3, 3), activation=&quot;relu&quot;))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;sgd&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;categorical_crossentropy&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10500</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">y_train</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
+21/21 [==============================] - 1s 22ms/step - loss: 229.5953 - accuracy: 0.3178
+Epoch 2/20
+21/21 [==============================] - 0s 21ms/step - loss: 0.9440 - accuracy: 0.6190
+Epoch 3/20
+21/21 [==============================] - 0s 21ms/step - loss: 0.6530 - accuracy: 0.7649
+Epoch 4/20
+21/21 [==============================] - 0s 21ms/step - loss: 0.5013 - accuracy: 0.8199
+Epoch 5/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.4058 - accuracy: 0.8393
+Epoch 6/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.4397 - accuracy: 0.8294
+Epoch 7/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.3674 - accuracy: 0.8583
+Epoch 8/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.3386 - accuracy: 0.8624
+Epoch 9/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.3027 - accuracy: 0.8836
+Epoch 10/20
+21/21 [==============================] - 0s 24ms/step - loss: 0.3147 - accuracy: 0.8754
+Epoch 11/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.2679 - accuracy: 0.8914
+Epoch 12/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.2448 - accuracy: 0.9017
+Epoch 13/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.2369 - accuracy: 0.9060
+Epoch 14/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.2150 - accuracy: 0.9114
+Epoch 15/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.3123 - accuracy: 0.8828
+Epoch 16/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.2253 - accuracy: 0.9091
+Epoch 17/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.1853 - accuracy: 0.9243
+Epoch 18/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.1935 - accuracy: 0.9216
+Epoch 19/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.1948 - accuracy: 0.9217
+Epoch 20/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.1432 - accuracy: 0.9435
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7f180005d790&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="rmsprop">
+<h2>rmsprop<a class="headerlink" href="#rmsprop" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CNN!</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">Flatten</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="c1">#model.add(Conv2D(32, kernel_size=(3, 3), activation=&quot;relu&quot;))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;categorical_crossentropy&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10500</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">y_train</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
+21/21 [==============================] - 1s 22ms/step - loss: 242.0397 - accuracy: 0.4830
+Epoch 2/20
+21/21 [==============================] - 0s 22ms/step - loss: 63.1420 - accuracy: 0.6419
+Epoch 3/20
+21/21 [==============================] - 0s 21ms/step - loss: 27.1203 - accuracy: 0.7310
+Epoch 4/20
+21/21 [==============================] - 0s 22ms/step - loss: 10.0603 - accuracy: 0.8360
+Epoch 5/20
+21/21 [==============================] - 0s 22ms/step - loss: 4.6834 - accuracy: 0.8353
+Epoch 6/20
+21/21 [==============================] - 0s 21ms/step - loss: 2.2660 - accuracy: 0.8735
+Epoch 7/20
+21/21 [==============================] - 0s 22ms/step - loss: 1.4034 - accuracy: 0.9078
+Epoch 8/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.9845 - accuracy: 0.9339
+Epoch 9/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.5971 - accuracy: 0.9523
+Epoch 10/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.0607 - accuracy: 0.9875
+Epoch 11/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.4934 - accuracy: 0.9664
+Epoch 12/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.0084 - accuracy: 0.9981
+Epoch 13/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.6108 - accuracy: 0.9581
+Epoch 14/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.0010 - accuracy: 0.9998
+Epoch 15/20
+21/21 [==============================] - 0s 22ms/step - loss: 3.7297e-04 - accuracy: 1.0000
+Epoch 16/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.4393 - accuracy: 0.9813
+Epoch 17/20
+21/21 [==============================] - 0s 22ms/step - loss: 5.3599e-04 - accuracy: 1.0000
+Epoch 18/20
+21/21 [==============================] - 0s 23ms/step - loss: 2.5452e-04 - accuracy: 1.0000
+Epoch 19/20
+21/21 [==============================] - 0s 22ms/step - loss: 0.3049 - accuracy: 0.9837
+Epoch 20/20
+21/21 [==============================] - 0s 23ms/step - loss: 4.4494e-04 - accuracy: 1.0000
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7f17e27e5e50&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="two-conv2d-layer">
+<h2>Two Conv2D Layer<a class="headerlink" href="#two-conv2d-layer" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CNN!</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">Flatten</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;rmsprop&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;categorical_crossentropy&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10500</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">y_train</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/20
+21/21 [==============================] - 2s 96ms/step - loss: 21.6524 - accuracy: 0.6189
+Epoch 2/20
+21/21 [==============================] - 2s 95ms/step - loss: 0.8093 - accuracy: 0.8665
+Epoch 3/20
+21/21 [==============================] - 2s 95ms/step - loss: 0.4227 - accuracy: 0.8997
+Epoch 4/20
+21/21 [==============================] - 2s 94ms/step - loss: 0.1646 - accuracy: 0.9585
+Epoch 5/20
+21/21 [==============================] - 2s 98ms/step - loss: 0.0131 - accuracy: 0.9990
+Epoch 6/20
+21/21 [==============================] - 2s 96ms/step - loss: 0.2447 - accuracy: 0.9744
+Epoch 7/20
+21/21 [==============================] - 2s 96ms/step - loss: 0.0067 - accuracy: 0.9998
+Epoch 8/20
+21/21 [==============================] - 2s 95ms/step - loss: 0.0017 - accuracy: 1.0000
+Epoch 9/20
+21/21 [==============================] - 2s 118ms/step - loss: 0.0815 - accuracy: 0.9895
+Epoch 10/20
+21/21 [==============================] - 3s 127ms/step - loss: 0.0597 - accuracy: 0.9820
+Epoch 11/20
+21/21 [==============================] - 3s 127ms/step - loss: 0.0013 - accuracy: 1.0000
+Epoch 12/20
+21/21 [==============================] - 3s 126ms/step - loss: 3.9080e-04 - accuracy: 1.0000
+Epoch 13/20
+21/21 [==============================] - 3s 128ms/step - loss: 1.1759e-04 - accuracy: 1.0000
+Epoch 14/20
+21/21 [==============================] - 3s 127ms/step - loss: 0.0034 - accuracy: 0.9983
+Epoch 15/20
+21/21 [==============================] - 3s 126ms/step - loss: 0.1700 - accuracy: 0.9794
+Epoch 16/20
+21/21 [==============================] - 3s 125ms/step - loss: 2.5466e-04 - accuracy: 1.0000
+Epoch 17/20
+21/21 [==============================] - 3s 128ms/step - loss: 1.7362e-04 - accuracy: 1.0000
+Epoch 18/20
+21/21 [==============================] - 3s 132ms/step - loss: 6.7044e-05 - accuracy: 1.0000
+Epoch 19/20
+21/21 [==============================] - 3s 128ms/step - loss: 7.7813e-05 - accuracy: 1.0000
+Epoch 20/20
+21/21 [==============================] - 3s 132ms/step - loss: 0.0971 - accuracy: 0.9824
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7f17e27a5150&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./03_CNN"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../02_NN/NeuralNet_2%20%28Mehrere%20Ausgaenge%29.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">NN 2: Mehrere unterscheiden</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="CNN_1.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">CNN1</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
