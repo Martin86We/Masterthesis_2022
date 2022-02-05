@@ -45,9 +45,9 @@
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -250,7 +250,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/Martin86We/Masterthesis_2022/gh-pages?urlpath=tree/02_NN/einzelnes_neuron.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Martin86We/Masterthesis_2022/master?urlpath=tree/02_NN/einzelnes_neuron.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -258,11 +258,14 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/Martin86We/Masterthesis_2022/blob/gh-pages/02_NN/einzelnes_neuron.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/Martin86We/Masterthesis_2022/blob/master/02_NN/einzelnes_neuron.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
         
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
         
     </div>
 </div>
@@ -742,7 +745,7 @@ Am Eingang X liegt eine 5 an und am Ausgang soll eine 20 ausgegeben werden. Die 
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
+            repo: "Martin86We/Masterthesis_2022",
             ref: "master",
         },
         codeMirrorConfig: {
