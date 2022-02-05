@@ -240,23 +240,6 @@
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/03_CNN/CNN.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
@@ -268,9 +251,16 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#beispiel-einer-einfachen-convolution">
-   Beispiel einer einfachen Convolution:
+  <a class="reference internal nav-link" href="#dimensionale-faltung">
+   2-Dimensionale Faltung
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beispiel-einer-einfachen-convolution">
+     Beispiel einer einfachen Convolution:
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cnn-mit-keras">
@@ -313,9 +303,16 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#beispiel-einer-einfachen-convolution">
-   Beispiel einer einfachen Convolution:
+  <a class="reference internal nav-link" href="#dimensionale-faltung">
+   2-Dimensionale Faltung
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#beispiel-einer-einfachen-convolution">
+     Beispiel einer einfachen Convolution:
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cnn-mit-keras">
@@ -348,6 +345,55 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="convolutional-neural-networks-cnn">
 <h1>Convolutional Neural Networks (CNN)<a class="headerlink" href="#convolutional-neural-networks-cnn" title="Permalink to this headline">¶</a></h1>
+<p>Ein Theorem aus dem Jahr 1988, das “Universal Approximation Theorem”, sagt, dass jede beliebige, glatte Funktion, durch ein NN mit nur einem Hidden Layer approximiert werden kann. Nach diesem Theorem nach, würde dieses einfache NN bereits in der Lage sein jedes beliebige Bild bzw. die Funktion der Pixelwerte zu erlernen. Die Fehler und die lange Rechenzeit zeigen die Probleme in der Praxis. Denn um dieses Theorem zu erfüllen sind für sehr einfache Netze unendlich viel Rechenleistung, Zeit und Trainingsbeispiele nötig. Diese stehen i.d.R. nicht zur Verfügung. Für die Bilderkennung haben sich CNN’s als sehr wirksam erwiesen. Die Arbeitsweise soll in diesem Abschnitt erläutert werden.
+Der Grundgedanke bei der Nutzung der Convolutional Layer ist, dem NN zusätzliches “Spezialwissen” über die Daten zu geben. Das NN ist durch den zusätzlichen Convolutional Layer in der Lage, spezielle Bildelemente und Strukturen besser zu erkennen.</p>
+<p>Es werden meist mehrere Convolutional Layer hintereinander geschalten. Das NN kann auf der ersten Ebene lernen, Kanten zu erkennen. Auf weiteren Ebenen lernt es dann weitere “Bild-Features” wie z.B. Übergänge, Rundungen o.ä. zu erkennen. Diese werden auf höheren Ebenen weiterverarbeitet.</p>
+<p><strong>Beispiel einer einfachen 1D-Faltung:</strong></p>
+<p>Die beiden einfachen Beispiele sollen die Berechnung verdeutlichen. Die Filterfunktion wird auf die Pixel gelegt und Elementweise multipliziert.
+Im folgenden Beispiel werden 3 Pixel eines Bildes verwendet. Die Ergebnisse sagen etwas über den Bildinhalt aus:</p>
+<ul class="simple">
+<li><p>positives Ergebnis: Übergang von hell zu dunkel</p></li>
+<li><p>negatives Ergebnis: Übergang von dunkel nach hell</p></li>
+<li><p>neutrales Ergebnis: Übergang wechselnd, hell-dunkel-hell  oder dunkel-hell-dunkel</p></li>
+</ul>
+<div class="figure align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/cnn_1d.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/cnn_1d.png" style="width: 900px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Eindimensionale Faltung</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
+</div>
+<p>Da ein Bild aus mehr als 3 Pixel besteht, muss die Filterfunktion über das gesamte Bild “geschoben” werden. Das folgende Beispiel demonstriert den Vorgang der Convolution im Fall eines eindimensionalen Filter. Der Filter besteht in diesem Fall wieder aus einem Zeilenvektor mit 3 Elementen. Der Filter wird nun Pixelweise über die Bildzeile geschoben, die Ergebnisse werden gespeichert und geben wiederum Aufschluss über die Bildstruktur.
+Die Ergebnisse zeigen wieder die enthaltene Bildstruktur:</p>
+<ul class="simple">
+<li><p>1: hell-dunkel</p></li>
+<li><p>0: hell-dunkel-hell</p></li>
+<li><p>0: dunkel-hell-dunkel</p></li>
+<li><p>1: hell-dunkel
+–1: dunkel-hell</p></li>
+</ul>
+<div class="figure align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/cnn_1d_long.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/cnn_1d_long.png" style="width: 900px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Eindimensionale Faltung mit mehreren Übergängen</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="dimensionale-faltung">
+<h2>2-Dimensionale Faltung<a class="headerlink" href="#dimensionale-faltung" title="Permalink to this headline">¶</a></h2>
+<p>In der Praxis werden in der Bilderkennung 2-dimensionale Filter verwendet, ein häufig verwendetes Format ist ein 3x3 Filter. Der Vorgang ist analog zum eindimensionalen Fall, der Filter wird über das gesamte Bild geschoben. Das folgende Beispiel zeigt einen Filter, der in der Lage ist, senkrechte Kanten zu erkennen.</p>
+<div class="figure align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/cnn_2d_a.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/cnn_2d_a.png" style="width: 900px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Eindimensionale Faltung mit mehreren Übergängen</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/cnn_2d_b.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/cnn_2d_b.png" style="width: 900px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Eindimensionale Faltung mit mehreren Übergängen</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<p>Die Werte der Filter bilden die Gewichte des Convolutional Layer. Diese Gewichte werden durch das Training selbst bestimmt und somit ist das CNN in der Lage, sich selbstständig auf relevante Features zu fokussieren.</p>
+<p><strong>Im folgenden noch weitere Ergebnisse für bestimmte Bildstrukturen:</strong></p>
+<div class="figure align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/cnn_2d_c.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/cnn_2d_c.png" style="width: 900px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Eindimensionale Faltung mit mehreren Übergängen</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/cnn_2d_d.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/cnn_2d_d.png" style="width: 900px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Eindimensionale Faltung mit mehreren Übergängen</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -363,10 +409,11 @@
 <p>Das CNN besitzt gegenüber dem neuronalem Netz eine Intuition darüber was ein Bild ist.</p>
 <p>Das Neuronale Netz kann auf der ersten Ebene lernen, Kanten zu erkennen. Diese Ebene ist dann für die Kantenerkennung zuständig. Kante ist Kante egal wo auf dem Bild. Diese “Features” werden in den nachfolge Schichten weiterverarbeitet.</p>
 <div class="section" id="beispiel-einer-einfachen-convolution">
-<h2>Beispiel einer einfachen Convolution:<a class="headerlink" href="#beispiel-einer-einfachen-convolution" title="Permalink to this headline">¶</a></h2>
+<h3>Beispiel einer einfachen Convolution:<a class="headerlink" href="#beispiel-einer-einfachen-convolution" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://medium.com/swlh/image-processing-with-python-convolutional-filters-and-kernels-b9884d91a8fd">https://medium.com/swlh/image-processing-with-python-convolutional-filters-and-kernels-b9884d91a8fd</a></p>
 <p>Die Filter oder Kernels gibt man nicht vor sondern lässt die Werte vom Convolutional Layer ermitteln. Die Kernels werden dabei so bestimmt dass sie für das Problem am meisten Sinn machen.</p>
 <p>Wir möchten nicht nur vertikale Kanten finden, sondern auch schräge und waagerechte. Da jeder Filter für ein bestimmtes Feature zuständig ist, benötigt das CNN mehrere solcher Filter um alle relevanten Zusammenhänge extrahieren zu können. Die Anzahl an Filter die wir bereitstellen hängt von den Daten ab und ist ein Hyperparameter den man tunen muss.</p>
+</div>
 </div>
 <div class="section" id="cnn-mit-keras">
 <h2>CNN mit Keras<a class="headerlink" href="#cnn-mit-keras" title="Permalink to this headline">¶</a></h2>
@@ -402,7 +449,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_11420</span><span class="o">/</span><span class="mf">3542694572.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_2500</span><span class="o">/</span><span class="mf">3542694572.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">load</span>
 <span class="ne">----&gt; </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">tensorflow.keras.utils</span> <span class="kn">import</span> <span class="n">to_categorical</span>

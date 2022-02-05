@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Image Data Generator &#8212; My sample book</title>
+    <title>Pooling &#8212; My sample book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,8 +52,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Ein einzelnes Neuron" href="../02_NN/einzelnes_neuron.html" />
-    <link rel="prev" title="Bilder aus Video" href="video2frames.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,14 +117,14 @@
   Bilderdatenbank
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="video2frames.html">
+  <a class="reference internal" href="../01_Bilderdatenbank/video2frames.html">
    Bilder aus Video
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Bilderdatenbank/imagedatagen.html">
    Image Data Generator
   </a>
  </li>
@@ -170,12 +168,12 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../03_CNN/CNN.html">
+  <a class="reference internal" href="CNN.html">
    Convolutional Neural Networks (CNN)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../03_CNN/CNN_1.html">
+  <a class="reference internal" href="CNN_1.html">
    CNN1
   </a>
  </li>
@@ -220,7 +218,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/01_Bilderdatenbank/imagedatagen.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/03_CNN/Pooling.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -245,34 +243,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#preprocessing">
-   Preprocessing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bilder-in-numpy-array-speichern">
-   Bilder in Numpy Array speichern
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#labels-erstellen">
-   Labels erstellen
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#datensatz-in-numpy-array-exportieren">
-   Datensatz in Numpy Array exportieren
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -280,81 +250,35 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Image Data Generator</h1>
+                <h1>Pooling</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#preprocessing">
-   Preprocessing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bilder-in-numpy-array-speichern">
-   Bilder in Numpy Array speichern
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#labels-erstellen">
-   Labels erstellen
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#datensatz-in-numpy-array-exportieren">
-   Datensatz in Numpy Array exportieren
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="image-data-generator">
-<h1>Image Data Generator<a class="headerlink" href="#image-data-generator" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="preprocessing">
-<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
-<p>Mit dem Image Data Generator werden wir unsere Bilder weiterverarbeiten. Wir werden den Datensatz künstlich erweitern um so das Modell robuster zu machen.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="pooling">
+<h1>Pooling<a class="headerlink" href="#pooling" title="Permalink to this headline">¶</a></h1>
+<p>Ein Pooling Layer, hat die Aufgabe, das CNN “toleranter” gegen geringe Abweichungen zu machen. Im folgenden Beispiel wurde die Kante stückweise um insgesamt 2 Pixel nach rechts verschoben. Auf einem Bild sollte es für das Erkennen keine so große Rolle spielen aber für den Convolutional-Layer spielt es eine Rolle in den Ergebnissen. Es ist nicht tolerant gegenüber Verschiebungen.</p>
+<p><strong>Jede Verschiebung der senkrechten Kante, erzeugt eine andere Featur-Map:</strong></p>
+<div class="figure align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/pooling_1.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/pooling_1.png" style="width: 1000px;" /></a>
+<p class="caption"><span class="caption-text">Kantenerkennung ohne Pooling.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
 </div>
-<div class="section" id="bilder-in-numpy-array-speichern">
-<h2>Bilder in Numpy Array speichern<a class="headerlink" href="#bilder-in-numpy-array-speichern" title="Permalink to this headline">¶</a></h2>
-<p>Um sehr viele Bilder abzuspeichern in einer Form die für das CNN passend ist, werden die Bilder in ein Numpy Array gespeichert. Dieses Numpy Array ist zunächst 3 Dimensional, wird später aber noch auf 4D erweitert.</p>
-<p>Wie man nun die Bilder oder besser gesagt die Pixelwerte in ein Numpy Array speichert zeigt der folgende Programmcode:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># lob importieren</span>
-<span class="kn">import</span> <span class="nn">glob</span>
-
-<span class="c1"># import numpy</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># import Image from PIL</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-
-<span class="c1"># Dateinamen der Bilder in filelist speichern</span>
-<span class="n">filelist</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;../pozi/*.jpg&#39;</span><span class="p">)</span>
-
-<span class="c1"># Alle Bilder nacheinander öffnen und hintereinander in ein Numpy Array speichern</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">))</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">filelist</span><span class="p">])</span>
-
-</pre></div>
+<div class="figure align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/pooling_2.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/pooling_2.png" style="width: 1000px;" /></a>
+<p class="caption"><span class="caption-text">Kantenerkennung mit Pooling.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
-</div>
-<div class="section" id="labels-erstellen">
-<h2>Labels erstellen<a class="headerlink" href="#labels-erstellen" title="Permalink to this headline">¶</a></h2>
-<p>Wie erstellt man die Labels?</p>
-</div>
-<div class="section" id="datensatz-in-numpy-array-exportieren">
-<h2>Datensatz in Numpy Array exportieren<a class="headerlink" href="#datensatz-in-numpy-array-exportieren" title="Permalink to this headline">¶</a></h2>
-<p>(X_Train, y_Train, X_Test, y_Test) in ein Numpy Array gemeinsam speichern:</p>
-</div>
+<p><strong>Vorteile vom Pooling:</strong></p>
+<ul class="simple">
+<li><p>bessere Generalisierung</p></li>
+<li><p>geringere Anzahl an Ausgabeknoten durch Dimensionsreduktion</p></li>
+<li><p>lernen geht schneller</p></li>
+</ul>
 </div>
 
     <script type="text/x-thebe-config">
@@ -370,7 +294,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./01_Bilderdatenbank"
+            path: "./03_CNN"
         },
         predefinedOutput: true
     }
@@ -381,21 +305,7 @@
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="video2frames.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Bilder aus Video</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../02_NN/einzelnes_neuron.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Ein einzelnes Neuron</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
             
         </div>
