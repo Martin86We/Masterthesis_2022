@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pooling &#8212; My sample book</title>
+    <title>Pooling Layer &#8212; My sample book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,8 +52,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="CNN1" href="CNN_1.html" />
-    <link rel="prev" title="Convolutional Neural Networks (CNN)" href="CNN.html" />
+    <link rel="next" title="CNN 1 (Schraubenköpfe)" href="CNN_1_28x28.html" />
+    <link rel="prev" title="Convolutional Neural Network" href="CNN.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -93,7 +93,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../00_Intro/intro.html">
-   Jupyter Book
+   Masterarbeit
   </a>
  </li>
 </ul>
@@ -104,62 +104,57 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../00_Intro/markdown.html">
-   Herzlich Willkommen
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../00_Intro/notebooks.html">
-   Content with notebooks
+   Einleitung Jupyter Book
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Bilderdatenbank
+  Dataset
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../01_Bilderdatenbank/video2frames.html">
-   Bilder aus Video
+  <a class="reference internal" href="../01_Dataset/dataset_28x28.html">
+   Datensatz 1 (Schraubenköpfe)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../01_Bilderdatenbank/imagedatagen.html">
-   Image Data Generator
+  <a class="reference internal" href="../01_Dataset/dataset_224x224.html">
+   Datensatz 2 (Schrauben)
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Neuronales Netz
+  Neural Net
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/einzelnes_neuron.html">
-   Ein einzelnes Neuron
+  <a class="reference internal" href="../02_NN/neuron.html">
+   Einzelnes Neuron
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../02_NN/NN_learning.html">
-   Wie lernt ein neuronales Netz?
+   Neuronales Netz (Funktionsweise)
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../02_NN/NeuralNet_1.html">
-   Einfaches neuronales “from Scratch”
+   Neuronales Netz (Python)
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../02_NN/NeuralNet_1_Keras.html">
-   NN1 “Einer gegen Alle”
+   NN 1 (“Einer gegen Alle”)
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../02_NN/NeuralNet_2%20%28Mehrere%20Ausgaenge%29.html">
-   NN 2: Mehrere unterscheiden
+   NN 2 (Mehrere unterscheiden)
   </a>
  </li>
 </ul>
@@ -171,17 +166,22 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="CNN.html">
-   Convolutional Neural Networks (CNN)
+   Convolutional Neural Network
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Pooling
+   Pooling Layer
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="CNN_1.html">
-   CNN1
+  <a class="reference internal" href="CNN_1_28x28.html">
+   CNN 1 (Schraubenköpfe)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CNN_2_224x224.html">
+   CNN 2 (Schrauben)
   </a>
  </li>
 </ul>
@@ -282,7 +282,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Pooling</h1>
+                <h1>Pooling Layer</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -293,17 +293,17 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="pooling">
-<h1>Pooling<a class="headerlink" href="#pooling" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="pooling-layer">
+<h1>Pooling Layer<a class="headerlink" href="#pooling-layer" title="Permalink to this headline">¶</a></h1>
 <p>Ein Pooling Layer, hat die Aufgabe, das CNN “toleranter” gegen geringe Abweichungen zu machen. Im folgenden Beispiel wurde die Kante stückweise um insgesamt 2 Pixel nach rechts verschoben. Auf einem Bild sollte es für das Erkennen keine so große Rolle spielen aber für den Convolutional-Layer spielt es eine Rolle in den Ergebnissen. Es ist nicht tolerant gegenüber Verschiebungen.</p>
 <p><strong>Jede Verschiebung der senkrechten Kante, erzeugt eine andere Featur-Map:</strong></p>
 <div class="figure align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/pooling_1.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/pooling_1.png" style="width: 1000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Kantenerkennung ohne Pooling.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Kantenerkennung ohne Pooling.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/pooling_2.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/pooling_2.png" style="width: 1000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Kantenerkennung mit Pooling.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Kantenerkennung mit Pooling.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p><strong>Vorteile vom Pooling:</strong></p>
 <ul class="simple">
@@ -342,13 +342,13 @@
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Convolutional Neural Networks (CNN)</p>
+            <p class="prev-next-title">Convolutional Neural Network</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="CNN_1.html" title="next page">
+    <a class='right-next' id="next-link" href="CNN_1_28x28.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">CNN1</p>
+        <p class="prev-next-title">CNN 1 (Schraubenköpfe)</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -115,23 +115,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Bilderdatenbank
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../01_Bilderdatenbank/video2frames.html">
-   Bilder aus Video
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01_Bilderdatenbank/imagedatagen.html">
-   Image Data Generator
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Neuronales Netz
  </span>
 </p>
@@ -321,20 +304,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_2484</span><span class="o">/</span><span class="mf">4073767489.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">load</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;sklearn&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -400,38 +369,572 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/15
-21/21 [==============================] - 2s 101ms/step - loss: 30.8316 - accuracy: 0.5352 1s - loss: 117.901
-Epoch 2/15
-21/21 [==============================] - 2s 101ms/step - loss: 1.7608 - accuracy: 0.8080
-Epoch 3/15
-21/21 [==============================] - 2s 101ms/step - loss: 0.9294 - accuracy: 0.8610
-Epoch 4/15
-21/21 [==============================] - 2s 101ms/step - loss: 0.3379 - accuracy: 0.9177
-Epoch 5/15
-21/21 [==============================] - 2s 100ms/step - loss: 0.5945 - accuracy: 0.9253
-Epoch 6/15
-21/21 [==============================] - 2s 118ms/step - loss: 0.0245 - accuracy: 0.9921
-Epoch 7/15
-21/21 [==============================] - 3s 131ms/step - loss: 0.1874 - accuracy: 0.9700
-Epoch 8/15
-21/21 [==============================] - 3s 134ms/step - loss: 0.0084 - accuracy: 0.9983
-Epoch 9/15
-21/21 [==============================] - 3s 132ms/step - loss: 0.1542 - accuracy: 0.9854
-Epoch 10/15
-21/21 [==============================] - 3s 130ms/step - loss: 0.1508 - accuracy: 0.9676
-Epoch 11/15
-21/21 [==============================] - 3s 130ms/step - loss: 0.0017 - accuracy: 1.0000
-Epoch 12/15
-21/21 [==============================] - 3s 134ms/step - loss: 7.7455e-04 - accuracy: 1.0000
-Epoch 13/15
-21/21 [==============================] - 3s 137ms/step - loss: 0.3923 - accuracy: 0.9599
-Epoch 14/15
-21/21 [==============================] - 3s 129ms/step - loss: 0.0017 - accuracy: 0.9999
-Epoch 15/15
-21/21 [==============================] - 3s 131ms/step - loss: 6.6541e-04 - accuracy: 1.0000
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;keras.callbacks.History at 0x7f3544aaa890&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1/21 [&gt;.............................] - ETA: 0s - loss: 71.1739 - accuracy: 0.1880
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 2/21 [=&gt;............................] - ETA: 2s - loss: 118.1495 - accuracy: 0.1980
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 3/21 [===&gt;..........................] - ETA: 3s - loss: 115.3520 - accuracy: 0.2367
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 4/21 [====&gt;.........................] - ETA: 3s - loss: 91.3566 - accuracy: 0.2730 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 5/21 [======&gt;.......................] - ETA: 3s - loss: 75.7296 - accuracy: 0.3024
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 6/21 [=======&gt;......................] - ETA: 3s - loss: 64.8325 - accuracy: 0.3233
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 7/21 [=========&gt;....................] - ETA: 3s - loss: 56.7290 - accuracy: 0.3629
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 8/21 [==========&gt;...................] - ETA: 3s - loss: 50.5112 - accuracy: 0.3808
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 9/21 [===========&gt;..................] - ETA: 2s - loss: 45.7266 - accuracy: 0.4040
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+10/21 [=============&gt;................] - ETA: 2s - loss: 41.5286 - accuracy: 0.4240
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+11/21 [==============&gt;...............] - ETA: 2s - loss: 38.2351 - accuracy: 0.4482
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+12/21 [================&gt;.............] - ETA: 2s - loss: 35.2442 - accuracy: 0.4702
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+13/21 [=================&gt;............] - ETA: 1s - loss: 32.7979 - accuracy: 0.4908
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+14/21 [===================&gt;..........] - ETA: 1s - loss: 30.6699 - accuracy: 0.5056
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+15/21 [====================&gt;.........] - ETA: 1s - loss: 28.8836 - accuracy: 0.5201
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+16/21 [=====================&gt;........] - ETA: 1s - loss: 27.2305 - accuracy: 0.5326
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+17/21 [=======================&gt;......] - ETA: 0s - loss: 25.8221 - accuracy: 0.5415
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+18/21 [========================&gt;.....] - ETA: 0s - loss: 24.5892 - accuracy: 0.5473
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+19/21 [==========================&gt;...] - ETA: 0s - loss: 23.5245 - accuracy: 0.5499
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+20/21 [===========================&gt;..] - ETA: 0s - loss: 22.6093 - accuracy: 0.5511
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+21/21 [==============================] - ETA: 0s - loss: 21.6745 - accuracy: 0.5590
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+21/21 [==============================] - 5s 240ms/step - loss: 21.6745 - accuracy: 0.5590
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 2/15
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1/21 [&gt;.............................] - ETA: 0s - loss: 1.4883 - accuracy: 0.8200
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 2/21 [=&gt;............................] - ETA: 2s - loss: 1.2262 - accuracy: 0.8370
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 3/21 [===&gt;..........................] - ETA: 2s - loss: 1.0489 - accuracy: 0.8447
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 4/21 [====&gt;.........................] - ETA: 3s - loss: 0.9406 - accuracy: 0.8475
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 5/21 [======&gt;.......................] - ETA: 3s - loss: 0.8743 - accuracy: 0.8520
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 6/21 [=======&gt;......................] - ETA: 3s - loss: 0.8344 - accuracy: 0.8550
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 7/21 [=========&gt;....................] - ETA: 2s - loss: 0.8133 - accuracy: 0.8540
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 8/21 [==========&gt;...................] - ETA: 2s - loss: 0.8659 - accuracy: 0.8480
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 9/21 [===========&gt;..................] - ETA: 2s - loss: 1.0517 - accuracy: 0.8411
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+10/21 [=============&gt;................] - ETA: 2s - loss: 1.1179 - accuracy: 0.8374
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+11/21 [==============&gt;...............] - ETA: 2s - loss: 1.1428 - accuracy: 0.8353
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+12/21 [================&gt;.............] - ETA: 1s - loss: 1.1798 - accuracy: 0.8338
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+13/21 [=================&gt;............] - ETA: 1s - loss: 1.2039 - accuracy: 0.8308
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+14/21 [===================&gt;..........] - ETA: 1s - loss: 1.2009 - accuracy: 0.8289
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+15/21 [====================&gt;.........] - ETA: 1s - loss: 1.2040 - accuracy: 0.8288
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+16/21 [=====================&gt;........] - ETA: 1s - loss: 1.1786 - accuracy: 0.8315
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+17/21 [=======================&gt;......] - ETA: 0s - loss: 1.1373 - accuracy: 0.8345
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+18/21 [========================&gt;.....] - ETA: 0s - loss: 1.1003 - accuracy: 0.8377
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+19/21 [==========================&gt;...] - ETA: 0s - loss: 1.0680 - accuracy: 0.8403
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+20/21 [===========================&gt;..] - ETA: 0s - loss: 1.0320 - accuracy: 0.8431
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+21/21 [==============================] - ETA: 0s - loss: 1.0058 - accuracy: 0.8442
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+21/21 [==============================] - 5s 229ms/step - loss: 1.0058 - accuracy: 0.8442
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 3/15
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1/21 [&gt;.............................] - ETA: 0s - loss: 0.5746 - accuracy: 0.8680
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 2/21 [=&gt;............................] - ETA: 2s - loss: 0.7042 - accuracy: 0.8490
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 3/21 [===&gt;..........................] - ETA: 2s - loss: 0.8915 - accuracy: 0.8327
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 4/21 [====&gt;.........................] - ETA: 3s - loss: 0.9547 - accuracy: 0.8305
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 5/21 [======&gt;.......................] - ETA: 3s - loss: 0.8747 - accuracy: 0.8372
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 6/21 [=======&gt;......................] - ETA: 2s - loss: 0.7953 - accuracy: 0.8457
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 7/21 [=========&gt;....................] - ETA: 2s - loss: 0.7451 - accuracy: 0.8514
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 8/21 [==========&gt;...................] - ETA: 2s - loss: 0.7058 - accuracy: 0.8558
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 9/21 [===========&gt;..................] - ETA: 2s - loss: 0.6665 - accuracy: 0.8600
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+10/21 [=============&gt;................] - ETA: 2s - loss: 0.6436 - accuracy: 0.8610
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+11/21 [==============&gt;...............] - ETA: 2s - loss: 0.6408 - accuracy: 0.8605
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+12/21 [================&gt;.............] - ETA: 1s - loss: 0.6508 - accuracy: 0.8590
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+13/21 [=================&gt;............] - ETA: 1s - loss: 0.6459 - accuracy: 0.8588
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+14/21 [===================&gt;..........] - ETA: 1s - loss: 0.6448 - accuracy: 0.8577
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+15/21 [====================&gt;.........] - ETA: 1s - loss: 0.6346 - accuracy: 0.8571
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+16/21 [=====================&gt;........] - ETA: 1s - loss: 0.6203 - accuracy: 0.8589
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+17/21 [=======================&gt;......] - ETA: 0s - loss: 0.5963 - accuracy: 0.8627
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+18/21 [========================&gt;.....] - ETA: 0s - loss: 0.5742 - accuracy: 0.8660
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+19/21 [==========================&gt;...] - ETA: 0s - loss: 0.5511 - accuracy: 0.8705
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+20/21 [===========================&gt;..] - ETA: 0s - loss: 0.5299 - accuracy: 0.8747
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+21/21 [==============================] - ETA: 0s - loss: 0.5127 - accuracy: 0.8773
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+21/21 [==============================] - 5s 229ms/step - loss: 0.5127 - accuracy: 0.8773
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 4/15
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1/21 [&gt;.............................] - ETA: 0s - loss: 0.1228 - accuracy: 0.9520
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 2/21 [=&gt;............................] - ETA: 2s - loss: 0.1117 - accuracy: 0.9560
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 3/21 [===&gt;..........................] - ETA: 2s - loss: 0.1026 - accuracy: 0.9593
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 4/21 [====&gt;.........................] - ETA: 3s - loss: 0.1045 - accuracy: 0.9575
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 5/21 [======&gt;.......................] - ETA: 3s - loss: 0.1014 - accuracy: 0.9596
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 6/21 [=======&gt;......................] - ETA: 2s - loss: 0.1045 - accuracy: 0.9583
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 7/21 [=========&gt;....................] - ETA: 2s - loss: 0.1221 - accuracy: 0.9511
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 8/21 [==========&gt;...................] - ETA: 2s - loss: 0.2945 - accuracy: 0.9273
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 9/21 [===========&gt;..................] - ETA: 2s - loss: 0.4249 - accuracy: 0.9113
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+10/21 [=============&gt;................] - ETA: 2s - loss: 0.4397 - accuracy: 0.8994
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+11/21 [==============&gt;...............] - ETA: 2s - loss: 0.4134 - accuracy: 0.9033
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+12/21 [================&gt;.............] - ETA: 1s - loss: 0.3915 - accuracy: 0.9065
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+13/21 [=================&gt;............] - ETA: 1s - loss: 0.3721 - accuracy: 0.9086
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+14/21 [===================&gt;..........] - ETA: 1s - loss: 0.3533 - accuracy: 0.9120
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+15/21 [====================&gt;.........] - ETA: 1s - loss: 0.3364 - accuracy: 0.9159
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+16/21 [=====================&gt;........] - ETA: 1s - loss: 0.3196 - accuracy: 0.9196
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+17/21 [=======================&gt;......] - ETA: 0s - loss: 0.3038 - accuracy: 0.9232
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+18/21 [========================&gt;.....] - ETA: 0s - loss: 0.2899 - accuracy: 0.9263
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+19/21 [==========================&gt;...] - ETA: 0s - loss: 0.2784 - accuracy: 0.9288
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+20/21 [===========================&gt;..] - ETA: 0s - loss: 0.2679 - accuracy: 0.9309
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+21/21 [==============================] - ETA: 0s - loss: 0.2592 - accuracy: 0.9326
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+21/21 [==============================] - 5s 228ms/step - loss: 0.2592 - accuracy: 0.9326
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 5/15
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1/21 [&gt;.............................] - ETA: 0s - loss: 0.0664 - accuracy: 0.9820
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 2/21 [=&gt;............................] - ETA: 2s - loss: 0.0565 - accuracy: 0.9830
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 3/21 [===&gt;..........................] - ETA: 2s - loss: 0.0526 - accuracy: 0.9833
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 4/21 [====&gt;.........................] - ETA: 3s - loss: 0.0542 - accuracy: 0.9825
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 5/21 [======&gt;.......................] - ETA: 3s - loss: 0.0599 - accuracy: 0.9788
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 6/21 [=======&gt;......................] - ETA: 3s - loss: 0.0681 - accuracy: 0.9740
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 7/21 [=========&gt;....................] - ETA: 2s - loss: 0.1099 - accuracy: 0.9589
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 8/21 [==========&gt;...................] - ETA: 2s - loss: 0.1978 - accuracy: 0.9385
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 9/21 [===========&gt;..................] - ETA: 2s - loss: 0.3196 - accuracy: 0.9140
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+10/21 [=============&gt;................] - ETA: 2s - loss: 0.3135 - accuracy: 0.9122
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+11/21 [==============&gt;...............] - ETA: 2s - loss: 0.2959 - accuracy: 0.9149
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+12/21 [================&gt;.............] - ETA: 1s - loss: 0.2747 - accuracy: 0.9212
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+13/21 [=================&gt;............] - ETA: 1s - loss: 0.2563 - accuracy: 0.9265
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+14/21 [===================&gt;..........] - ETA: 1s - loss: 0.2409 - accuracy: 0.9309
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+15/21 [====================&gt;.........] - ETA: 1s - loss: 0.2281 - accuracy: 0.9344
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+16/21 [=====================&gt;........] - ETA: 1s - loss: 0.2163 - accuracy: 0.9377
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+17/21 [=======================&gt;......] - ETA: 0s - loss: 0.2067 - accuracy: 0.9400
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+18/21 [========================&gt;.....] - ETA: 0s - loss: 0.1974 - accuracy: 0.9430
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+19/21 [==========================&gt;...] - ETA: 0s - loss: 0.1888 - accuracy: 0.9453
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+20/21 [===========================&gt;..] - ETA: 0s - loss: 0.1815 - accuracy: 0.9473
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+21/21 [==============================] - ETA: 0s - loss: 0.1744 - accuracy: 0.9494
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+21/21 [==============================] - 5s 229ms/step - loss: 0.1744 - accuracy: 0.9494
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 6/15
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 1/21 [&gt;.............................] - ETA: 0s - loss: 0.0186 - accuracy: 1.0000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 2/21 [=&gt;............................] - ETA: 2s - loss: 0.0223 - accuracy: 0.9970
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 3/21 [===&gt;..........................] - ETA: 2s - loss: 0.0217 - accuracy: 0.9967
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 4/21 [====&gt;.........................] - ETA: 3s - loss: 0.0211 - accuracy: 0.9965
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 5/21 [======&gt;.......................] - ETA: 3s - loss: 0.0199 - accuracy: 0.9968
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 6/21 [=======&gt;......................] - ETA: 2s - loss: 0.0202 - accuracy: 0.9967
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 7/21 [=========&gt;....................] - ETA: 2s - loss: 0.0198 - accuracy: 0.9969
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 8/21 [==========&gt;...................] - ETA: 2s - loss: 0.0190 - accuracy: 0.9973
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+ 9/21 [===========&gt;..................] - ETA: 2s - loss: 0.0185 - accuracy: 0.9973
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+10/21 [=============&gt;................] - ETA: 2s - loss: 0.0181 - accuracy: 0.9976
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+11/21 [==============&gt;...............] - ETA: 2s - loss: 0.0185 - accuracy: 0.9971
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_7960</span><span class="o">/</span><span class="mf">1274184835.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">y_train</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">epochs</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+<span class="ne">---&gt; </span><span class="mi">15</span>     <span class="n">batch_size</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+<span class="nn">~\anaconda3\envs\py37\lib\site-packages\tensorflow\python\keras\engine\training.py</span> in <span class="ni">_method_wrapper</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span>   <span class="k">def</span> <span class="nf">_method_wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span>     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_in_multi_worker_mode</span><span class="p">():</span>  <span class="c1"># pylint: disable=protected-access</span>
+<span class="ne">--&gt; </span><span class="mi">108</span>       <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">109</span> 
+<span class="g g-Whitespace">    </span><span class="mi">110</span>     <span class="c1"># Running inside `run_distribute_coordinator` already.</span>
+
+<span class="nn">~\anaconda3\envs\py37\lib\site-packages\tensorflow\python\keras\engine\training.py</span> in <span class="ni">fit</span><span class="nt">(self, x, y, batch_size, epochs, verbose, callbacks, validation_split, validation_data, shuffle, class_weight, sample_weight, initial_epoch, steps_per_epoch, validation_steps, validation_batch_size, validation_freq, max_queue_size, workers, use_multiprocessing)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1096</span>                 <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1097</span>               <span class="n">callbacks</span><span class="o">.</span><span class="n">on_train_batch_begin</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1098</span>               <span class="n">tmp_logs</span> <span class="o">=</span> <span class="n">train_function</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1099</span>               <span class="k">if</span> <span class="n">data_handler</span><span class="o">.</span><span class="n">should_sync</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1100</span>                 <span class="n">context</span><span class="o">.</span><span class="n">async_wait</span><span class="p">()</span>
+
+<span class="nn">~\anaconda3\envs\py37\lib\site-packages\tensorflow\python\eager\def_function.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">778</span>       <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">779</span>         <span class="n">compiler</span> <span class="o">=</span> <span class="s2">&quot;nonXla&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">780</span>         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">781</span> 
+<span class="g g-Whitespace">    </span><span class="mi">782</span>       <span class="n">new_tracing_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_tracing_count</span><span class="p">()</span>
+
+<span class="nn">~\anaconda3\envs\py37\lib\site-packages\tensorflow\python\eager\def_function.py</span> in <span class="ni">_call</span><span class="nt">(self, *args, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">805</span>       <span class="c1"># In this case we have created variables on the first call, so we run the</span>
+<span class="g g-Whitespace">    </span><span class="mi">806</span>       <span class="c1"># defunned version which is guaranteed to never create variables.</span>
+<span class="ne">--&gt; </span><span class="mi">807</span>       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stateless_fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>  <span class="c1"># pylint: disable=not-callable</span>
+<span class="g g-Whitespace">    </span><span class="mi">808</span>     <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stateful_fn</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">809</span>       <span class="c1"># Release the lock early so that multiple threads can perform the call</span>
+
+<span class="nn">~\anaconda3\envs\py37\lib\site-packages\tensorflow\python\eager\function.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2827</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2828</span>       <span class="n">graph_function</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maybe_define_function</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2829</span>     <span class="k">return</span> <span class="n">graph_function</span><span class="o">.</span><span class="n">_filtered_call</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># pylint: disable=protected-access</span>
+<span class="g g-Whitespace">   </span><span class="mi">2830</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2831</span>   <span class="nd">@property</span>
+
+<span class="nn">~\anaconda3\envs\py37\lib\site-packages\tensorflow\python\eager\function.py</span> in <span class="ni">_filtered_call</span><span class="nt">(self, args, kwargs, cancellation_manager)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1846</span>                            <span class="n">resource_variable_ops</span><span class="o">.</span><span class="n">BaseResourceVariable</span><span class="p">))],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1847</span>         <span class="n">captured_inputs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">captured_inputs</span><span class="p">,</span>
+<span class="ne">-&gt; </span><span class="mi">1848</span>         <span class="n">cancellation_manager</span><span class="o">=</span><span class="n">cancellation_manager</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1849</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1850</span>   <span class="k">def</span> <span class="nf">_call_flat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">captured_inputs</span><span class="p">,</span> <span class="n">cancellation_manager</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<span class="nn">~\anaconda3\envs\py37\lib\site-packages\tensorflow\python\eager\function.py</span> in <span class="ni">_call_flat</span><span class="nt">(self, args, captured_inputs, cancellation_manager)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1922</span>       <span class="c1"># No tape is watching; skip to running the function.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1923</span>       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_call_outputs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_inference_function</span><span class="o">.</span><span class="n">call</span><span class="p">(</span>
+<span class="ne">-&gt; </span><span class="mi">1924</span>           <span class="n">ctx</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">cancellation_manager</span><span class="o">=</span><span class="n">cancellation_manager</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1925</span>     <span class="n">forward_backward</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_forward_and_backward_functions</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1926</span>         <span class="n">args</span><span class="p">,</span>
+
+<span class="nn">~\anaconda3\envs\py37\lib\site-packages\tensorflow\python\eager\function.py</span> in <span class="ni">call</span><span class="nt">(self, ctx, args, cancellation_manager)</span>
+<span class="g g-Whitespace">    </span><span class="mi">548</span>               <span class="n">inputs</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">549</span>               <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">,</span>
+<span class="ne">--&gt; </span><span class="mi">550</span>               <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">551</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">552</span>           <span class="n">outputs</span> <span class="o">=</span> <span class="n">execute</span><span class="o">.</span><span class="n">execute_with_cancellation</span><span class="p">(</span>
+
+<span class="nn">~\anaconda3\envs\py37\lib\site-packages\tensorflow\python\eager\execute.py</span> in <span class="ni">quick_execute</span><span class="nt">(op_name, num_outputs, inputs, attrs, ctx, name)</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span>     <span class="n">ctx</span><span class="o">.</span><span class="n">ensure_initialized</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="n">tensors</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_Execute</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">device_name</span><span class="p">,</span> <span class="n">op_name</span><span class="p">,</span>
+<span class="ne">---&gt; </span><span class="mi">60</span>                                         <span class="n">inputs</span><span class="p">,</span> <span class="n">attrs</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span>   <span class="k">except</span> <span class="n">core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span>     <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>

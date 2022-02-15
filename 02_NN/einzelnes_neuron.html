@@ -53,7 +53,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Wie lernt ein neuronales Netz?" href="NN_learning.html" />
-    <link rel="prev" title="Image Data Generator" href="../01_Bilderdatenbank/imagedatagen.html" />
+    <link rel="prev" title="Content with notebooks" href="../00_Intro/notebooks.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -111,23 +111,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../00_Intro/notebooks.html">
    Content with notebooks
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Bilderdatenbank
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../01_Bilderdatenbank/video2frames.html">
-   Bilder aus Video
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01_Bilderdatenbank/imagedatagen.html">
-   Image Data Generator
   </a>
  </li>
 </ul>
@@ -383,7 +366,7 @@
 <a class="reference external" href="https://www.informatik-aktuell.de/betrieb/kuenstliche-intelligenz/neuronale-netze-ein-blick-in-die-black-box.html">Neuronale Netze: Ein Blick in die Blackbox</a>.</p>
 <div class="figure align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/neuron.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/neuron.png" style="width: 1000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Modell eines einzelnen Neurons.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Modell eines einzelnen Neurons.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>Die gewichteten Eingabewerte werden mit einem Bias verrechnet, vom Neuron aufsummiert und durch eine Aktivierungsfunktion wird ein Ausgabewert berechnet.</p>
 <p>Wir beginnen zunächst mit dem einfachsten Fall:</p>
@@ -393,7 +376,7 @@
 <p>In der Abbildung ist ein vereinfachtes künstliches Neuron zu sehen. Dieses Neuron besitzt keine Aktivierungsfunktion und keinen Bias-Term. Es besitzt lediglich eine Summierfunktion.</p>
 <div class="figure align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/neuron_summe.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/neuron_summe.png" style="width: 900px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Modell eines einzelnen Neurons ohne Bias und Aktivierungsfunktion.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Modell eines einzelnen Neurons ohne Bias und Aktivierungsfunktion.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>Die <strong>Eingabedaten X</strong> werden nun mit den <strong>Gewichten w</strong> verrechnet. Das Neuron bildet anschließend die Summe und gibt diese als <strong>Ausgabewert y</strong> aus. Wie die Werte für die Gewichte bestimmt werden kann man im <strong>Kapitel: Lernvorgang</strong> nachlesen. Für das weitere Vorgehen, reicht es aus, zu wissen, dass es diese Gewichte gibt.</p>
 <p>Anhand dieses einfachen Neurons kann man den konzeptionellen Aufbau Neuronaler Netze besser verstehen. Was dieses Neuron kann, schauen wir uns anhand eines Beispiels in Python an.</p>
@@ -429,14 +412,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_15240</span><span class="o">/</span><span class="mf">2661756792.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">model</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;sklearn&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression(fit_intercept=False)
 </pre></div>
 </div>
 </div>
@@ -451,7 +427,7 @@ Das gelernte Gewicht entspricht dabei der Steigung der Regressionsgeraden.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.8]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.03937]
 </pre></div>
 </div>
 </div>
@@ -492,7 +468,7 @@ Das gelernte Gewicht entspricht dabei der Steigung der Regressionsgeraden.</p>
 <p><strong>Beispiel: Grad Celsius in Fahrenheit umrechnen</strong></p>
 <div class="figure align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/neuron_bias.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/neuron_bias.png" style="width: 900px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Modell eines einzelnen Neurons mit Bias.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Modell eines einzelnen Neurons mit Bias.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -620,7 +596,7 @@ Das gelernte Gewicht entspricht dabei der Steigung der Regressionsgeraden.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.2757425  0.03284566 0.00229432]
--0.5232093219825558
+-0.523209321982586
 </pre></div>
 </div>
 </div>
@@ -637,8 +613,8 @@ Das gelernte Gewicht entspricht dabei der Steigung der Regressionsgeraden.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[13.98766161]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/martin/anaconda3/envs/scikit/lib/python3.9/site-packages/sklearn/base.py:445: UserWarning: X does not have valid feature names, but LinearRegression was fitted with feature names
-  warnings.warn(
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Martin\anaconda3\envs\py37\lib\site-packages\sklearn\base.py:451: UserWarning: X does not have valid feature names, but LinearRegression was fitted with feature names
+  &quot;X does not have valid feature names, but&quot;
 </pre></div>
 </div>
 </div>
@@ -652,7 +628,7 @@ Das gelernte Gewicht entspricht dabei der Steigung der Regressionsgeraden.</p>
 Am Eingang X liegt eine 5 an und am Ausgang soll eine 20 ausgegeben werden. Die beiden Gewichte bekommen 2 als Faktor. Das gleiche Ergebnis würde heraus kommen wenn man ein Neuron mit einem Gewicht und dem Faktor 4 verwendet.</p>
 <div class="figure align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/neuron_series.png"><img alt="sig" class="bg-primary mb-1" src="../_images/neuron_series.png" style="width: 1000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Lineare Neuronen in Reihe geschalten.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Lineare Neuronen in Reihe geschalten.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <ul class="simple">
 <li><p>“hintereinanderschalten” von vereinfachten, linearen Neuronen ohne Aktivierungsfunktion nicht möglich</p></li>
@@ -661,14 +637,14 @@ Am Eingang X liegt eine 5 an und am Ausgang soll eine 20 ausgegeben werden. Die 
 <p>Die <strong>Sigmoidfunktion</strong> bildet die Ergebnisse auf den Zahlenbereich zwischen 0 und 1 ab. Die Ergebnisse können in der Form als eine Wahrscheinlichkeit aufgefasst werden:</p>
 <div class="figure align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/sigmoid.png"><img alt="sig" class="bg-primary mb-1" src="../_images/sigmoid.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Modell eines einzelnen Neurons mit Bias und Aktivierungsfunktion.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Modell eines einzelnen Neurons mit Bias und Aktivierungsfunktion.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="logistische-regression">
 <h1>Logistische Regression<a class="headerlink" href="#logistische-regression" title="Permalink to this headline">¶</a></h1>
 <div class="figure align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/neuron_activation.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/neuron_activation.png" style="width: 900px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Modell eines einzelnen Neurons mit Bias und Aktivierungsfunktion.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Modell eines einzelnen Neurons mit Bias und Aktivierungsfunktion.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p><strong>Beispiel: Wird ein Studierender die Prüfung bestehen?</strong></p>
 <div class="cell docutils container">
@@ -766,11 +742,11 @@ Am Eingang X liegt eine 5 an und am Ausgang soll eine 20 ausgegeben werden. Die 
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../01_Bilderdatenbank/imagedatagen.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../00_Intro/notebooks.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Image Data Generator</p>
+            <p class="prev-next-title">Content with notebooks</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="NN_learning.html" title="next page">

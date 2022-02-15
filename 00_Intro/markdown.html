@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Herzlich Willkommen &#8212; My sample book</title>
+    <title>Masterarbeit &#8212; My sample book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,8 +52,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Content with notebooks" href="notebooks.html" />
-    <link rel="prev" title="Jupyter Book" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -93,7 +91,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Jupyter Book
+   Masterarbeit
   </a>
  </li>
 </ul>
@@ -102,64 +100,59 @@
   Start
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Herzlich Willkommen
-  </a>
- </li>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="notebooks.html">
-   Content with notebooks
+   Einleitung Jupyter Book
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Bilderdatenbank
+  Dataset
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../01_Bilderdatenbank/video2frames.html">
-   Bilder aus Video
+  <a class="reference internal" href="../01_Dataset/dataset_28x28.html">
+   Datensatz 1 (Schraubenköpfe)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../01_Bilderdatenbank/imagedatagen.html">
-   Image Data Generator
+  <a class="reference internal" href="../01_Dataset/dataset_224x224.html">
+   Datensatz 2 (Schrauben)
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Neuronales Netz
+  Neural Net
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/einzelnes_neuron.html">
-   Ein einzelnes Neuron
+  <a class="reference internal" href="../02_NN/neuron.html">
+   Einzelnes Neuron
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../02_NN/NN_learning.html">
-   Wie lernt ein neuronales Netz?
+   Neuronales Netz (Funktionsweise)
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../02_NN/NeuralNet_1.html">
-   Einfaches neuronales “from Scratch”
+   Neuronales Netz (Python)
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../02_NN/NeuralNet_1_Keras.html">
-   NN1 “Einer gegen Alle”
+   NN 1 (“Einer gegen Alle”)
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../02_NN/NeuralNet_2%20%28Mehrere%20Ausgaenge%29.html">
-   NN 2: Mehrere unterscheiden
+   NN 2 (Mehrere unterscheiden)
   </a>
  </li>
 </ul>
@@ -171,17 +164,22 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../03_CNN/CNN.html">
-   Convolutional Neural Networks (CNN)
+   Convolutional Neural Network
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_CNN/Pooling.html">
-   Pooling
+   Pooling Layer
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../03_CNN/CNN_1.html">
-   CNN1
+  <a class="reference internal" href="../03_CNN/CNN_1_28x28.html">
+   CNN 1 (Schraubenköpfe)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/CNN_2_224x224.html">
+   CNN 2 (Schrauben)
   </a>
  </li>
 </ul>
@@ -257,7 +255,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Herzlich Willkommen</h1>
+                <h1>Masterarbeit</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -268,9 +266,42 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="herzlich-willkommen">
-<h1>Herzlich Willkommen<a class="headerlink" href="#herzlich-willkommen" title="Permalink to this headline">¶</a></h1>
-<p>Diese Masterarbeit behandelt die Erkennung von Schrauben auf Bildern und soll den Einstieg in das Thema Neuronale Netze erleichtern.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="masterarbeit">
+<h1>Masterarbeit<a class="headerlink" href="#masterarbeit" title="Permalink to this headline">¶</a></h1>
+<p><strong>Anwendung neuronaler Netze in einem Sortierroboter</strong></p>
+<p>Künstliche Intelligenz (KI) findet immer mehr Einzug in Maschinen. Ein Bereich der KI ist das Deep
+Learning mit neuronalen Netzen, das sich z.B. hervorragend für Mustererkennung eignet. In dieser
+Arbeit soll ein erster Schritt zu einem Sortierroboter gemacht werden, der im Endausbau geeignet ist,
+Schrauben nach Art (Holz-, Sechskant-, Inbusschrauben etc.), Durchmesser (M5, M6, M8 etc.) und
+Länge zu sortieren. In dieser Arbeit geht es aber zunächst nur um die Erkennung verschiedener
+Bauarten. Dabei sollen zunächst Schrauben in gleicher Ansicht und aus einheitlicher Richtung
+betrachtet werden.</p>
+<p>In dieser Arbeit wird die Bilderkennung behandelt. Dazu sind folgende Schritte durchzuführen:</p>
+<ol class="simple">
+<li><p>Erzeugung einer Bilddatenbank mit Bildern von Schrauben verschiedener Bauart. Die Bilder
+sind mit CAD zu erzeugen, selber zu fotografieren oder aus dem Internet unter Beachtung
+des Copyrights zu sammeln. Eine Mischung der drei Quellen ist ebenfalls möglich.
+Die Bilddatenbank soll leicht um weitere Kategorien und um weitere Bilder erweitert werden
+können. Es soll mit drei verschiedenen Schraubenarten begonnen werden.</p></li>
+<li><p>Es ist mit Python ein neuronales Netz zu erzeugen und für die Erkennung der
+Schraubenbauarten zu optimieren. Dabei ist vor allem folgende Netzstruktur auszuprobieren:
+o 2 bis 3 Convolutional Layer
+o 1 Pooling Layer
+o 1 bis 2 fully connected Layer</p></li>
+<li><p>Das entwickelte Programm ist sehr gut zu kommentieren und zu strukturieren, so dass
+Studierende, die später an dem Projekt weiterarbeiten, sich sehr gut in die Software
+einarbeiten können.</p></li>
+<li><p>Das Anlernen von neuronalen Netzen erfordert eine Menge Rechenzeit. Deshalb ggf. ist es
+sinnvoll von Beginn an zu prüfen, ob durch die Nutzung aller Prozessorkerne des PC durch
+Parallelverarbeitung die Rechenzeit verringert werden kann.</p></li>
+<li><p>Der Schwierigkeitsgrad für die Erkennungssoftware ist schrittweise zu steigern. Beginnend
+mit Schrauben in identischer Lage mit identischer Beleuchtung hin zu Schrauben in
+unterschiedlicher Lage und ggf. unterschiedlicher Beleuchtung.
+Während des gesamten Projektes ist darauf zu achten, dass diese Arbeit der erste Schritt und damit
+die Grundlage sein soll, auf der vermutlich im Laufe der nächsten Jahre viele weitere Projektarbeiten
+aufbauen werden. Unter den zukünftigen Projektarbeitern werden Maschinenbaustudierende mit
+wenig Programmiererfahrung sein.</p></li>
+</ol>
 </div>
 
     <script type="text/x-thebe-config">
@@ -297,21 +328,7 @@
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Jupyter Book</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="notebooks.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Content with notebooks</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
             
         </div>

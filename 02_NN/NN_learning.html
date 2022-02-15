@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wie lernt ein neuronales Netz? &#8212; My sample book</title>
+    <title>Neuronales Netz (Funktionsweise) &#8212; My sample book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,8 +54,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Einfaches neuronales “from Scratch”" href="NeuralNet_1.html" />
-    <link rel="prev" title="Ein einzelnes Neuron" href="einzelnes_neuron.html" />
+    <link rel="next" title="Neuronales Netz (Python)" href="NeuralNet_1.html" />
+    <link rel="prev" title="Einzelnes Neuron" href="neuron.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -95,7 +95,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../00_Intro/intro.html">
-   Jupyter Book
+   Masterarbeit
   </a>
  </li>
 </ul>
@@ -106,62 +106,57 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../00_Intro/markdown.html">
-   Herzlich Willkommen
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../00_Intro/notebooks.html">
-   Content with notebooks
+   Einleitung Jupyter Book
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Bilderdatenbank
+  Dataset
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../01_Bilderdatenbank/video2frames.html">
-   Bilder aus Video
+  <a class="reference internal" href="../01_Dataset/dataset_28x28.html">
+   Datensatz 1 (Schraubenköpfe)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../01_Bilderdatenbank/imagedatagen.html">
-   Image Data Generator
+  <a class="reference internal" href="../01_Dataset/dataset_224x224.html">
+   Datensatz 2 (Schrauben)
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Neuronales Netz
+  Neural Net
  </span>
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="einzelnes_neuron.html">
-   Ein einzelnes Neuron
+  <a class="reference internal" href="neuron.html">
+   Einzelnes Neuron
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Wie lernt ein neuronales Netz?
+   Neuronales Netz (Funktionsweise)
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="NeuralNet_1.html">
-   Einfaches neuronales “from Scratch”
+   Neuronales Netz (Python)
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="NeuralNet_1_Keras.html">
-   NN1 “Einer gegen Alle”
+   NN 1 (“Einer gegen Alle”)
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="NeuralNet_2%20%28Mehrere%20Ausgaenge%29.html">
-   NN 2: Mehrere unterscheiden
+   NN 2 (Mehrere unterscheiden)
   </a>
  </li>
 </ul>
@@ -173,17 +168,22 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../03_CNN/CNN.html">
-   Convolutional Neural Networks (CNN)
+   Convolutional Neural Network
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../03_CNN/Pooling.html">
-   Pooling
+   Pooling Layer
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../03_CNN/CNN_1.html">
-   CNN1
+  <a class="reference internal" href="../03_CNN/CNN_1_28x28.html">
+   CNN 1 (Schraubenköpfe)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/CNN_2_224x224.html">
+   CNN 2 (Schrauben)
   </a>
  </li>
 </ul>
@@ -322,7 +322,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Wie lernt ein neuronales Netz?</h1>
+                <h1>Neuronales Netz (Funktionsweise)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -371,8 +371,8 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="wie-lernt-ein-neuronales-netz">
-<h1>Wie lernt ein neuronales Netz?<a class="headerlink" href="#wie-lernt-ein-neuronales-netz" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="neuronales-netz-funktionsweise">
+<h1>Neuronales Netz (Funktionsweise)<a class="headerlink" href="#neuronales-netz-funktionsweise" title="Permalink to this headline">¶</a></h1>
 <p>In diesem Abschnitt soll ein Einblick in den Aufbau und den Lernvorgang eines Neuronalen Netzes geschaffen werden.</p>
 <div class="section" id="hidden-layer">
 <h2>Hidden Layer<a class="headerlink" href="#hidden-layer" title="Permalink to this headline">¶</a></h2>
@@ -402,7 +402,7 @@ Jedes Neuron spezialisiert sich auf eine bestimmte Eigenschaft z.B.:</p>
 <p>Die Aktualisierung der Gewichte hat einen großen Einfluss auf diesen Vorgang.</p>
 <div class="figure align-default" id="two-layer-net">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/hiddenLayer_1.png"><img alt="nn" class="bg-primary mb-1" src="../_images/hiddenLayer_1.png" style="width: 1000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Two-Layer-Neural Net.</span><a class="headerlink" href="#two-layer-net" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Two-Layer-Neural Net.</span><a class="headerlink" href="#two-layer-net" title="Permalink to this image">¶</a></p>
 </div>
 <p>Weitere Informationen:
 <a class="reference external" href="https://otexts.com/fpp2/nnetar.html">Neural network architecture</a>.</p>
@@ -430,7 +430,7 @@ Jedes Neuron spezialisiert sich auf eine bestimmte Eigenschaft z.B.:</p>
 <p>Weitere Kostenfunktionen und Informationen <a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/02/cost-function-is-no-rocket-science/">hier</a>.</p>
 <div class="figure align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/weights_1.png"><img alt="nn" class="bg-primary mb-1" src="../_images/weights_1.png" style="width: 750px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Kostenfunktion</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Kostenfunktion</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>Die Quadrierung des Fehlers in der Kostenfunktion, bewirkt eine viel größere Bestrafung für größere Fehler.</p>
 <p>Werden nun wie üblich mehrere Datensätze trainiert, müssen die Gewichte nach jedem Datensatz angepasst werden. Je nachdem wie die Vorhersage vom Ergebnis y abweicht.</p>
@@ -447,7 +447,7 @@ Die Antwort lautet Gradientenabstiegsverfahren. Um dieses Verfahren näher zu er
 Für den gradient descent gab es bzgl Lernrate usw eine gute Geogebra erklärung in einem anderen Kurs von Jannis, diese Erklärung hier einfügen.</p>
 <div class="figure align-default" id="gradient-descent">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/gradient_descent.png"><img alt="nn" class="bg-primary mb-1" src="../_images/gradient_descent.png" style="width: 500px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Die Gewichte der ersten Batch werden trainiert.</span><a class="headerlink" href="#gradient-descent" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Die Gewichte der ersten Batch werden trainiert.</span><a class="headerlink" href="#gradient-descent" title="Permalink to this image">¶</a></p>
 </div>
 <div class="cell tag_output_scroll tag_hide-output docutils container">
 <div class="cell_input docutils container">
@@ -537,7 +537,7 @@ Für den gradient descent gab es bzgl Lernrate usw eine gute Geogebra erklärung
 <p>Die Kosten für die gesamten Trainingsdaten zu berechnen und anschließend die Gewichte zu aktualisieren, würde bei sehr vielen Gewichten einen sehr hohen Rechenaufwand bedeuten, da die Kostenfunktion dann sehr viele variable Gewichte enthält. Deswegen geht man bei NN’s so vor, dass man nicht die Kosten für die gesamten Daten sondern nur für einzelne Batches berechnet und somit die Kosten approximiert. Das macht man dann für alle Batches und aktualisiert nach jedem Batch die Gewichte. So werden die Gewichte pro kompletten Durchgang mehrmals aktualisiert und nicht nur einmal am Ende eines kompletten Durchgangs. Das bringt allerdings mit sich, dass die Gewichte hin und her springen, im „ZickZack zum Minimum laufen“ Das führt insgesamt zu einem schnelleren Lernvorgang.</p>
 <div class="figure align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/gradient_batch1.png"><img alt="nn" class="bg-primary mb-1" src="../_images/gradient_batch1.png" style="width: 1000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">erste Batch</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">erste Batch</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 <p>Anstatt alle Gewichte mit einmal zu bestimmen ist es vorteilhafter den Trainingssatz in einzelne Batches aufzuteilen, somit wird die Berechnung schneller und die Gewichte werden nach jedem Durchlauf angepasst.</p>
 <p>Ablauf der Gewichtsanpassung für eine Batch:</p>
@@ -549,7 +549,7 @@ Für den gradient descent gab es bzgl Lernrate usw eine gute Geogebra erklärung
 </ul>
 <div class="figure align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/gradient_batch2.png"><img alt="nn" class="bg-primary mb-1" src="../_images/gradient_batch2.png" style="width: 1000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Zweite Batch</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Zweite Batch</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <p><strong>Begriffsdefinition:</strong></p>
 <ul class="simple">
@@ -586,7 +586,7 @@ Durch Backpropagation!</p>
 <p>Der Fehler e wird nun an die Ausgänge des Hidden-Layer transformiert:</p>
 <div class="figure align-default" id="backprop1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/backprop1.png"><img alt="nn" class="bg-primary mb-1" src="../_images/backprop1.png" style="width: 1000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Backpropagation</span><a class="headerlink" href="#backprop1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Backpropagation</span><a class="headerlink" href="#backprop1" title="Permalink to this image">¶</a></p>
 </div>
 <p><strong>Initialisierung der Gewichte</strong></p>
 <p>Die Initialisierung kann darüber entscheiden, ob das NN trainieren kann oder nicht.
@@ -595,11 +595,11 @@ Weiterhin dürfen die Gewichte nicht alle mit den gleichen Werten initialisiert 
 Besser ist es, den Gewichten unterschiedliche Werte zu geben. Das können zufällige, eher kleine Werte sein. So ist sichergestellt, dass jedes Neuron eine andere Funktion berechnet. Somit kann dann auch die Backpropagation richtig arbeiten und die Gewichte anpassen.</p>
 <div class="figure align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/backprop2.png"><img alt="nn" class="bg-primary mb-1" src="../_images/backprop2.png" style="width: 1000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Backpropagation2</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Backpropagation2</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/backprop3.png"><img alt="nn" class="bg-primary mb-1" src="../_images/backprop3.png" style="width: 1000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Backpropagation3</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Backpropagation3</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -629,17 +629,17 @@ Besser ist es, den Gewichten unterschiedliche Werte zu geben. Das können zufäl
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="einzelnes_neuron.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="neuron.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Ein einzelnes Neuron</p>
+            <p class="prev-next-title">Einzelnes Neuron</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="NeuralNet_1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Einfaches neuronales “from Scratch”</p>
+        <p class="prev-next-title">Neuronales Netz (Python)</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
