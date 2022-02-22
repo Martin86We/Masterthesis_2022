@@ -1,4 +1,4 @@
-PIL==8.4.0
+
 cv2==4.5.5
 matplotlib==3.5.0
 numpy==1.21.2
