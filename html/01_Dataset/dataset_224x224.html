@@ -1,0 +1,1134 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datensatz 2 (Schrauben) &#8212; My sample book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Einzelnes Neuron" href="../02_NN/1_neuron.html" />
+    <link rel="prev" title="Datensatz 1 (Schraubenköpfe)" href="dataset_28x28.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/intro.html">
+   Masterarbeit
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Start
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/notebooks.html">
+   Einleitung Jupyter Book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/markdown.html">
+   Masterarbeit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Einleitung.html">
+   Einleitung
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dataset
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="dataset_28x28.html">
+   Datensatz 1 (Schraubenköpfe)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Datensatz 2 (Schrauben)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Neural Net
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_NN/1_neuron.html">
+   Einzelnes Neuron
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_NN/2_NN_learning.html">
+   Neuronales Netz (Funktionsweise)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_NN/3_NeuralNet_1.html">
+   Neuronales Netz (Python)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_NN/4_NeuralNet_1_Keras.html">
+   NN 1 (“Einer gegen Alle”)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_NN/5_NeuralNet_2%20%28Mehrere%20Ausgaenge%29.html">
+   NN 2 (Mehrere unterscheiden)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Convolutional Neural Net
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/CNN.html">
+   Convolutional Neural Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/Pooling.html">
+   Pooling Layer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/CNN_1_28x28.html">
+   CNN 1 (Schraubenköpfe)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/CNN_2_224x224.html">
+   CNN 2 (Schrauben)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Vortrainierte Netzwerke
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_VGG16/VGG16.html">
+   VGG16 Netzwerk
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04_VGG16/transfer_learning.html">
+   Transfer Learning
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/01_Dataset/dataset_224x224.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Martin86We/Masterthesis_2022/master?urlpath=tree/01_Dataset/dataset_224x224.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/Martin86We/Masterthesis_2022/blob/master/01_Dataset/dataset_224x224.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bilder-aus-video-extrahieren">
+   Bilder aus Video extrahieren
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bildausschnitt">
+   Bildausschnitt
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bild-verkleinern">
+   Bild verkleinern
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#auto-object-cropping-yolov4">
+   Auto Object Cropping (YOLOv4)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#beispiel-bilder-anzeigen">
+   Beispiel Bilder anzeigen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alle-bilder-in-einem-ordner">
+   Alle Bilder in einem Ordner
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bilderklassen-in-separatem-ordner">
+   Bilderklassen in separatem Ordner
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datensatz-aufteilen-in-test-und-trainingsdaten">
+   Datensatz aufteilen in Test- und Trainingsdaten
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datensatz-mit-keras-erzeugen-und-erweitern">
+   Datensatz mit Keras erzeugen und erweitern
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generator-ausprobieren-und-konfigurieren">
+   Generator ausprobieren und konfigurieren:
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Datensatz 2 (Schrauben)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bilder-aus-video-extrahieren">
+   Bilder aus Video extrahieren
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bildausschnitt">
+   Bildausschnitt
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bild-verkleinern">
+   Bild verkleinern
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#auto-object-cropping-yolov4">
+   Auto Object Cropping (YOLOv4)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#beispiel-bilder-anzeigen">
+   Beispiel Bilder anzeigen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alle-bilder-in-einem-ordner">
+   Alle Bilder in einem Ordner
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bilderklassen-in-separatem-ordner">
+   Bilderklassen in separatem Ordner
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datensatz-aufteilen-in-test-und-trainingsdaten">
+   Datensatz aufteilen in Test- und Trainingsdaten
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datensatz-mit-keras-erzeugen-und-erweitern">
+   Datensatz mit Keras erzeugen und erweitern
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generator-ausprobieren-und-konfigurieren">
+   Generator ausprobieren und konfigurieren:
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="datensatz-2-schrauben">
+<h1>Datensatz 2 (Schrauben)<a class="headerlink" href="#datensatz-2-schrauben" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="bilder-aus-video-extrahieren">
+<h2>Bilder aus Video extrahieren<a class="headerlink" href="#bilder-aus-video-extrahieren" title="Permalink to this headline">¶</a></h2>
+<p>Die folgenden Videos wurden unter möglichst gleichen Bedingungen aufgenommen, so dass die Trainingsbilder sich nur durch die Schrauben unterscheiden.</p>
+<p>Hier noch Videos anzeigen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OpenCV importieren:</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="c1"># path = &#39;relativer Speicherpfad / Dateiname&#39;:</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;frames_from_video/torx&#39;</span>
+
+
+<span class="c1"># Video laden:</span>
+<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="s1">&#39;video/torx.MOV&#39;</span><span class="p">)</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+<span class="c1"># Prüfen ob ein Video geladen wurde:</span>
+<span class="k">if</span> <span class="n">cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ERROR: Datei nicht gefunden&#39;</span><span class="p">)</span>
+   
+    
+<span class="c1"># Die Frames des Videos lesen:      </span>
+<span class="k">while</span><span class="p">(</span><span class="n">cap</span><span class="o">.</span><span class="n">isOpened</span><span class="p">()):</span>
+    <span class="n">ret</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+     
+    <span class="c1"># sobald keine Frames mehr gelesen werden können (ret==False) wird abgebrochen:</span>
+    <span class="k">if</span> <span class="n">ret</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">break</span>
+     
+    <span class="c1"># Die Frames speichern</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">_i</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.jpg&#39;</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+ 
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<span class="n">cv</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_15816</span><span class="o">/</span><span class="mf">471488310.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> 
+<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="c1"># Die Frames speichern</span>
+<span class="ne">---&gt; </span><span class="mi">27</span>     <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">_i</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.jpg&#39;</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span>     <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> 
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Schneiden und skalieren Sie das Bild auf die richtige Größe und normalisieren Sie die Farben. Alle in Keras enthaltenen vortrainierten Netze erfordern, dass die Eingabedaten quadratisch und in einer bestimmten Größe vorliegen. Außerdem erwarten sie, dass die Farbkanäle normalisiert sind. Die Normalisierung der Bilder für das Training erleichtert dem Netzwerk, sich auf die wichtigen Dinge zu konzentrieren und sich dabei nicht »ablenken« zu lassen.
+Osinga, Douwe. Deep Learning Kochbuch : Praxisrezepte für einen schnellen Einstieg, o’Reilly, 2019. ProQuest Ebook Central, <a class="reference external" href="http://ebookcentral.proquest.com/lib/htwg-konstanz/detail.action?docID=5704334">http://ebookcentral.proquest.com/lib/htwg-konstanz/detail.action?docID=5704334</a>.
+Created from htwg-konstanz on 2022-02-16 00:04:42.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importieren der Matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="bildausschnitt">
+<h2>Bildausschnitt<a class="headerlink" href="#bildausschnitt" title="Permalink to this headline">¶</a></h2>
+<p>Wir können PIL/Pillow verwenden, um ein Bild zu laden und die Bildmitte auszuschneiden:
+Osinga, Douwe. Deep Learning Kochbuch : Praxisrezepte für einen schnellen Einstieg, o’Reilly, 2019</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;frames_from_video/pozidriv0.jpg&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span> 
+<span class="n">s</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> 
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">h</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> 
+<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> 
+<span class="n">img_crop</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">crop</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_crop</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;w = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;h = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;s = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="c1"># Osinga, Douwe. Deep Learning Kochbuch : Praxisrezepte für einen schnellen Einstieg, o&#39;Reilly, 2019</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="bild-verkleinern">
+<h2>Bild verkleinern<a class="headerlink" href="#bild-verkleinern" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;frames_from_video/pozidriv0.jpg&#39;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_UNCHANGED</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Original Dimensions : &#39;</span><span class="p">,</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">scale_percent</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># percent of original size</span>
+<span class="n">width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">scale_percent</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">scale_percent</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">dim</span> <span class="o">=</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+
+<span class="c1">#resize image</span>
+<span class="n">resized</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">interpolation</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">INTER_AREA</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Resized Dimensions : &#39;</span><span class="p">,</span><span class="n">resized</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Resized image&quot;</span><span class="p">,</span> <span class="n">resized</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">filelist</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;screw_img/**/*&quot;</span><span class="p">)</span>
+<span class="n">X_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">))</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">filelist</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">filelist</span><span class="p">))</span>
+
+<span class="c1"># Array erweitern - hier nicht nötig</span>
+<span class="c1">#X_raw = X_raw.reshape(X_raw.shape + (1,))</span>
+<span class="c1">#print(X_raw.shape)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filelist</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;screw_img/**/*&quot;</span><span class="p">)</span>
+<span class="n">X_gray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">filelist</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_gray</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">filelist</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Array erweitern </span>
+<span class="c1">#X_gray = X_gray.reshape(X_gray.shape + (1,))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_gray</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="auto-object-cropping-yolov4">
+<h2>Auto Object Cropping (YOLOv4)<a class="headerlink" href="#auto-object-cropping-yolov4" title="Permalink to this headline">¶</a></h2>
+<p>Wie das YOLO Netzwerk dafür genutzt werden kann Objekte auf Bildern auszuschneiden: <a class="reference external" href="https://www.youtube.com/watch?v=P7r0hIP2GQ4">“Video: Crop and Save”</a><br />
+Den Code: <a class="reference external" href="https://github.com/theAIGuysCode/yolov4-custom-functions">Github</a></p>
+</div>
+<div class="section" id="beispiel-bilder-anzeigen">
+<h2>Beispiel Bilder anzeigen<a class="headerlink" href="#beispiel-bilder-anzeigen" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pozidriv</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;screw_img_224x224/pozidriv/pozi (1288).jpg&#39;</span><span class="p">)</span>
+<span class="n">kreuzschlitz</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;screw_img_224x224/kreuzschlitz/kreuzschlitz (1592).jpg&#39;</span><span class="p">)</span>
+<span class="n">philips</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;screw_img_224x224/philips/philips (1148).jpg&#39;</span><span class="p">)</span>
+<span class="n">innensechskant</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;screw_img_224x224/innensechskant/innensechskant (1).jpg&#39;</span><span class="p">)</span>
+<span class="n">sechskant</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;screw_img_224x224/sechskant/sechskant (1334).jpg&#39;</span><span class="p">)</span>
+<span class="n">torx</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;screw_img_224x224/torx/torx (1178).jpg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pozidriv&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pozidriv</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Philips&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">philips</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Innensechskant&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">innensechskant</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Torx&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">torx</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sechskant&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sechskant</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Kreuzschlitz&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">kreuzschlitz</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Schrauben Klassen&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+<span class="c1">#plt.subplots_adjust(left=0.3, wspace=0.2, top=0.8)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aus diesen 5 Schraubenarten wird nun ein Datensatz mit Labels erstellt.</p>
+<p>In diesem Abschnitt soll ein Datensatz aus “echten” Fotos erstellt werden.</p>
+<p>Wie viele Trainingsdaten benötigt das Netz? Sind <a class="reference external" href="https://towardsdatascience.com/how-do-you-know-you-have-enough-training-data-ad9b1fd679ee">genug Trainingsdaten</a> vorhanden?</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Es stellt sich die Frage wie detailreich die Schraubenbilder sein müssen um eine gute Erkennung zu ermöglichen?</p>
+</div>
+<p>Um kostengünstig und schnell eine vielzahl an Trainingsbildern von Schrauben zu erzeugen, bieten sich Videoaufnahmen der Schrauben an. Die Videoaufnahmen lassen sich in einzelne Bildern zerlegen und somit ein Datensatz erzeugen.</p>
+</div>
+<div class="section" id="alle-bilder-in-einem-ordner">
+<h2>Alle Bilder in einem Ordner<a class="headerlink" href="#alle-bilder-in-einem-ordner" title="Permalink to this headline">¶</a></h2>
+<p>Die Labelliste muss dem Image-Array korrekt zugeordnet werden. Dafür müssen Bilder und zugehörige Labels in gleicher Reihenfolge abgespeichert werden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Liste mit Dateipfad anlegen</span>
+<span class="n">filelist</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;frames_from_video/*&quot;</span><span class="p">)</span>
+
+<span class="c1"># Bilder in ein 3 Dimensionales Numpy Array speichern</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">))</span> <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">filelist</span><span class="p">])</span>
+
+<span class="c1"># Array erweitern auf 4D-Array (n,n,n,1)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das Bilder Array <strong>X</strong> wurde nun erstellt. Nun müssen noch die zugehörigen <em>Labels</em> erzeugt werden.</p>
+<p>Folgende Ausgangssituationen sollen untersucht werden:</p>
+<ol class="simple">
+<li><p>Alle Bilder liegen in einem Ordner und jedes Bild besitzt Klassenname und Nummerierung im Dateinamen</p></li>
+<li><p>Jede Klasse in einem eigenen Ordner, Dateinamen benötigen lediglich eine fortlaufende Nummerierung</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;dataset_from_video&quot;</span>
+<span class="n">categories</span> <span class="o">=</span> <span class="p">[]</span> 
+
+<span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>  <span class="c1"># hole mir die Bezeichnung aus dem Dateinamen des Bildes, teile den Dateinamen am Leerzeichen (&quot; &quot;) und nutze den Klassennamen als Label</span>
+    <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;innensechskant&quot;</span><span class="p">):</span>
+        <span class="n">category_</span><span class="p">,</span> <span class="n">rand_str</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="c1"># teile auf in &quot;innensechskant&quot; und &quot;28x28_gray&quot;</span>
+        <span class="n">categories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category_</span><span class="p">)</span><span class="c1"># erweitere die Labelliste mit &quot;innensechskant&quot;</span>
+            
+<span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>  <span class="c1"># iterate over each image per Categorie</span>
+    <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;philips&quot;</span><span class="p">):</span>
+        <span class="n">category_</span><span class="p">,</span> <span class="n">rand_str</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="n">categories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category_</span><span class="p">)</span>
+            
+<span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>  <span class="c1"># iterate over each image per Categorie</span>
+    <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;pozidriv&quot;</span><span class="p">):</span>
+        <span class="n">category_</span><span class="p">,</span> <span class="n">rand_str</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="n">categories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category_</span><span class="p">)</span>
+            
+<span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>  <span class="c1"># iterate over each image per Categorie</span>
+    <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;sechskant&quot;</span><span class="p">):</span>
+        <span class="n">category_</span><span class="p">,</span> <span class="n">rand_str</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="n">categories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category_</span><span class="p">)</span>
+            
+<span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>  <span class="c1"># iterate over each image per Categorie</span>
+    <span class="k">if</span> <span class="n">img</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;torx&quot;</span><span class="p">):</span>
+        <span class="n">category_</span><span class="p">,</span> <span class="n">rand_str</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="n">categories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">category_</span><span class="p">)</span>
+        
+<span class="n">y</span><span class="o">=</span><span class="n">categories</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Label Test</span>
+<span class="n">i</span><span class="o">=</span><span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="bilderklassen-in-separatem-ordner">
+<h2>Bilderklassen in separatem Ordner<a class="headerlink" href="#bilderklassen-in-separatem-ordner" title="Permalink to this headline">¶</a></h2>
+<p>Die folgende Ordnerstruktur liegt vor:</p>
+<p>main_directory/<br />
+…category_a/<br />
+……a_image_1.jpg<br />
+……a_image_2.jpg<br />
+…category_b/<br />
+……b_image_1.jpg<br />
+……b_image_2.jpg</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="n">DATADIR</span> <span class="o">=</span> <span class="s1">&#39;C:/Users/Martin/OneDrive/Masterthesis_2022/01_Dataset/ImageDataset_Classes&#39;</span>
+
+<span class="n">CATEGORIES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;innensechskant&#39;</span><span class="p">,</span> <span class="s1">&#39;philips&#39;</span><span class="p">,</span> <span class="s1">&#39;pozidriv&#39;</span><span class="p">,</span> <span class="s1">&#39;sechskant&#39;</span><span class="p">,</span> <span class="s1">&#39;torx&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">CATEGORIES</span><span class="p">:</span>  <span class="c1"># do dogs and cats</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span><span class="n">category</span><span class="p">)</span>  <span class="c1"># create path to dogs and cats</span>
+    <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>  <span class="c1"># iterate over each image per dogs and cats</span>
+        <span class="n">img_array</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">img</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_array</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>  <span class="c1"># graph it</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># display!</span>
+
+        <span class="k">break</span>  <span class="c1"># we just want one for now so break  </span>
+    <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_data</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">IMG_SIZE</span><span class="o">=</span><span class="mi">224</span>
+
+
+<span class="k">def</span> <span class="nf">create_training_data</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">CATEGORIES</span><span class="p">:</span>  <span class="c1"># do dogs and cats</span>
+
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span><span class="n">category</span><span class="p">)</span>  <span class="c1"># create path to dogs and cats</span>
+        <span class="n">class_num</span> <span class="o">=</span> <span class="n">CATEGORIES</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>  <span class="c1"># get the classification  (0 or a 1). 0=dog 1=cat</span>
+
+        <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)):</span>  <span class="c1"># iterate over each image per dogs and cats</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">img_array</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">img</span><span class="p">)</span> <span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>  <span class="c1"># convert to array</span>
+                <span class="n">new_array</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img_array</span><span class="p">,</span> <span class="p">(</span><span class="n">IMG_SIZE</span><span class="p">,</span> <span class="n">IMG_SIZE</span><span class="p">))</span>  <span class="c1"># resize to normalize data size</span>
+                <span class="n">training_data</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">new_array</span><span class="p">,</span> <span class="n">class_num</span><span class="p">])</span>  <span class="c1"># add this to our training_data</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># in the interest in keeping the output clean...</span>
+                <span class="k">pass</span>
+            <span class="c1">#except OSError as e:</span>
+            <span class="c1">#    print(&quot;OSErrroBad img most likely&quot;, e, os.path.join(path,img))</span>
+            <span class="c1">#except Exception as e:</span>
+            <span class="c1">#    print(&quot;general exception&quot;, e, os.path.join(path,img))</span>
+
+<span class="n">create_training_data</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">training_data</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">features</span><span class="p">,</span><span class="n">label</span> <span class="ow">in</span> <span class="n">training_data</span><span class="p">:</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">IMG_SIZE</span><span class="p">,</span> <span class="n">IMG_SIZE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="datensatz-aufteilen-in-test-und-trainingsdaten">
+<h2>Datensatz aufteilen in Test- und Trainingsdaten<a class="headerlink" href="#datensatz-aufteilen-in-test-und-trainingsdaten" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">save</span><span class="p">,</span> <span class="n">load</span>
+<span class="c1"># define data</span>
+<span class="c1">#data = asarray([[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]])</span>
+<span class="c1"># save to npy file</span>
+<span class="n">save</span><span class="p">(</span><span class="s1">&#39;Dataset_224x224/X_train.npy&#39;</span><span class="p">,</span> <span class="n">X_train</span><span class="p">)</span>
+<span class="n">save</span><span class="p">(</span><span class="s1">&#39;Dataset_224x224/y_train.npy&#39;</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">save</span><span class="p">(</span><span class="s1">&#39;Dataset_224x224/X_test.npy&#39;</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span>
+<span class="n">save</span><span class="p">(</span><span class="s1">&#39;Dataset_224x224/y_test.npy&#39;</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="datensatz-mit-keras-erzeugen-und-erweitern">
+<h2>Datensatz mit Keras erzeugen und erweitern<a class="headerlink" href="#datensatz-mit-keras-erzeugen-und-erweitern" title="Permalink to this headline">¶</a></h2>
+<p>Mit dem ImageDataGenerator aus dem Keras Paket <em>Image data preprocessing</em>, kann ein Datensatz erstellt werden.
+Der Image Data Generator bietet eine Reihe nützlicher Funktionen um einen Datensatz aus Bildern zu erstellen und zu erweitern.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a dataset.</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">image_dataset_from_directory</span><span class="p">(</span>
+  <span class="s1">&#39;screw_img&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">image_size</span><span class="o">=</span><span class="p">(</span><span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">))</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+
+
+<span class="c1"># For demonstration, iterate over the batches yielded by the dataset.</span>
+<span class="k">for</span> <span class="n">data</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (64, 200, 200, 3)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>  <span class="c1"># float32</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (64,)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>  <span class="c1"># int32</span>
+    <span class="k">break</span>
+    
+   
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y_</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">features</span><span class="p">,</span><span class="n">label</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+    <span class="n">X_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+    <span class="n">y_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">IMG_SIZE</span><span class="p">,</span> <span class="n">IMG_SIZE</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">IMG_SIZE</span><span class="p">,</span> <span class="n">IMG_SIZE</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.preprocessing.image</span> <span class="kn">import</span> <span class="n">ImageDataGenerator</span><span class="p">,</span> <span class="n">load_img</span><span class="p">,</span> <span class="n">img_to_array</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">class_names</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">class_names</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">class_names</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="generator-ausprobieren-und-konfigurieren">
+<h2>Generator ausprobieren und konfigurieren:<a class="headerlink" href="#generator-ausprobieren-und-konfigurieren" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Generator config:</span>
+<span class="n">gen</span> <span class="o">=</span> <span class="n">ImageDataGenerator</span> <span class="p">(</span>
+    <span class="c1">#width_shift_range=0,</span>
+    <span class="c1">#height_shift_range=0,</span>
+    <span class="c1">#rotation_range=0,</span>
+    <span class="c1">#shear_range=0.01,</span>
+    <span class="c1">#zoom_range=0.2,</span>
+    <span class="c1">#fill_mode=&#39;constant&#39;,cval=255 # beste fill mode bei einfarbigen Hintergrund</span>
+<span class="p">)</span>
+<span class="c1"># generate one image:</span>
+<span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">gen</span><span class="o">.</span><span class="n">flow</span><span class="p">(</span>
+    <span class="n">X_raw</span><span class="p">,</span>
+    <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="c1">#print(batch.shape)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span>
+    <span class="k">break</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">batch</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_data_dir</span> <span class="o">=</span> <span class="s1">&#39;data/train&#39;</span>
+<span class="n">validation_data_dir</span> <span class="o">=</span> <span class="s1">&#39;data/validation&#39;</span>
+
+<span class="n">train_datagen</span> <span class="o">=</span> <span class="n">ImageDataGenerator</span><span class="p">(</span>
+    <span class="n">featurewise_center</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">samplewise_center</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">featurewise_std_normalization</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">samplewise_std_normalization</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">zca_whitening</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">zca_epsilon</span><span class="o">=</span><span class="mf">1e-06</span><span class="p">,</span>
+    <span class="n">rotation_range</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">width_shift_range</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">height_shift_range</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">brightness_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">shear_range</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">zoom_range</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">channel_shift_range</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">fill_mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span>
+    <span class="n">cval</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span>
+    <span class="n">horizontal_flip</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">vertical_flip</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">rescale</span><span class="o">=</span><span class="mf">1.0</span><span class="o">/</span><span class="mf">255.0</span><span class="p">,</span>
+    <span class="n">preprocessing_function</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">data_format</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+
+
+<span class="n">itr</span> <span class="o">=</span> <span class="n">train_datagen</span><span class="o">.</span><span class="n">flow_from_directory</span><span class="p">(</span>
+    <span class="n">train_data_dir</span><span class="p">,</span>
+    <span class="n">target_size</span><span class="o">=</span><span class="p">(</span><span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">),</span>
+    <span class="n">color_mode</span><span class="o">=</span><span class="s2">&quot;grayscale&quot;</span><span class="p">,</span>
+    <span class="n">classes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">class_mode</span><span class="o">=</span><span class="s2">&quot;categorical&quot;</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">save_to_dir</span><span class="o">=</span><span class="s1">&#39;Dataset_vid&#39;</span><span class="p">,</span>
+    <span class="c1">#save_prefix=&quot;&quot;,</span>
+    <span class="n">save_format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span>
+    <span class="n">follow_links</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">subset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+    
+    
+<span class="c1">#target_size=(img_width, img_height),</span>
+<span class="c1">#batch_size=10,</span>
+<span class="c1">#class_mode=&#39;categorical&#39;)</span>
+
+<span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">itr</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">save</span><span class="p">,</span> <span class="n">load</span>
+<span class="c1"># define data</span>
+<span class="c1">#data = asarray([[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]])</span>
+<span class="c1"># save to npy file</span>
+<span class="n">save</span><span class="p">(</span><span class="s1">&#39;Dataset_vid/X_train.npy&#39;</span><span class="p">,</span> <span class="n">X_train</span><span class="p">)</span>
+<span class="n">save</span><span class="p">(</span><span class="s1">&#39;Dataset_vid/y_train.npy&#39;</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">save</span><span class="p">(</span><span class="s1">&#39;Dataset_vid/X_test.npy&#39;</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span>
+<span class="n">save</span><span class="p">(</span><span class="s1">&#39;Dataset_vid/y_test.npy&#39;</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "Martin86We/Masterthesis_2022",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./01_Dataset"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="dataset_28x28.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Datensatz 1 (Schraubenköpfe)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../02_NN/1_neuron.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Einzelnes Neuron</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By The Jupyter Book Community<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
