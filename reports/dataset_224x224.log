@@ -32,8 +32,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['# OpenCV importieren:', 'import cv2', '', "# path = 'relativer Speicherpfad / Dateiname':", "path = 'frames_from_video/torx'"]
+['import cv2', '', "img = cv2.imread('frames_from_video/pozidriv0.jpg', cv2.IMREAD_UNCHANGED)", '', "print('Original Dimensions : ',img.shape)"]
 ...
-["    cv2.imwrite(path+str(_i)+'.jpg', frame)", '    i += 1', ' ', 'cap.release()', 'cv.destroyAllWindows()']
+["print('Resized Dimensions : ',resized.shape)", '', 'cv2.imshow("Resized image", resized)', 'cv2.waitKey(0)', 'cv2.destroyAllWindows()']
 -------------------
 
