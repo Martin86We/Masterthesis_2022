@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Einleitung &#8212; My sample book</title>
+    <title>Einleitung &#8212; Schraubenerkennung mit Deep Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,7 +53,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Datensatz 1 (Schraubenköpfe)" href="../01_Dataset/dataset_28x28.html" />
-    <link rel="prev" title="Masterarbeit" href="markdown.html" />
+    <link rel="prev" title="Masterarbeit" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -82,7 +82,7 @@
       <img src="../_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">My sample book</h1>
+      <h1 class="site-logo" id="site-title">Schraubenerkennung mit Deep Learning</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -99,20 +99,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Start
+  Einleitung
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="notebooks.html">
-   Einleitung Jupyter Book
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Masterarbeit
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Einleitung
@@ -192,18 +182,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Vortrainierte Netzwerke
+  REFERENCES
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_VGG16/VGG16.html">
-   VGG16 Netzwerk
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04_VGG16/transfer_learning.html">
-   Transfer Learning
+  <a class="reference internal" href="../bibliography.html">
+   Bibliography
   </a>
  </li>
 </ul>
@@ -307,6 +292,11 @@
    Objekte in Bildern erkennen
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-book">
+   Jupyter Book
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -332,6 +322,11 @@
    Objekte in Bildern erkennen
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#jupyter-book">
+   Jupyter Book
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -343,6 +338,15 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="einleitung">
 <h1>Einleitung<a class="headerlink" href="#einleitung" title="Permalink to this headline">¶</a></h1>
+<blockquote class="epigraph">
+<div><p>Auch ist das Suchen und Irren gut, denn durch Suchen und Irren lernt man.</p>
+<p class="attribution">—Johann Wolfgang Goethe</p>
+</div></blockquote>
+<p><a class="reference external" href="http://ebookcentral.proquest.com/lib/htwg-konstanz/detail.action?docID=6714813">Quelle</a></p>
+<p>Here is my nifty citation <span id="id1">[<a class="reference internal" href="../bibliography.html#id2">HdHPK14</a>]</span>.</p>
+<p>Here are multiple citations <span id="id2">[<a class="reference internal" href="../bibliography.html#id4">HCR+17</a>, <a class="reference internal" href="../bibliography.html#id2">HdHPK14</a>]</span>!</p>
+<p>Neuronale Netze sind derzeit in aller Munde. Sie stehen im Mittelpunkt, wenn es um Künstliche Intelligenz und maschinelles Lernen geht. Vor Jahrzehnten entwickelt, sind sie in jüngerer Zeit zu neuer Bedeutung gelangt – weil sie mit riesigen Datenmengen trainiert werden können und weil speziell für sie entwickelte Hochleistungs-Prozessoren zur Verfügung stehen. Es geht aber auch einfacher, ohne spezialisierte Hardware oder große Datensätze und ohne Vorkenntnisse in Künstlicher Intelligenz. Neuronale Netze lassen sich mit einfachen Mitteln selbst programmieren. Darum geht es in diesem Buch.
+Steinwendner, Joachim, and Roland Schwaiger. Neuronale Netze programmieren mit Python, Rheinwerk Verlag, 2020. ProQuest Ebook Central, <a class="reference external" href="http://ebookcentral.proquest.com/lib/htwg-konstanz/detail.action?docID=6382990">http://ebookcentral.proquest.com/lib/htwg-konstanz/detail.action?docID=6382990</a>.</p>
 <p>Wer kennt es nicht, es ist gerade wieder Lockdown und man möchte ein Heimwerker Projekt umsetzen. Nun stellt man fest, dass man von einigen Schrauben nicht genügend vorrätig hat und Nachschub besorgen muss. Da alle Baumärkte geschlossen haben hat man nur noch die Möglichkeit online die gewünschten Exemplare zu ordern. Der Händler des Vertrauens benötigt lediglich die genaue Bezeichnung der benötigten Schrauben und da liegt das Problem, woher soll man die Bezeichnung der Schraube wissen ohne Seitenweise Kataloge zu studieren? Die Lösung wäre eine automatische Schraubenerkennung. Ein Foto von der Schraube als Eingabe und die Bezeichnung der Schraube als Output.</p>
 <p>Eine Suche nach Objekterkennung bei Google ergab:</p>
 <ul class="simple">
@@ -377,32 +381,18 @@
 </ul>
 <p>Es ist zu erwarten, dass die Modelle mit dem Sechskant weniger Schwierigkeiten haben werden als mit den anderen Profilen.</p>
 <p>So sollte dieser Datensatz einfach genug für den Anfang sein aber bringt auch schon die ersten schwierigkeiten mit sich, welche die Performance der verschiedenen Modelle auf die Probe stellen.</p>
+</div>
+<div class="section" id="jupyter-book">
+<h2>Jupyter Book<a class="headerlink" href="#jupyter-book" title="Permalink to this headline">¶</a></h2>
+<p>Dieses Buch ist ein <a class="reference external" href="https://jupyterbook.org/intro.html">Jupyter Book</a>, mit dem Sie die Abschnitte dieses Buchs, die Code enthalten, interaktiv ausführen, reproduzieren oder ändern können.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-
-<span class="n">im1</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;path where the PNG is stored\file name.png&#39;</span><span class="p">)</span>
-<span class="n">im1</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;path where the JPG will be stored\new file name.jpg&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_19472</span><span class="o">/</span><span class="mf">3998500180.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">im1</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;path where the PNG is stored\file name.png&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">im1</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;path where the JPG will be stored\new file name.jpg&#39;</span><span class="p">)</span>
-
-<span class="nn">~\anaconda3\envs\py37\lib\site-packages\PIL\Image.py</span> in <span class="ni">open</span><span class="nt">(fp, mode, formats)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2973</span> 
-<span class="g g-Whitespace">   </span><span class="mi">2974</span>     <span class="k">if</span> <span class="n">filename</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2975</span>         <span class="n">fp</span> <span class="o">=</span> <span class="n">builtins</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2976</span>         <span class="n">exclusive_fp</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="g g-Whitespace">   </span><span class="mi">2977</span> 
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;path where the PNG is stored\\file name.png&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World
 </pre></div>
 </div>
 </div>
@@ -435,7 +425,7 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="markdown.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
@@ -456,7 +446,7 @@
     <footer class="footer">
   <p>
     
-      By The Jupyter Book Community<br/>
+      By Martin Weilepp<br/>
     
         &copy; Copyright 2021.<br/>
   </p>

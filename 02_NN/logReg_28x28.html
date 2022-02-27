@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Logistische Regression &#8212; My sample book</title>
+    <title>Logistische Regression &#8212; Schraubenerkennung mit Deep Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -82,7 +82,7 @@
       <img src="../_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">My sample book</h1>
+      <h1 class="site-logo" id="site-title">Schraubenerkennung mit Deep Learning</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -99,20 +99,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Start
+  Einleitung
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../00_Intro/notebooks.html">
-   Einleitung Jupyter Book
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../00_Intro/markdown.html">
-   Masterarbeit
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../00_Intro/Einleitung.html">
    Einleitung
@@ -192,18 +182,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Vortrainierte Netzwerke
+  REFERENCES
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_VGG16/VGG16.html">
-   VGG16 Netzwerk
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04_VGG16/transfer_learning.html">
-   Transfer Learning
+  <a class="reference internal" href="../bibliography.html">
+   Bibliography
   </a>
  </li>
 </ul>
@@ -460,10 +445,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(8240, 28, 28, 1)
-8240
-(3532, 28, 28, 1)
-3532
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6421, 28, 28, 1)
+6421
+(2753, 28, 28, 1)
+2753
 </pre></div>
 </div>
 </div>
@@ -490,7 +475,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function matplotlib.pyplot.show(close=None, block=None)&gt;
@@ -521,10 +506,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(8240, 784)
-(8240,)
-(3532, 784)
-(3532,)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6421, 784)
+(6421,)
+(2753, 784)
+(2753,)
 </pre></div>
 </div>
 </div>
@@ -536,7 +521,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3, 2, 0, ..., 3, 4, 3])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4, 1, 0, ..., 4, 4, 4])
 </pre></div>
 </div>
 </div>
@@ -598,15 +583,15 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[False False  True ... False False False]
-[False False False ... False False False]
 [False  True False ... False False False]
-[ True False False ...  True False  True]
-[False False False ... False  True False]
+[False False False ... False False False]
+[False False False ... False False False]
+[ True False False ...  True  True  True]
 [0. 0. 1. ... 0. 0. 0.]
-[0. 0. 0. ... 0. 0. 0.]
 [0. 1. 0. ... 0. 0. 0.]
-[1. 0. 0. ... 1. 0. 1.]
-[0. 0. 0. ... 0. 1. 0.]
+[0. 0. 0. ... 0. 0. 0.]
+[0. 0. 0. ... 0. 0. 0.]
+[1. 0. 0. ... 1. 1. 1.]
 </pre></div>
 </div>
 </div>
@@ -661,247 +646,307 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.570152215677371
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.42289340183108526
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.5212440305333328
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.39025636130448693
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.48419430094863086
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.37023593326767007
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.45210883752598485
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.35319485045124654
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.42405175296588155
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.33777629019299793
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.39936421650951703
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.32363103919505287
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.37750638121533303
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.31059615214831926
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.3580355913860712
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.29855409078903256
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.34058936689767655
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.2874048433514228
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.3248704400255996
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.2770598654516103
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.31063419942518
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.267440310808401
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.29767844607134863
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.2584760330348266
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.2858351608399098
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.2501047056282456
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.2749639393514289
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.24227097885582088
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.2649467725470403
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.23492568648110618
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.2556838975471547
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.228025118282468
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.24709049310141634
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.22153036538807527
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.239094039270766
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.2154067385081702
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.23163219923938833
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.2096232551825004
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.22465111214938369
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.20415219025331777
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.21810401038649965
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.19896868308511817
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.21195009391046454
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.19405039504214996
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.2061536090853332
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.18937721108276206
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.2006830909510815
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.18493097984893564
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.19551073674730135
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.18069528721212555
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.19061188535575518
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.17665525882198238
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.18596458263945428
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.17279738775971837
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1815492167823936
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.16910938390654795
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1773482109517513
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1655800420934835
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.173345763123376
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.16219912650114526
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1695276248917341
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1589572691297648
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1658809126492114
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.15584588046436387
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.16239394575986996
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.15285707072306634
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1590561073408065
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.14998358030251
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.15585772405492976
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.14721871822816177
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1527899619544726
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1445563075832875
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.14984473592758923
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.14199063703230247
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.14701463071629695
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.13951641767565845
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.14429283181263258
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.13712874457729968
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.14167306481667666
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.13482306239461428
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1391495420672575
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.13259513461695638
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.13671691554329576
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.13044101598409447
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1343702351885219
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1283570277119703
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.13210491194076507
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.12633973520131347
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1299166848540098
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.12438592794610022
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1278015917908652
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.12249260139456838
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.12575594323810158
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.12065694054633169
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.12377629886101676
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.11887630509580234
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.12185944646567157
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.11714821595521482
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.12000238308312808
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.11547034301057234
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.11820229792812613
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.11384049398123637
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.11645655701723671
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.11225660426902495
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.11476268925939669
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.11071672769588382
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.11311837385555765
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1092190280407257
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.11152142886467219
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1077617712961118
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.10996980081085596
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.10634331857428468
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.10846155522176854
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.10496211959981136
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.10699486800141465
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.10361670673291058
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.10556801755196345
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1023056894735317
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.10417937756909514
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.10102774940154263
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.10282741044401267
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09978163551305463
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.1015106612127841
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09856615991703875
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.10022775200026658
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09738019386004938
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09897737691163869
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.0962226640501139
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09775829732962613
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09509254925372963
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09656933757996973
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09398887714247586
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09540938093160987
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09291072136802973
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09427736590153178
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09185719884641726
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09317228283728257
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09082746723414777
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09209317075288857
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.08982072258051108
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09103911439631769
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.08883619714177358
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.09000924152876943
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.08787315734432045
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.08900272039799188
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.086930901884963
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.08801875738952228
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.08600875995768813
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.08705659484127044
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.08510608959707838
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.08422227612948427
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.08335673072381089
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.08250888903447096
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.08167820992969296
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.08086417429894746
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.08006628393376301
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.07928406047668747
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.07851704443356462
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.07776479424469238
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.0770268854107789
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.07630290966993743
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.07559247422225028
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.0748952009987047
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.0742107259715454
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.07353869850331317
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.07287878073204518
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.07223064699029678
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.07159398325582154
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.0709684866319002
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.07035386485545546
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_17452</span><span class="o">/</span><span class="mf">1792142496.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_28112</span><span class="o">/</span><span class="mf">1792142496.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">db</span>
 <span class="g g-Whitespace">     </span><span class="mi">38</span> 
 <span class="ne">---&gt; </span><span class="mi">39</span>     <span class="n">cost</span> <span class="o">=</span> <span class="n">J</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_3</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">40</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kosten: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cost</span><span class="p">))</span>
 
-<span class="nn">~\AppData\Local\Temp/ipykernel_17452/1792142496.py</span> in <span class="ni">J</span><span class="nt">(w, b, x, y)</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> 
+<span class="nn">~\AppData\Local\Temp/ipykernel_28112/1792142496.py</span> in <span class="ni">J</span><span class="nt">(w, b, x, y)</span>
 <span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">def</span> <span class="nf">J</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">14</span>     <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span> <span class="o">+</span> \
-<span class="g g-Whitespace">     </span><span class="mi">15</span>                     <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span> <span class="o">+</span> \
+<span class="ne">---&gt; </span><span class="mi">15</span>                     <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span>
 <span class="g g-Whitespace">     </span><span class="mi">16</span> 
+<span class="g g-Whitespace">     </span><span class="mi">17</span> 
 
-<span class="nn">~\AppData\Local\Temp/ipykernel_17452/1792142496.py</span> in <span class="ni">f</span><span class="nt">(w, b, x)</span>
+<span class="nn">~\AppData\Local\Temp/ipykernel_28112/1792142496.py</span> in <span class="ni">f</span><span class="nt">(w, b, x)</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># Funktion genau erklären:</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 <span class="ne">---&gt; </span><span class="mi">10</span>     <span class="k">return</span> <span class="n">S</span><span class="p">(</span><span class="n">w</span> <span class="o">@</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
@@ -1681,7 +1726,7 @@ deshalb geht es nun mit Neuronalen Netzen weiter</strong></p>
     <footer class="footer">
   <p>
     
-      By The Jupyter Book Community<br/>
+      By Martin Weilepp<br/>
     
         &copy; Copyright 2021.<br/>
   </p>

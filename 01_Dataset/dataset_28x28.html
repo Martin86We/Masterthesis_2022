@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Datensatz 1 (Schraubenköpfe) &#8212; My sample book</title>
+    <title>Datensatz 1 (Schraubenköpfe) &#8212; Schraubenerkennung mit Deep Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -82,7 +82,7 @@
       <img src="../_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">My sample book</h1>
+      <h1 class="site-logo" id="site-title">Schraubenerkennung mit Deep Learning</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -99,20 +99,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Start
+  Einleitung
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../00_Intro/notebooks.html">
-   Einleitung Jupyter Book
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../00_Intro/markdown.html">
-   Masterarbeit
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../00_Intro/Einleitung.html">
    Einleitung
@@ -192,18 +182,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Vortrainierte Netzwerke
+  REFERENCES
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../04_VGG16/VGG16.html">
-   VGG16 Netzwerk
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04_VGG16/transfer_learning.html">
-   Transfer Learning
+  <a class="reference internal" href="../bibliography.html">
+   Bibliography
   </a>
  </li>
 </ul>
@@ -433,6 +418,9 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="datensatz-1-schraubenkopfe">
 <h1>Datensatz 1 (Schraubenköpfe)<a class="headerlink" href="#datensatz-1-schraubenkopfe" title="Permalink to this headline">¶</a></h1>
+<p>Creating your own data allows you to better control many of the previously mentioned considerations. It can also allow for greater variety of possible projects, as you do not have to limit your work by the data others have already collected. In fact, one great/easy place to start can be to simply create data on yourself or your experiences. Small personal data collection can serve as a means of diary-keeping or can simply be an exploratory method requiring little or no technical knowledge.</p>
+<p>This section will offer a few basics on creating your own data. It doesn’t attempt to cover all possible ways forward, but offers a few options for you to test things out.</p>
+<p><a class="reference external" href="https://necote.github.io/VisDepot/gettingdata_2_datacreating.html">https://necote.github.io/VisDepot/gettingdata_2_datacreating.html</a></p>
 <p>Um mit einfachen Modellen starten zu können sollte auch die Lernaufgabe zunächst so einfach wie möglich gestaltet sein. Es wäre sicher nicht die richtige Vorgehensweise, direkt mit der höchsten Komplexität zu starten. So sind wir in der Lage den dahinter stehenden Mechanismus besser zu verstehen und nachvollziehen zu können.</p>
 <p>Um schnell erste eigene Modelle zu entwickeln lassen wir uns vom MNIST Datensatz inspirieren. Dieser ist sehr bekannt und wurde schon sehr häufig mit den verschiedensten Modellen (SVM,CNN,Logistic Regression,..) bearbeitet. Der Vorteil besteht darin, dass schon sehr viele Informationen und fertige Modelle existieren.</p>
 <p>Die Idee ist nun, fertige Modelle des MNIST Datensatzes zu nehmen und diese mit einem Eigenen Datensatz zu trainieren. So kann man schnell Erfahrungen sammeln und durch den Programmcode die Vorgänge nachvollziehen.</p>
@@ -516,7 +504,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dataset_28x28_7_0.png" src="../_images/dataset_28x28_7_0.png" />
+<img alt="../_images/dataset_28x28_8_0.png" src="../_images/dataset_28x28_8_0.png" />
 </div>
 </div>
 <p>Der Datensatz dient zum Trainieren und Testen der künstlichen neuronalen Netze. Es gibt verschiedene Wege einen Datensatz von Schraubenbildern zu erzeugen:</p>
@@ -634,16 +622,14 @@ The zoom augmentation method is used to zooming the image. This method randomly 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dataset_28x28_16_0.png" src="../_images/dataset_28x28_16_0.png" />
+<img alt="../_images/dataset_28x28_17_0.png" src="../_images/dataset_28x28_17_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="image-data-generator-speichern">
 <h2>Image Data Generator (Speichern)<a class="headerlink" href="#image-data-generator-speichern" title="Permalink to this headline">¶</a></h2>
 <p>Mit dem konfigurierten Generator die Bilder klassenweise erzeugen und speichern.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bild laden</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bild laden</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">sechskant</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
 
@@ -663,8 +649,6 @@ The zoom augmentation method is used to zooming the image. This method randomly 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2001</span><span class="p">):</span>
     <span class="n">itr</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>Die Bilder der Klassen können unterschiedlich stark transformiert werden.</p>
 </div>
@@ -723,18 +707,26 @@ Die folgende Ordnerstruktur liegt vor:</p>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">image_dataset</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>X = []
-y = []</p>
-<p>for features,label in image_dataset:
-X.append(features)
-y.append(label)</p>
-<p>X = np.array(X).reshape(-1, IMG_SIZE, IMG_SIZE, 1)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">features</span><span class="p">,</span><span class="n">label</span> <span class="ow">in</span> <span class="n">image_dataset</span><span class="p">:</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">IMG_SIZE</span><span class="p">,</span> <span class="n">IMG_SIZE</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="datensatz-mischen">
 <h2>Datensatz mischen<a class="headerlink" href="#datensatz-mischen" title="Permalink to this headline">¶</a></h2>
-<p>from sklearn.utils import shuffle
-import numpy as np</p>
-<p>X, y = shuffle(X, y)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">shuffle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="datensatz-vorschau">
 <h2>Datensatz Vorschau<a class="headerlink" href="#datensatz-vorschau" title="Permalink to this headline">¶</a></h2>
@@ -770,7 +762,7 @@ import numpy as np</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_20632</span><span class="o">/</span><span class="mf">3981809880.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_7688</span><span class="o">/</span><span class="mf">3981809880.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">     </span><span class="mi">17</span> 
 <span class="g g-Whitespace">     </span><span class="mi">18</span>         <span class="n">ax</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span>
 <span class="ne">---&gt; </span><span class="mi">19</span>         <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">im</span><span class="p">,:,:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">),</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
@@ -780,7 +772,7 @@ import numpy as np</p>
 <span class="ne">NameError</span>: name &#39;X&#39; is not defined
 </pre></div>
 </div>
-<img alt="../_images/dataset_28x28_30_1.png" src="../_images/dataset_28x28_30_1.png" />
+<img alt="../_images/dataset_28x28_31_1.png" src="../_images/dataset_28x28_31_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -845,7 +837,7 @@ import numpy as np</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function matplotlib.pyplot.show(close=None, block=None)&gt;
 </pre></div>
 </div>
-<img alt="../_images/dataset_28x28_38_2.png" src="../_images/dataset_28x28_38_2.png" />
+<img alt="../_images/dataset_28x28_39_2.png" src="../_images/dataset_28x28_39_2.png" />
 </div>
 </div>
 </div>
@@ -910,7 +902,7 @@ import numpy as np</p>
     <footer class="footer">
   <p>
     
-      By The Jupyter Book Community<br/>
+      By Martin Weilepp<br/>
     
         &copy; Copyright 2021.<br/>
   </p>

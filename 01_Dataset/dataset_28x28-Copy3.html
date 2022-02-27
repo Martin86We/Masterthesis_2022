@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Datensatz 1 (Schraubenköpfe) &#8212; My sample book</title>
+    <title>Datensatz 1 (Schraubenköpfe) &#8212; Schraubenerkennung mit Deep Learning</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -80,7 +80,7 @@
       <img src="../_static/logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">My sample book</h1>
+      <h1 class="site-logo" id="site-title">Schraubenerkennung mit Deep Learning</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -483,6 +483,34 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_14088</span><span class="o">/</span><span class="mf">271119621.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">pozidriv</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;0_Schraubenkopfbilder_28x28/pozidriv/pozidriv 28x28_gray.jpg&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">philips</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;0_Schraubenkopfbilder_28x28/philips/philips 28x28_gray.jpg&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">innensechskant</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;0_Schraubenkopfbilder_28x28/innensechskant/innensechskant 28x28_gray.png&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">sechskant</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;0_Schraubenkopfbilder_28x28/sechskant/sechskant 28x28_gray.jpg&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">torx</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;0_Schraubenkopfbilder_28x28/torx/torx 28x28_gray.jpg&#39;</span><span class="p">)</span>
+
+<span class="nn">~\anaconda3\envs\py37\lib\site-packages\matplotlib\image.py</span> in <span class="ni">imread</span><span class="nt">(fname, format)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1558</span>                     <span class="n">response</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="g g-Whitespace">   </span><span class="mi">1559</span>                 <span class="k">return</span> <span class="n">imread</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">ext</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1560</span>     <span class="k">with</span> <span class="n">img_open</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1561</span>         <span class="k">return</span> <span class="p">(</span><span class="n">_pil_png_to_float_array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1562</span>                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">PIL</span><span class="o">.</span><span class="n">PngImagePlugin</span><span class="o">.</span><span class="n">PngImageFile</span><span class="p">)</span> <span class="k">else</span>
+
+<span class="nn">~\anaconda3\envs\py37\lib\site-packages\PIL\ImageFile.py</span> in <span class="ni">__init__</span><span class="nt">(self, fp, filename)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span>         <span class="k">if</span> <span class="n">isPath</span><span class="p">(</span><span class="n">fp</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span>             <span class="c1"># filename</span>
+<span class="ne">--&gt; </span><span class="mi">109</span>             <span class="bp">self</span><span class="o">.</span><span class="n">fp</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span>             <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">fp</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_exclusive_fp</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;0_Schraubenkopfbilder_28x28/innensechskant/innensechskant 28x28_gray.png&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -632,7 +660,18 @@ The zoom augmentation method is used to zooming the image. This method randomly 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dataset_28x28-Copy3_15_0.png" src="../_images/dataset_28x28-Copy3_15_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_1068</span><span class="o">/</span><span class="mf">2374939849.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span>                              <span class="n">horizontal_flip</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span>                              <span class="n">vertical_flip</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="ne">---&gt; </span><span class="mi">29</span>                              <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,)</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span> 
+<span class="g g-Whitespace">     </span><span class="mi">31</span> 
+
+<span class="ne">TypeError</span>: __init__() got an unexpected keyword argument &#39;shufle&#39;
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -737,27 +776,6 @@ Die folgende Ordnerstruktur liegt vor:</p>
 <span class="n">create_image_dataset</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">image_dataset</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_18684</span><span class="o">/</span><span class="mf">3444076846.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span>                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;general exception&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">img</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span> 
-<span class="ne">---&gt; </span><span class="mi">31</span> <span class="n">create_image_dataset</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span> 
-<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">image_dataset</span><span class="p">))</span>
-
-<span class="nn">~\AppData\Local\Temp/ipykernel_18684/3444076846.py</span> in <span class="ni">create_image_dataset</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>         <span class="n">class_num</span> <span class="o">=</span> <span class="n">CATEGORIES</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>  <span class="c1"># get the classification ( 0= 1=</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> 
-<span class="ne">---&gt; </span><span class="mi">19</span>         <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)):</span>  <span class="c1"># iterate over each image per Category</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span>             <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span>                 <span class="n">img_array</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">img</span><span class="p">)</span> <span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>  <span class="c1"># convert to array</span>
-
-<span class="ne">NameError</span>: name &#39;tqdm&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -939,7 +957,7 @@ Die folgende Ordnerstruktur liegt vor:</p>
     <footer class="footer">
   <p>
     
-      By The Jupyter Book Community<br/>
+      By Martin Weilepp<br/>
     
         &copy; Copyright 2021.<br/>
   </p>
