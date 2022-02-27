@@ -99,7 +99,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Einleitung
+  Start
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -182,7 +182,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  REFERENCES
+  References
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -475,7 +475,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function matplotlib.pyplot.show(close=None, block=None)&gt;
@@ -907,46 +907,23 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.07559247422225028
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.0748952009987047
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.0742107259715454
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.07353869850331317
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.07287878073204518
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.07223064699029678
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.07159398325582154
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.0709684866319002
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.07035386485545546
-</pre></div>
-</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_28112</span><span class="o">/</span><span class="mf">1792142496.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">db</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span> 
-<span class="ne">---&gt; </span><span class="mi">39</span>     <span class="n">cost</span> <span class="o">=</span> <span class="n">J</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_3</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kosten: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cost</span><span class="p">))</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_10260</span><span class="o">/</span><span class="mf">1792142496.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span> 
+<span class="g g-Whitespace">     </span><span class="mi">33</span>     <span class="n">dw</span> <span class="o">=</span> <span class="n">J_ableitung_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_3</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">34</span>     <span class="n">db</span> <span class="o">=</span> <span class="n">J_ableitung_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_3</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> 
+<span class="g g-Whitespace">     </span><span class="mi">36</span>     <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">dw</span>
 
-<span class="nn">~\AppData\Local\Temp/ipykernel_28112/1792142496.py</span> in <span class="ni">J</span><span class="nt">(w, b, x, y)</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">def</span> <span class="nf">J</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span> <span class="o">+</span> \
-<span class="ne">---&gt; </span><span class="mi">15</span>                     <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> 
-<span class="g g-Whitespace">     </span><span class="mi">17</span> 
+<span class="nn">~\AppData\Local\Temp/ipykernel_10260/1792142496.py</span> in <span class="ni">J_ableitung_b</span><span class="nt">(w, b, x, y)</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> 
+<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="k">def</span> <span class="nf">J_ableitung_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">24</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> 
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="c1"># print(X_train.shape)</span>
 
-<span class="nn">~\AppData\Local\Temp/ipykernel_28112/1792142496.py</span> in <span class="ni">f</span><span class="nt">(w, b, x)</span>
+<span class="nn">~\AppData\Local\Temp/ipykernel_10260/1792142496.py</span> in <span class="ni">f</span><span class="nt">(w, b, x)</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># Funktion genau erklären:</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 <span class="ne">---&gt; </span><span class="mi">10</span>     <span class="k">return</span> <span class="n">S</span><span class="p">(</span><span class="n">w</span> <span class="o">@</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>

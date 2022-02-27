@@ -26,7 +26,7 @@ glue("acc_eval", acc_eval, display=False)
 
 [1;31m---------------------------------------------------------------------------[0m
 [1;31mRuntimeError[0m                              Traceback (most recent call last)
-[1;32m~\AppData\Local\Temp/ipykernel_26064/4247382325.py[0m in [0;36m<module>[1;34m[0m
+[1;32m~\AppData\Local\Temp/ipykernel_28648/4247382325.py[0m in [0;36m<module>[1;34m[0m
 [1;32m----> 1[1;33m [0meval[0m [1;33m=[0m [0mmodel[0m[1;33m.[0m[0mevaluate[0m[1;33m([0m[0mX_test[0m[1;33m,[0m[0my_test[0m[1;33m,[0m[0mverbose[0m[1;33m=[0m[1;36m0[0m[1;33m,[0m[0mreturn_dict[0m[1;33m=[0m[1;32mTrue[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
 [0m[0;32m      2[0m [0mloss_eval[0m [1;33m=[0m [0meval[0m[1;33m[[0m[1;34m'loss'[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
 [0;32m      3[0m [0mglue[0m[1;33m([0m[1;34m"loss_eval"[0m[1;33m,[0m [0mloss_eval[0m[1;33m,[0m [0mdisplay[0m[1;33m=[0m[1;32mFalse[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
