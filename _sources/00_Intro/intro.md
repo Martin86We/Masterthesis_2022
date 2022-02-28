@@ -20,11 +20,11 @@ sind mit CAD zu erzeugen, selber zu fotografieren oder aus dem Internet unter Be
 des Copyrights zu sammeln. Eine Mischung der drei Quellen ist ebenfalls möglich.
 Die Bilddatenbank soll leicht um weitere Kategorien und um weitere Bilder erweitert werden
 können. Es soll mit drei verschiedenen Schraubenarten begonnen werden.
-2. Es ist mit Python ein neuronales Netz zu erzeugen und für die Erkennung der
+2. Es ist, mit Python ein neuronales Netz zu erzeugen und für die Erkennung der
 Schraubenbauarten zu optimieren. Dabei ist vor allem folgende Netzstruktur auszuprobieren:
-o 2 bis 3 Convolutional Layer
-o 1 Pooling Layer
-o 1 bis 2 fully connected Layer
+- 2 bis 3 Convolutional Layer
+- 1 Pooling Layer
+- 1 bis 2 fully connected Layer
 3. Das entwickelte Programm ist sehr gut zu kommentieren und zu strukturieren, so dass
 Studierende, die später an dem Projekt weiterarbeiten, sich sehr gut in die Software
 einarbeiten können.

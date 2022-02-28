@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Einleitung &#8212; Schraubenerkennung mit Deep Learning</title>
+    <title>Einleitung &#8212; Anwendung neuronaler Netze in einem Sortierroboter</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -79,10 +79,10 @@
         
       
       
-      <img src="../_static/logo.png" class="logo" alt="logo">
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">Schraubenerkennung mit Deep Learning</h1>
+      <h1 class="site-logo" id="site-title">Anwendung neuronaler Netze in einem Sortierroboter</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -92,17 +92,24 @@
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Masterarbeit
+  <a class="reference internal" href="Deckblatt.html">
+   <center>
+    Masterarbeit
+   </center>
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Start
+  Intro
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Masterarbeit
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Einleitung
@@ -293,8 +300,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ziel-der-masterarbeit">
-   Ziel der Masterarbeit
+  <a class="reference internal nav-link" href="#ziel">
+   Ziel
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -303,13 +310,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aufbau-der-masterarbeit">
-   Aufbau der Masterarbeit
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#objekte-in-bildern-erkennen">
-   Objekte in Bildern erkennen
+  <a class="reference internal nav-link" href="#aufbau">
+   Aufbau
   </a>
  </li>
 </ul>
@@ -338,8 +340,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ziel-der-masterarbeit">
-   Ziel der Masterarbeit
+  <a class="reference internal nav-link" href="#ziel">
+   Ziel
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -348,13 +350,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#aufbau-der-masterarbeit">
-   Aufbau der Masterarbeit
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#objekte-in-bildern-erkennen">
-   Objekte in Bildern erkennen
+  <a class="reference internal nav-link" href="#aufbau">
+   Aufbau
   </a>
  </li>
 </ul>
@@ -368,22 +365,19 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="einleitung">
 <h1>Einleitung<a class="headerlink" href="#einleitung" title="Permalink to this headline">¶</a></h1>
-<p>Künstliche Neuronale Netze sind aus der heutigen Zeit nicht mehr weg zu denken und stellen ein sehr mächtiges Werkzeug für viele Fachgebiete bereit. Um in den jeweiligen Fachgebieten Anwendungsfälle zu identifizieren und Neuronale Netze erfolgreich einsetzen zu können ist auch Domänenwissen aus dem jeweiligen Fachgebiet nötig. Die Erkennung von Brustkrebs durch Neuronale Netze in der Medizin oder “Predictive Maintenance” im Maschinenbau, in beiden Fällen sind Kenntnisse aus beiden Bereichen nötig, Domänenwissen um die Daten richtig interpretieren zu können und die Fähigkeit NN’s auf diese Daten anzuwenden. Die folgenden Statistiken sollen deuten an, dass KI auch und gerade in der Zukunft eine immer wichtigere Rolle spielen werden.</p>
-<p><a href="https://de.statista.com/infografik/23703/arbeitsproduktivitaetssteigerung-durch-ki/" title="Infografik: Künstliche Intelligenz kurbelt die Produktivität an | Statista"><img src="https://cdn.statcdn.com/Infographic/images/normal/23703.jpeg" alt="Infografik: Künstliche Intelligenz kurbelt die Produktivität an | Statista" width="100%" height="auto" style="width: 50%; height: auto !important; max-width:480px;-ms-interpolation-mode: bicubic;"/></a> Mehr Infografiken finden Sie bei <a href="https://de.statista.com/infografik/">Statista</a></p>
+<p>Künstliche Neuronale Netze sind aus der heutigen Zeit nicht mehr weg zu denken und stellen ein sehr mächtiges Werkzeug für viele Fachgebiete bereit. Um in den jeweiligen Fachgebieten Anwendungsfälle zu identifizieren und Neuronale Netze erfolgreich einsetzen zu können ist auch Domänenwissen aus dem jeweiligen Fachgebiet nötig. Ob Erkennung von Brustkrebs durch Neuronale Netze in der Medizin oder “Predictive Maintenance” im Maschinenbau, in beiden Fällen sind Kenntnisse aus beiden Bereichen nötig, Domänenwissen um die Daten richtig interpretieren zu können und die Fähigkeit NN’s auf diese Daten anzuwenden. Die folgenden Statistik soll zeigen, dass KI-Methoden und Fachkräfte mit Kenntnissen in diesem Bereich, in der Zukunft eine immer wichtigere Rolle spielen werden um Wettbewerbsfähig zu bleiben.</p>
+<p><a href="https://de.statista.com/infografik/23703/arbeitsproduktivitaetssteigerung-durch-ki/" title="Infografik: Künstliche Intelligenz kurbelt die Produktivität an | Statista"><img src="https://cdn.statcdn.com/Infographic/images/normal/23703.jpeg" alt="Infografik: Künstliche Intelligenz kurbelt die Produktivität an | Statista" width="100%" height="auto" style="width: 50%; height: auto !important; max-width:480px;-ms-interpolation-mode: bicubic;"/></a> Quelle: <a href="https://de.statista.com/infografik/">Statista</a></p>
 <blockquote class="epigraph">
 <div><p>Auch ist das Suchen und Irren gut, denn durch Suchen und Irren lernt man.</p>
 <p class="attribution">—Johann Wolfgang Goethe</p>
 </div></blockquote>
 <p><a class="reference external" href="http://ebookcentral.proquest.com/lib/htwg-konstanz/detail.action?docID=6714813">Quelle</a></p>
-<p>Here is my nifty citation <span id="id1">[<a class="reference internal" href="../bibliography.html#id2">HdHPK14</a>]</span>.</p>
-<p>Here are multiple citations <span id="id2">[<a class="reference internal" href="../bibliography.html#id4">HCR+17</a>, <a class="reference internal" href="../bibliography.html#id2">HdHPK14</a>]</span>!</p>
-<p>Kann man es sich leisten, sich nicht mit KI zu beschäftigen?</p>
 <div class="section" id="vorstellung-des-themas">
 <h2>Vorstellung des Themas<a class="headerlink" href="#vorstellung-des-themas" title="Permalink to this headline">¶</a></h2>
 <p>Neuronale Netze werden bereits in vielen Bereichen eingesetzt und sind in aller Munde. Ein häufiger Anwendungsfall und Paradebeispiel für die Nutzung von Neuronalen Netzen ist die Bilderkennung, mit der sich diese Arbeit beschäftigt. Obwohl NN’s bereits vor Jahrzehnten entwickelt wurden, gelangen sie erst in den letzten Jahren zu größerer Bedeutung. Die Weiterentwicklung der Algorithmen und Prozessoren hat es ermöglicht, die Netze mit riesigen Datenmengen, effizient zu trainieren.</p>
 </div>
-<div class="section" id="ziel-der-masterarbeit">
-<h2>Ziel der Masterarbeit<a class="headerlink" href="#ziel-der-masterarbeit" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ziel">
+<h2>Ziel<a class="headerlink" href="#ziel" title="Permalink to this headline">¶</a></h2>
 <p>Diese Masterarbeit hat das Ziel, zu zeigen, dass es auch mit einfachen Mitteln möglich ist einen umfangreichen Datensatz zu erzeugen und ein NN darauf zu trainieren.
 Der Weg vom Datensatz zum NN soll dabei möglichst einfach und intuitiv dargestellt werden.</p>
 </div>
@@ -403,8 +397,8 @@ Der Weg vom Datensatz zum NN soll dabei möglichst einfach und intuitiv dargeste
 </div>
 </div>
 </div>
-<div class="section" id="aufbau-der-masterarbeit">
-<h2>Aufbau der Masterarbeit<a class="headerlink" href="#aufbau-der-masterarbeit" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="aufbau">
+<h2>Aufbau<a class="headerlink" href="#aufbau" title="Permalink to this headline">¶</a></h2>
 <p>Im ersten Kapitel werden zwei verschiedene Datensätze erzeugt.</p>
 <ul class="simple">
 <li><p>Der erste Datensatz wird durch “Data Augmentation” erzeugt, d.h. die Trainingsbilder werden künstlich erzeugt.</p></li>
@@ -413,35 +407,6 @@ Der Weg vom Datensatz zum NN soll dabei möglichst einfach und intuitiv dargeste
 <p>Das zweite Kapitel beschreibt die Funktionsweise von Neuronalen Netzen. Es wird gezeigt wie ein einzelnes künstliches Neuron funktioniert und wie viele solcher Neuronen zu einem Neuronalen Netz verschaltet werden.</p>
 <p>Das dritte Kapitel beschäftigt sich mit “Convolutional Neural Nets”, es wird gezeigt wie CNN’s funktionieren und weshalb diese so Leistungsfähig sind.</p>
 <p>Das vierte Kapitel wird als Abschluss zeigen was Transfer Learning ist und wie man vortrainierte Netzwerke für eigene Datensätze verwenden kann.</p>
-</div>
-<div class="section" id="objekte-in-bildern-erkennen">
-<h2>Objekte in Bildern erkennen<a class="headerlink" href="#objekte-in-bildern-erkennen" title="Permalink to this headline">¶</a></h2>
-<p>Ziel ist es, Schrauben auf einem Bild zu erkennen. Dabei stellen sich folgende Fragen:</p>
-<ul class="simple">
-<li><p>Welche Eigenschaften hat eine Schraube und welche wollen / können wir erkennen?</p></li>
-<li><p>Was gibt es für Schraubenarten und wodurch unterscheiden sie sich?</p></li>
-<li><p>Wie werden die Bilder erzeugt und wie sollten diese beschaffen sein?</p></li>
-</ul>
-<p>Um mit einfachen Modellen starten zu können sollte auch die Lernaufgabe zunächst so einfach wie möglich gestaltet sein. Es wäre sicher nicht die richtige Vorgehensweise, direkt mit der höchsten Komplexität zu starten. So ist man in der Lage den dahinter stehenden Mechanismus besser zu verstehen und nachvollziehen zu können.</p>
-<p>Um schnell erste eigene Modelle zu entwickeln lassen wir uns vom MNIST Datensatz inspirieren. Dieser ist sehr bekannt und wurde schon sehr häufig mit den verschiedensten Modellen (SVM,CNN,Logistic Regression,..) bearbeitet. Der Vorteil besteht darin, dass schon sehr viele Informationen und fertige Modelle existieren.</p>
-<p>Die Idee ist nun, fertige Modelle des MNIST Datensatzes zu nehmen und diese mit einem Eigenen Datensatz zu trainieren. So kann man schnell Erfahrungen sammeln und durch den Programmcode die Vorgänge nachvollziehen.</p>
-<p>Um einfach zu beginnen konzentrieren wir uns zunächst auf eine Eigenschaft der Schraube, den Kopf bzw. der Antriebsart (siehe unten) und nehmen dafür einfache Grafiken die sehr gut zu unterscheiden sind damit sich das Modell nur auf die Form konzentrieren kann und nicht von Lichteinflüssen wie in realen Umgebungen beeinflusst wird. Die Auswahl fiel auf folgende gängigen Antriebsarten:</p>
-<ul class="simple">
-<li><p>Innensechskant (Inbus)</p></li>
-<li><p>Philips (Kreuzschlitz)</p></li>
-<li><p>Pozidriv (Kreuzschlitz)</p></li>
-<li><p>Sechskant</p></li>
-<li><p>Torx</p></li>
-</ul>
-<p>Diese sind, zumindest für das menschliche Auge, gut zu unterscheiden und sollten von einem Modell welches mit den MNIST-Daten funktioniert auch gut erkannt werden können.</p>
-<p>Es gibt jedoch auch schon gewisse Schwierigkeiten:</p>
-<ul class="simple">
-<li><p>Innensechskant und Torx ähneln sich, schwarzer Ring auf weißem Hintergrund, Innenkontur auch ähnlich</p></li>
-<li><p>Philips-Kreuz und Pozidriv-Kreuz sind nur durch die Einkerbungen in der Pozidriv zu unterscheiden</p></li>
-<li><p>Das Sechskant-Profil ähnelt keinem Profil und unterscheidet sich stark von allen anderen, schwarze Fläche mit sechseckiger Außenkontur</p></li>
-</ul>
-<p>Es ist zu erwarten, dass die Modelle mit dem Sechskant weniger Schwierigkeiten haben werden als mit den anderen Profilen.</p>
-<p>So sollte dieser Datensatz einfach genug für den Anfang sein aber bringt auch schon die ersten schwierigkeiten mit sich, welche die Performance der verschiedenen Modelle auf die Probe stellen.</p>
 </div>
 </div>
 

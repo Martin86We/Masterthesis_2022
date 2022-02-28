@@ -1,4 +1,15 @@
 Traceback (most recent call last):
+  File "C:\Users\Martin\anaconda3\envs\py37\lib\site-packages\nbclient\client.py", line 622, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+  File "C:\Users\Martin\anaconda3\envs\py37\lib\site-packages\nbclient\util.py", line 85, in ensure_async
+    result = await obj
+  File "C:\Users\Martin\anaconda3\envs\py37\lib\site-packages\jupyter_client\channels.py", line 230, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "C:\Users\Martin\anaconda3\envs\py37\lib\site-packages\jupyter_cache\executors\utils.py", line 56, in single_nb_execution
     record_timing=False,
   File "C:\Users\Martin\anaconda3\envs\py37\lib\site-packages\nbclient\client.py", line 1112, in execute
@@ -11,49 +22,18 @@ Traceback (most recent call last):
     return future.result()
   File "C:\Users\Martin\anaconda3\envs\py37\lib\site-packages\nbclient\client.py", line 554, in async_execute
     cell, index, execution_count=self.code_cells_executed + 1
-  File "C:\Users\Martin\anaconda3\envs\py37\lib\site-packages\nbclient\client.py", line 857, in async_execute_cell
-    self._check_raise_for_error(cell, exec_reply)
-  File "C:\Users\Martin\anaconda3\envs\py37\lib\site-packages\nbclient\client.py", line 760, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-eval = model.evaluate(X_test,y_test,verbose=0,return_dict=True)
-loss_eval = eval['loss']
-glue("loss_eval", loss_eval, display=False)
-acc_eval = eval['accuracy']
-glue("acc_eval", acc_eval, display=False)
-------------------
-
-[1;31m---------------------------------------------------------------------------[0m
-[1;31mRuntimeError[0m                              Traceback (most recent call last)
-[1;32m~\AppData\Local\Temp/ipykernel_28648/4247382325.py[0m in [0;36m<module>[1;34m[0m
-[1;32m----> 1[1;33m [0meval[0m [1;33m=[0m [0mmodel[0m[1;33m.[0m[0mevaluate[0m[1;33m([0m[0mX_test[0m[1;33m,[0m[0my_test[0m[1;33m,[0m[0mverbose[0m[1;33m=[0m[1;36m0[0m[1;33m,[0m[0mreturn_dict[0m[1;33m=[0m[1;32mTrue[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
-[0m[0;32m      2[0m [0mloss_eval[0m [1;33m=[0m [0meval[0m[1;33m[[0m[1;34m'loss'[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
-[0;32m      3[0m [0mglue[0m[1;33m([0m[1;34m"loss_eval"[0m[1;33m,[0m [0mloss_eval[0m[1;33m,[0m [0mdisplay[0m[1;33m=[0m[1;32mFalse[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
-[0;32m      4[0m [0macc_eval[0m [1;33m=[0m [0meval[0m[1;33m[[0m[1;34m'accuracy'[0m[1;33m][0m[1;33m[0m[1;33m[0m[0m
-[0;32m      5[0m [0mglue[0m[1;33m([0m[1;34m"acc_eval"[0m[1;33m,[0m [0macc_eval[0m[1;33m,[0m [0mdisplay[0m[1;33m=[0m[1;32mFalse[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
-
-[1;32m~\anaconda3\envs\py37\lib\site-packages\tensorflow\python\keras\engine\training.py[0m in [0;36m_method_wrapper[1;34m(self, *args, **kwargs)[0m
-[0;32m    106[0m   [1;32mdef[0m [0m_method_wrapper[0m[1;33m([0m[0mself[0m[1;33m,[0m [1;33m*[0m[0margs[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
-[0;32m    107[0m     [1;32mif[0m [1;32mnot[0m [0mself[0m[1;33m.[0m[0m_in_multi_worker_mode[0m[1;33m([0m[1;33m)[0m[1;33m:[0m  [1;31m# pylint: disable=protected-access[0m[1;33m[0m[1;33m[0m[0m
-[1;32m--> 108[1;33m       [1;32mreturn[0m [0mmethod[0m[1;33m([0m[0mself[0m[1;33m,[0m [1;33m*[0m[0margs[0m[1;33m,[0m [1;33m**[0m[0mkwargs[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
-[0m[0;32m    109[0m [1;33m[0m[0m
-[0;32m    110[0m     [1;31m# Running inside `run_distribute_coordinator` already.[0m[1;33m[0m[1;33m[0m[1;33m[0m[0m
-
-[1;32m~\anaconda3\envs\py37\lib\site-packages\tensorflow\python\keras\engine\training.py[0m in [0;36mevaluate[1;34m(self, x, y, batch_size, verbose, sample_weight, steps, callbacks, max_queue_size, workers, use_multiprocessing, return_dict)[0m
-[0;32m   1333[0m     [0m_keras_api_gauge[0m[1;33m.[0m[0mget_cell[0m[1;33m([0m[1;34m'evaluate'[0m[1;33m)[0m[1;33m.[0m[0mset[0m[1;33m([0m[1;32mTrue[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
-[0;32m   1334[0m     [0mversion_utils[0m[1;33m.[0m[0mdisallow_legacy_graph[0m[1;33m([0m[1;34m'Model'[0m[1;33m,[0m [1;34m'evaluate'[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
-[1;32m-> 1335[1;33m     [0mself[0m[1;33m.[0m[0m_assert_compile_was_called[0m[1;33m([0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
-[0m[0;32m   1336[0m     [0mself[0m[1;33m.[0m[0m_check_call_args[0m[1;33m([0m[1;34m'evaluate'[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
-[0;32m   1337[0m     [0m_disallow_inside_tf_function[0m[1;33m([0m[1;34m'evaluate'[0m[1;33m)[0m[1;33m[0m[1;33m[0m[0m
-
-[1;32m~\anaconda3\envs\py37\lib\site-packages\tensorflow\python\keras\engine\training.py[0m in [0;36m_assert_compile_was_called[1;34m(self)[0m
-[0;32m   2567[0m     [1;31m# (i.e. whether the model is built and its inputs/outputs are set).[0m[1;33m[0m[1;33m[0m[1;33m[0m[0m
-[0;32m   2568[0m     [1;32mif[0m [1;32mnot[0m [0mself[0m[1;33m.[0m[0m_is_compiled[0m[1;33m:[0m[1;33m[0m[1;33m[0m[0m
-[1;32m-> 2569[1;33m       raise RuntimeError('You must compile your model before '
-[0m[0;32m   2570[0m                          [1;34m'training/testing. '[0m[1;33m[0m[1;33m[0m[0m
-[0;32m   2571[0m                          'Use `model.compile(optimizer, loss)`.')
-
-[1;31mRuntimeError[0m: You must compile your model before training/testing. Use `model.compile(optimizer, loss)`.
-RuntimeError: You must compile your model before training/testing. Use `model.compile(optimizer, loss)`.
+  File "C:\Users\Martin\anaconda3\envs\py37\lib\site-packages\nbclient\client.py", line 841, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+  File "C:\Users\Martin\anaconda3\envs\py37\lib\site-packages\nbclient\client.py", line 646, in _async_poll_for_reply
+    await self._async_handle_timeout(timeout, cell)
+  File "C:\Users\Martin\anaconda3\envs\py37\lib\site-packages\nbclient\client.py", line 697, in _async_handle_timeout
+    "Cell execution timed out", timeout, cell
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+['#Modell laden', "model = load_model('models/1Conv2d_32_3x3_MaxP_2x2.h5')", "history = np.load('models/1Conv2d_32_3x3_MaxP_2x2.npy',allow_pickle='TRUE').item()", '', "accuracy = history['accuracy']"]
+...
+['model.add(Conv2D(32, kernel_size=(3, 3), activation="relu", input_shape=(224,224,1,)))', 'model.add(MaxPooling2D(pool_size=(2, 2)))', 'model.add(Flatten())', 'model.add(Dense(6, activation="softmax"))', "plot_model(model, to_file='model_D_plot.png', show_shapes=True, show_layer_names=True)"]
+-------------------
 
