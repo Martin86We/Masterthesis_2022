@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neuronales Netz (Funktionsweise) &#8212; Anwendung neuronaler Netze in einem Sortierroboter</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://martin86we.github.io/Masterthesis_2022/02_NN/4_NN_learning.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Neuronales Netz" href="5_NN_28x28.html" />
+    <link rel="prev" title="Logistische Regression" href="3_logReg_28x28.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Anwendung neuronaler Netze in einem Sortierroboter</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Deckblatt.html">
+   <center>
+    Masterarbeit
+   </center>
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Intro
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Eigenst.html">
+   Eidesstattliche Erklärung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/intro.html">
+   Aufgabenstellung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Nomenklatur.html">
+   Nomenklatur
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Einleitung.html">
+   Einleitung
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dataset
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Dataset/dataset_28x28.html">
+   Datensatz 1 (Schraubenköpfe)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Dataset/dataset_224x224.html">
+   Datensatz 2 (Schrauben)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Neural Net
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_neuron.html">
+   Einzelnes Neuron
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_logReg_learning.html">
+   Logistische Regression (Funktionsweise)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_logReg_28x28.html">
+   Logistische Regression
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Neuronales Netz (Funktionsweise)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_NN_28x28.html">
+   Neuronales Netz
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Convolutional Neural Net
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/CNN.html">
+   Convolutional Neural Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/Pooling.html">
+   Pooling Layer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/CNN_1_28x28.html">
+   CNN 1 (Schraubenköpfe)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/CNN_2_224x224.html">
+   CNN 2 (Schrauben)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/02_NN/4_NN_learning.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Martin86We/Masterthesis_2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/Martin86We/Masterthesis_2022/edit/main/02_NN/4_NN_learning.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Martin86We/Masterthesis_2022/main?urlpath=tree/02_NN/4_NN_learning.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/Martin86We/Masterthesis_2022/blob/main/02_NN/4_NN_learning.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#verdeckte-schicht">
+   Verdeckte Schicht
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gewichte-aktualisieren">
+   Gewichte aktualisieren
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kostenfunktion">
+   Kostenfunktion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradientenabstieg">
+   Gradientenabstieg
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stochastic-gradient-descent">
+   Stochastic Gradient Descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#backpropagation">
+   Backpropagation
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Neuronales Netz (Funktionsweise)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#verdeckte-schicht">
+   Verdeckte Schicht
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gewichte-aktualisieren">
+   Gewichte aktualisieren
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kostenfunktion">
+   Kostenfunktion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradientenabstieg">
+   Gradientenabstieg
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stochastic-gradient-descent">
+   Stochastic Gradient Descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#backpropagation">
+   Backpropagation
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="neuronales-netz-funktionsweise">
+<span id="nn-learning"></span><h1>Neuronales Netz (Funktionsweise)<a class="headerlink" href="#neuronales-netz-funktionsweise" title="Permalink to this headline">¶</a></h1>
+<p>In diesem Abschnitt soll ein Einblick in den Aufbau und den Lernvorgang eines neuronalen Netzes geschaffen werden.</p>
+<div class="section" id="verdeckte-schicht">
+<h2>Verdeckte Schicht<a class="headerlink" href="#verdeckte-schicht" title="Permalink to this headline">¶</a></h2>
+<p>Bisher hatten wir nur ein Neuron. Da ein neuronales Netz aus mehreren solcher Neuronen aufgebaut ist, befasst sich dieser Abschnitt damit, wie die einzelnen Neuronen zu einem Netz verknüpft werden können, wie diese Neuronen arbeiten und wie es das neuronale Netz schafft, etwas zu lernen.</p>
+<p><strong>Ein Netz aus mehreren Neuronen:</strong>
+Wir beginnen wieder mit einem einfachen Beispiel und verbinden ein paar Neuronen zu einem einfach NN:</p>
+<ul class="simple">
+<li><p><strong>Input Layer:</strong> X1, X2, X3, b</p></li>
+<li><p><strong>Hidden Layer</strong> Neuron 1, Neuron 2, Neuron 3</p></li>
+<li><p><strong>Output Layer</strong> Neuron 4</p></li>
+</ul>
+<p><strong>Beispiel:</strong></p>
+<ul class="simple">
+<li><p>X1: Anzahl Zylinder</p></li>
+<li><p>X2: Leistung kw</p></li>
+<li><p>X3: Gewicht kg</p></li>
+</ul>
+<p>Die Neuronen verteilen sich selbst auf verschiedene Features auf.
+Jedes Neuron spezialisiert sich auf eine bestimmte Eigenschaft z.B.:</p>
+<ul class="simple">
+<li><p>Neuron 1: Kleinwagen oder SUV (relevant: X1, X2, X3)</p></li>
+<li><p>Neuron 2: Preis</p></li>
+<li><p>Neuron 3: Beschleunigung (relevant: X2,X3)</p></li>
+</ul>
+<p>Relevante Verbindungen werden vom Algorithmus verstärkt und nicht benötigte Verbindungen werden ignoriert (Gewicht wird sehr klein oder Null).</p>
+<p>Der Output-Layer soll z.B. den Verbrauch vorhersagen und wird entsprechend jene Verbindungen verstärken, die besonders großen Einfluss auf den Verbrauch haben.</p>
+<p>Die Aktualisierung der Gewichte hat einen großen Einfluss auf diesen Vorgang.</p>
+<div class="figure align-default" id="two-layer-net">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/hiddenLayer_1.png"><img alt="nn" class="bg-primary mb-1" src="../_images/hiddenLayer_1.png" style="width: 1000px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">zweilagiges-Neuronales Netz.</span><a class="headerlink" href="#two-layer-net" title="Permalink to this image">¶</a></p>
+</div>
+<p>Weitere Informationen:
+<a class="reference external" href="https://otexts.com/fpp2/nnetar.html">Neural network architecture</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Die Neuronen im Hidden Layer übernehmen jeweils verschiedene Hilfsaufgaben. Der Output Layer kombiniert der Ergebnisse aus dem Hidden Layer und gibt eine Vorhersage aus.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Es gilt grundsätzlich:</strong></p>
+<ul class="simple">
+<li><p>Neuronale Netze mit einem beliebig großen Hidden-Layer können jede beliebige Funktion approximieren.</p></li>
+<li><p>je mehr Knoten das Netz besitzt, desto genauer kann es die math. Funktionen annähern.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="gewichte-aktualisieren">
+<h2>Gewichte aktualisieren<a class="headerlink" href="#gewichte-aktualisieren" title="Permalink to this headline">¶</a></h2>
+<p>Nach der Initialisierung der Gewichte wird ein Ausgangswert berechnet. Passt dieser “Vorhersagewert” nicht zum richtigen Ergebnis, dann müssen die Gewichte dementsprechend angepasst werden, so dass das Ergebnis stimmt.</p>
+<p>In der Abb.[Link] werden w1 und w2 so lange erhöht, bis der Vorhersagewert zum richtigen Wert passt.</p>
+<p>Das Neuron gibt 0.5 aus, obwohl der richtige Wert 0.75 ist. Das bedeutet, das Modell ist noch nicht so gut an die Daten angepasst. Um das Modell den Daten besser anzupassen, stehen nur die Gewichte als Stellschrauben zur Verfügung und diese können nun stückweise erhöht werden bis das Modell die Daten ausreichend approximiert hat, siehe [Link].</p>
+</div>
+<div class="section" id="kostenfunktion">
+<h2>Kostenfunktion<a class="headerlink" href="#kostenfunktion" title="Permalink to this headline">¶</a></h2>
+<p>Die Aktualisierung der Gewichte wird mit Hilfe einer Kostenfunktion erreicht. Es gibt verschiedene Kostenfunktionen, eine davon ist die <strong>“quadratische Fehlerfunktion”</strong>.</p>
+<p>Weitere Kostenfunktionen und Informationen <a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/02/cost-function-is-no-rocket-science/">hier</a>.</p>
+<div class="figure align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/weights_1.png"><img alt="nn" class="bg-primary mb-1" src="../_images/weights_1.png" style="width: 750px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Kostenfunktion</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>Das Quadrieren des Fehlers in der Kostenfunktion bewirkt eine viel größere Bestrafung für größere Fehler.</p>
+<p>Werden nun wie üblich mehrere Datensätze trainiert, müssen die Gewichte nach jedem Datensatz angepasst werden, solange die Vorhersage vom wahren Wert y abweicht.</p>
+<p>Die Abbildung dient nur zur Veranschaulichung. Im nächsten Abschnitt (Gradientenabstieg) wird gezeigt, wie die Kostenfunktion in Python minimiert wird.</p>
+<p>Eine Kostenfunktion dient zum Minimieren des Fehlers. Man stellt eine Funktion auf, die den Fehler zwischen Schätzung und richtigem Wert berechnet und sucht dann die zugehörigen Gewichte, die den Fehler minimal werden lassen. Die Kosten C werden als Funktion der Gewichte formuliert. Da man es bei NN’s in der Regel mit komplexeren Funktionen und sehr vielen Gewichten zu tun hat, lässt sich das nicht mehr analytisch lösen. Für so einen Fall eignet sich das Gradientenabstiegsverfahren.</p>
+</div>
+<div class="section" id="gradientenabstieg">
+<h2>Gradientenabstieg<a class="headerlink" href="#gradientenabstieg" title="Permalink to this headline">¶</a></h2>
+<p>Wichtig zum Verständnis des Trainings von neuronalen Netzen.</p>
+<p>Wie aktualisiert der Computer mehrere tausend Gewichte?</p>
+<p>Mit dem Gradientenabstiegsverfahren wird Schritt für Schritt das Minimum einer Funktion gesucht. Bei einfachen Funktionen kann man das noch analytisch lösen, aber bei komplexeren Funtionen benötigt man das Gradientenabstiegsverfahren.</p>
+<p>Wie findet man das Minimum bei komplexen Funktionen wie im Bild [Link]?
+Die Antwort lautet: Gradientenabstiegsverfahren. Das Verfahren wird anhand eines einfachen Beispiels näher erläutert.</p>
+<div class="figure align-default" id="gradient-descent">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/gradient_descent.png"><img alt="nn" class="bg-primary mb-1" src="../_images/gradient_descent.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Gradientenabstiegsverfahren.[<a class="reference external" href="https://www.researchgate.net/profile/Alexander-Amini/publication/325142728/figure/fig1/AS:766109435326465&#64;1559666131320/Non-convex-optimization-We-utilize-stochastic-gradient-descent-to-find-a-local-optimum.jpg">Quelle</a>]</span><a class="headerlink" href="#gradient-descent" title="Permalink to this image">¶</a></p>
+</div>
+<div class="cell tag_output_scroll tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">5</span>
+
+
+<span class="k">def</span> <span class="nf">f_ableitung</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">4</span>
+
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1">#Schrittweite bzw Lernrate (lr):</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">):</span>
+    <span class="n">steigung_x</span> <span class="o">=</span> <span class="n">f_ableitung</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">steigung_x</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.7
+4.43
+4.186999999999999
+3.9682999999999993
+3.7714699999999994
+3.5943229999999993
+3.4348906999999995
+3.2914016299999997
+3.1622614669999995
+3.0460353202999997
+2.9414317882699996
+2.847288609443
+2.7625597484987
+2.68630377364883
+2.617673396283947
+2.555906056655552
+2.500315450989997
+2.450283905890997
+2.4052555153018975
+2.364729963771708
+2.328256967394537
+2.2954312706550835
+2.2658881435895752
+2.239299329230618
+2.215369396307556
+</pre></div>
+</div>
+<img alt="../_images/4_NN_learning_25_1.png" src="../_images/4_NN_learning_25_1.png" />
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Man kann nun mit der Lernrate experimentieren und z.<span class="math notranslate nohighlight">\(~\)</span>B. einen großen Wert wählen. Es kann passieren, dass bei einer zu großen Schrittweite das Minimum übersprungen wird und somit nicht gefunden werden kann.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Gut zu wissen</p>
+<p>In hochdimensionalen Räumen, spielen Probleme mit lokalen Minima kaum eine Rolle. Bei zwei und drei Dimensionen sind lokale Minima üblich. Bei einer Million Dimensionen sind lokale Minima selten. Die intuitive Erklärung ist, dass die Funktion, damit ein lokales Minimum existiert, in jeder Dimension gleichzeitig nach oben gekrümmt sein muss (erste Ableitung = 0, zweite Ableitung &gt;= 0). Es macht Sinn, dass dies immer weniger wahrscheinlich wird, wenn weitere Dimensionen hinzugefügt werden, und bei einer Million Dimensionen ist es verschwindend unwahrscheinlich.
+Was Sie anstelle lokaler Minima erhalten, sind Sattelpunkte, an denen sich einige Dimensionen nach oben und andere nach unten krümmen. Sattelpunkte können ebenfalls problematisch für die Optimierung sein, aber sie können mit ausgefallenen Optimierungstechniken behandelt werden.<a class="reference external" href="https://news.ycombinator.com/item?id=10678121">Quelle</a><br />
+Eine genauere Erklärung finden Sie unter  <a class="reference external" href="http://arxiv.org/abs/1406.2572">Link</a></p>
+</div>
+<p>In der Praxis hat man es eher mit komplexeren Funktionen mit mehreren Minima zu tun. Die Gefahr, in einem lokalen Minimum stecken zu bleiben, ist in höher-dimensionalen Räumen zu vernachlässigen.</p>
+</div>
+<div class="section" id="stochastic-gradient-descent">
+<h2>Stochastic Gradient Descent<a class="headerlink" href="#stochastic-gradient-descent" title="Permalink to this headline">¶</a></h2>
+<p>Die Kosten für die gesamten Trainingsdaten zu berechnen und anschließend die Gewichte zu aktualisieren, würde bei sehr vielen Gewichten einen sehr hohen Rechenaufwand bedeuten, da die Kostenfunktion dann sehr viele variable Gewichte enthält. Deswegen geht man bei NN’s so vor, dass man nicht die Kosten für die gesamten Daten, sondern nur für den einzelnen Batch berechnet und somit die Kosten approximiert. Das macht man dann für alle Batches und aktualisiert nach jedem Batch die Gewichte. So werden die Gewichte pro kompletten Durchgang mehrmals aktualisiert und nicht nur einmal am Ende eines kompletten Durchgangs. Das bringt allerdings mit sich, dass die Gewichte hin und her springen, im „ZickZack zum Minimum laufen“, das führt insgesamt zu einem schnelleren Lernvorgang.</p>
+<p><strong>Begriffsdefinition:</strong></p>
+<ul class="simple">
+<li><p>Batch: Eine Gruppe von Trainingsdaten innerhalb des Datensatzes</p></li>
+<li><p>Epoche: Alle Batches wurden einmal durchlaufen</p></li>
+<li><p>Lernrate: Schrittgröße</p></li>
+</ul>
+<div class="figure align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/gradient_batch1.png"><img alt="nn" class="bg-primary mb-1" src="../_images/gradient_batch1.png" style="width: 1000px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">erste Batch</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>Anstatt alle Gewichte mit einmal zu bestimmen, ist es vorteilhafter, den Trainingssatz in einzelne Batches aufzuteilen. Somit wird die Berechnung schneller und die Gewichte werden nach jedem Durchlauf angepasst.</p>
+<p>Ablauf der Gewichtsanpassung für einen Batch:</p>
+<ul class="simple">
+<li><p>Vorhersage machen</p></li>
+<li><p>Kosten berechnen</p></li>
+<li><p>Gewichte anpassen</p></li>
+<li><p>dann nächste Batch</p></li>
+</ul>
+<div class="figure align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/gradient_batch2.png"><img alt="nn" class="bg-primary mb-1" src="../_images/gradient_batch2.png" style="width: 1000px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Zweite Batch</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="backpropagation">
+<h2>Backpropagation<a class="headerlink" href="#backpropagation" title="Permalink to this headline">¶</a></h2>
+<p>Problematik beim Lernen von mehrschichtigen NN’s:</p>
+<ul class="simple">
+<li><p>Wie werden die Gewichte einer vorherigen Schicht aktualisiert?</p></li>
+</ul>
+<p>Die Antwort lautet: Backpropagation!</p>
+<p>Neuronale Netze wurden erst durch Backpropagation leistungsstark. Dadurch erst war es möglich, das gesamte neuronale Netz zu trainieren, also auch die vorherigen Schichten. Die Gewichte des gesamten NN werden immer wieder aktualisiert, solange bis der Vorhersagewert so nah wie möglich am gewünschten Wert liegt. Wie das genau gemacht wird, soll in diesem Abschnitt gezeigt werden.</p>
+<div class="toggle docutils container">
+<ul class="simple">
+<li><p>verleiht den NN’s ihre Leistungsfähigkeit</p></li>
+<li><p>verhalf zum Durchbruch von NN’s</p></li>
+<li><p>Idee aus den 70ern</p></li>
+<li><p>vorher konnte man nur Teile eines Netzes trainieren</p></li>
+</ul>
+</div>
+<p><strong>Ein grobes, einfaches Beispiel zur Backward-Propagation</strong>:</p>
+<p>Mit einem einfachen, groben Beispiel soll der Einstieg in das Verständnis der Backpropagation erleichtert werden. Für den Einstieg wird auf ein grobes Rechenbeispiel zurückgegriffen. Es soll an dieser Stelle zunächst nur der grobe Vorgang der Backward-Propagation veranschaulicht werden.</p>
+<ul class="simple">
+<li><p>Es wird eine Vorhersage mit dem NN gemacht, diese Vorhersage <span class="math notranslate nohighlight">\(\hat{y}\)</span>, weicht vom gewünschten / wahren Wert y ab</p></li>
+<li><p>Die Abweichung e (Error) ist ein Maß dafür, wie stark die Vorhersage vom wahren Wert abweicht</p></li>
+<li><p>Um die Abweichung zu minimieren, müssen nun die Gewichte aktualisiert werden</p></li>
+</ul>
+<p>Der Fehler <strong>e=2</strong> wird an die Ausgänge des Hidden-Layer transformiert:</p>
+<div class="figure align-default" id="backprop1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/backprop1.png"><img alt="nn" class="bg-primary mb-1" src="../_images/backprop1.png" style="width: 1000px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Backpropagation</span><a class="headerlink" href="#backprop1" title="Permalink to this image">¶</a></p>
+</div>
+<p><strong>Initialisierung der Gewichte</strong></p>
+<p>Die Initialisierung kann darüber entscheiden, ob das NN trainieren kann oder nicht.
+Wie initialisieren wir die Gewichte? Mit null, wie im rechten Bild? Die Neuronen würden nur Nullen ausgeben. Das ergibt also keinen Sinn. Doch welche Werte sollte man am besten wählen?
+Weiterhin dürfen die Gewichte nicht alle mit den gleichen Werten initialisiert werden. Das ist auch aktiver Forschungsgegenstand, denn bei mehrschichtigen Netzen wird es umso wichtiger, die Gewichte „richtig“ bzw. nicht komplett falsch zu wählen.
+Besser ist es, den Gewichten unterschiedliche Werte zu geben. Das können zufällige, eher kleine Werte sein. So ist sichergestellt, dass jedes Neuron eine andere Funktion berechnet. Somit kann dann auch die Backpropagation richtig arbeiten und die Gewichte anpassen.</p>
+<div class="figure align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/backprop2.png"><img alt="nn" class="bg-primary mb-1" src="../_images/backprop2.png" style="width: 1000px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Initialisierung der Gewichte</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/backprop3.png"><img alt="nn" class="bg-primary mb-1" src="../_images/backprop3.png" style="width: 1000px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Initialisierung der Gewichte mit kleinen Werten</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "Martin86We/Masterthesis_2022",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./02_NN"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="3_logReg_28x28.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Logistische Regression</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="5_NN_28x28.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Neuronales Netz</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Martin Weilepp<br/>
+    
+      <div class="extra_footer">
+        <p>
+HTWG Konstanz
+</p>
+
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

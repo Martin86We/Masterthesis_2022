@@ -50,6 +50,7 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://martin86we.github.io/Masterthesis_2022/03_CNN/Pooling.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CNN 1 (Schraubenköpfe)" href="CNN_1_28x28.html" />
@@ -106,8 +107,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Eigenst.html">
+   Eidesstattliche Erklärung
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../00_Intro/intro.html">
-   Masterarbeit
+   Aufgabenstellung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Nomenklatur.html">
+   Nomenklatur
   </a>
  </li>
  <li class="toctree-l1">
@@ -145,17 +156,22 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/logReg_28x28.html">
+  <a class="reference internal" href="../02_NN/2_logReg_learning.html">
+   Logistische Regression (Funktionsweise)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_NN/3_logReg_28x28.html">
    Logistische Regression
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/2_NN_learning.html">
+  <a class="reference internal" href="../02_NN/4_NN_learning.html">
    Neuronales Netz (Funktionsweise)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/NN_28x28.html">
+  <a class="reference internal" href="../02_NN/5_NN_28x28.html">
    Neuronales Netz
   </a>
  </li>
@@ -250,6 +266,21 @@
 
             <!-- Source interaction buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Martin86We/Masterthesis_2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/Martin86We/Masterthesis_2022/edit/main/03_CNN/Pooling.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -264,7 +295,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/Martin86We/Masterthesis_2022/main?urlpath=lab/tree/03_CNN/Pooling.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Martin86We/Masterthesis_2022/main?urlpath=tree/03_CNN/Pooling.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -272,7 +303,7 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/drive/1Q_-4-XPH8WrtrilVFsH9ng-QvGbCD4iF/github/Martin86We/Masterthesis_2022/blob/main/03_CNN/Pooling.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/Martin86We/Masterthesis_2022/blob/main/03_CNN/Pooling.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -309,21 +340,22 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="pooling-layer">
 <h1>Pooling Layer<a class="headerlink" href="#pooling-layer" title="Permalink to this headline">¶</a></h1>
-<p>Ein Pooling Layer, hat die Aufgabe, das CNN “toleranter” gegen geringe Abweichungen zu machen. Im folgenden Beispiel wurde die Kante stückweise um insgesamt 2 Pixel nach rechts verschoben. Auf einem Bild sollte es für das Erkennen keine so große Rolle spielen aber für den Convolutional-Layer spielt es eine Rolle in den Ergebnissen. Es ist nicht tolerant gegenüber Verschiebungen.</p>
+<p>Ein Pooling Layer, hat die Aufgabe, das CNN “toleranter” gegen geringe Abweichungen zu machen. Im folgenden Beispiel wurde die Kante stückweise um insgesamt 2 Pixel nach rechts verschoben. Auf einem Bild sollte es für das Erkennen keine so große Rolle spielen, aber für den Convolutional-Layer spielt es eine Rolle in den Ergebnissen. Es ist nicht tolerant gegenüber Verschiebungen was in der Abbildung <a class="reference internal" href="#no-pooling"><span class="std std-ref">Kantenerkennung mit Pooling</span></a> ersichtlich wird.</p>
 <p><strong>Jede Verschiebung der senkrechten Kante, erzeugt eine andere Featur-Map:</strong></p>
-<div class="figure align-default" id="markdown-fig">
+<div class="figure align-default" id="no-pooling">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/pooling_1.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/pooling_1.png" style="width: 1000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Kantenerkennung ohne Pooling.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Kantenerkennung ohne Pooling.</span><a class="headerlink" href="#no-pooling" title="Permalink to this image">¶</a></p>
 </div>
-<div class="figure align-default" id="id1">
+<div class="figure align-default" id="pooling-on">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/pooling_2.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/pooling_2.png" style="width: 1000px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Kantenerkennung mit Pooling.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Kantenerkennung mit Pooling.</span><a class="headerlink" href="#pooling-on" title="Permalink to this image">¶</a></p>
 </div>
+<p>In der Abbildung <a class="reference internal" href="#pooling-on"><span class="std std-ref">Kantenerkennung mit Pooling</span></a> wird ein 2x2 Pooling-Filter verwendet. Ein Pixel kann sich im grün abgegrenzten Bereich bewegen, ohne, dass sich die Feature-Map ändert. Es wird lediglich der größte Wert (Max-Pooling) verwendet und in die Feature-Map übernommen. Das bewirkt eine Toleranz des Modells gegenüber Lageabweichungen von Objekten in den Bildern.</p>
 <p><strong>Vorteile vom Pooling:</strong></p>
 <ul class="simple">
 <li><p>bessere Generalisierung</p></li>
 <li><p>geringere Anzahl an Ausgabeknoten durch Dimensionsreduktion</p></li>
-<li><p>lernen geht schneller</p></li>
+<li><p>beschleunigt Lernvorgang</p></li>
 </ul>
 </div>
 
@@ -375,7 +407,12 @@
     
       By Martin Weilepp<br/>
     
-        &copy; Copyright 2021.<br/>
+      <div class="extra_footer">
+        <p>
+HTWG Konstanz
+</p>
+
+      </div>
   </p>
 </footer>
 </main>

@@ -43,6 +43,8 @@
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe,.cell"
@@ -50,9 +52,10 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://martin86we.github.io/Masterthesis_2022/02_NN/1_neuron.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Logistische Regression" href="logReg_28x28.html" />
+    <link rel="next" title="Logistische Regression (Funktionsweise)" href="2_logReg_learning.html" />
     <link rel="prev" title="Datensatz 2 (Schrauben)" href="../01_Dataset/dataset_224x224.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -106,8 +109,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Eigenst.html">
+   Eidesstattliche Erklärung
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../00_Intro/intro.html">
-   Masterarbeit
+   Aufgabenstellung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Nomenklatur.html">
+   Nomenklatur
   </a>
  </li>
  <li class="toctree-l1">
@@ -145,17 +158,22 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="logReg_28x28.html">
+  <a class="reference internal" href="2_logReg_learning.html">
+   Logistische Regression (Funktionsweise)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_logReg_28x28.html">
    Logistische Regression
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="2_NN_learning.html">
+  <a class="reference internal" href="4_NN_learning.html">
    Neuronales Netz (Funktionsweise)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="NN_28x28.html">
+  <a class="reference internal" href="5_NN_28x28.html">
    Neuronales Netz
   </a>
  </li>
@@ -250,6 +268,21 @@
 
             <!-- Source interaction buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Martin86We/Masterthesis_2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/Martin86We/Masterthesis_2022/edit/main/02_NN/1_neuron.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -264,7 +297,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/Martin86We/Masterthesis_2022/main?urlpath=lab/tree/02_NN/1_neuron.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Martin86We/Masterthesis_2022/main?urlpath=tree/02_NN/1_neuron.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -272,7 +305,7 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/drive/1Q_-4-XPH8WrtrilVFsH9ng-QvGbCD4iF/github/Martin86We/Masterthesis_2022/blob/main/02_NN/1_neuron.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/Martin86We/Masterthesis_2022/blob/main/02_NN/1_neuron.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -295,11 +328,6 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#einleitung">
-   Einleitung
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ein-vereinfachtes-neuron">
    Ein vereinfachtes Neuron
   </a>
@@ -317,6 +345,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#aktivierungsfunktion">
    Aktivierungsfunktion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sigmoid-als-aktivierungsfunktion">
+   Sigmoid als Aktivierungsfunktion
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -345,11 +378,6 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#einleitung">
-   Einleitung
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ein-vereinfachtes-neuron">
    Ein vereinfachtes Neuron
   </a>
@@ -370,6 +398,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sigmoid-als-aktivierungsfunktion">
+   Sigmoid als Aktivierungsfunktion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#logistische-regression">
    Logistische Regression
   </a>
@@ -384,62 +417,35 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="einzelnes-neuron">
-<h1>Einzelnes Neuron<a class="headerlink" href="#einzelnes-neuron" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="einleitung">
-<h2>Einleitung<a class="headerlink" href="#einleitung" title="Permalink to this headline">¶</a></h2>
-<p>Um den Einstieg zu erleichtern, schauen wir uns zunächst ein einzelnes Neuron genauer an.</p>
-<p><strong>Lernziele:</strong></p>
-<ul class="simple">
-<li><p>verstehen was ein einzelnes Neuron macht</p></li>
-<li><p>Ein einzelnes Neuron in Python modellieren</p></li>
-<li><p>die Konzepte hinter Neuronalen Netzen besser verstehen</p></li>
-</ul>
-<p>Ein einzelnes Neuron besitzt mehrere, gewichtete Eingänge und einen Ausgang siehe folgende Abbildung.</p>
-<p>Weitere Informationen im Artikel,
-<a class="reference external" href="https://www.informatik-aktuell.de/betrieb/kuenstliche-intelligenz/neuronale-netze-ein-blick-in-die-black-box.html">Neuronale Netze: Ein Blick in die Blackbox</a>.</p>
-<div class="figure align-default" id="markdown-fig">
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/neuron.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/neuron.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Modell eines einzelnen Neurons.</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
-</div>
+<span id="neural-net"></span><h1>Einzelnes Neuron<a class="headerlink" href="#einzelnes-neuron" title="Permalink to this headline">¶</a></h1>
+<p>Dieses Kapitel beschreibt die Funktionsweise eines einzelnen Neurons, das kleinste Element neuronaler Netze. Mit Bildern, Text und Codes wird die Funktionsweise der Neuronen erarbeitet.</p>
+<p>In der Abbildung <a class="reference internal" href="2_logReg_learning.html#neuron1"><span class="std std-ref">Modell eines Neurons</span></a> ist der Aufbau eines Neurons dargestellt. Ein einzelnes Neuron besitzt mehrere, gewichtete Eingänge und einen Ausgang.</p>
 <p>Die gewichteten Eingabewerte werden mit einem Bias verrechnet, vom Neuron aufsummiert und durch eine Aktivierungsfunktion wird ein Ausgabewert berechnet.</p>
-<p>Wir beginnen zunächst mit dem einfachsten Fall:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Weitere Informationen:
+<a class="reference external" href="https://www.informatik-aktuell.de/betrieb/kuenstliche-intelligenz/neuronale-netze-ein-blick-in-die-black-box.html">Neuronale Netze: Ein Blick in die Blackbox</a>.</p>
+</div>
+<div class="figure align-default" id="neuron1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/neuron.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/neuron.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Modell eines einzelnen Neurons.</span><a class="headerlink" href="#neuron1" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="ein-vereinfachtes-neuron">
 <h2>Ein vereinfachtes Neuron<a class="headerlink" href="#ein-vereinfachtes-neuron" title="Permalink to this headline">¶</a></h2>
-<p>In der Abbildung ist ein vereinfachtes künstliches Neuron zu sehen. Dieses Neuron besitzt keine Aktivierungsfunktion und keinen Bias-Term. Es besitzt lediglich eine Summierfunktion.</p>
-<div class="figure align-default" id="id1">
+<p>In der Abbildung <a class="reference internal" href="#neuron-no-bias"><span class="std std-ref">Neuron ohne Bias und Aktivierungsfunktion</span></a> ist ein vereinfachtes künstliches Neuron zu sehen. Dieses Neuron besitzt keine Aktivierungsfunktion und keinen Bias-Term. Es besitzt lediglich eine Summenfunktion und summiert die gewichteten Eingabewerte.</p>
+<div class="figure align-default" id="neuron-no-bias">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/neuron_summe.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/neuron_summe.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Modell eines einzelnen Neurons ohne Bias und Aktivierungsfunktion.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Neuron ohne Bias und Aktivierungsfunktion.</span><a class="headerlink" href="#neuron-no-bias" title="Permalink to this image">¶</a></p>
 </div>
-<p>Die <strong>Eingabedaten X</strong> werden nun mit den <strong>Gewichten w</strong> verrechnet. Das Neuron bildet anschließend die Summe und gibt diese als <strong>Ausgabewert y</strong> aus. Wie die Werte für die Gewichte bestimmt werden kann man im <strong>Kapitel: Lernvorgang</strong> nachlesen. Für das weitere Vorgehen, reicht es aus, zu wissen, dass es diese Gewichte gibt.</p>
-<p>Anhand dieses einfachen Neurons kann man den konzeptionellen Aufbau Neuronaler Netze besser verstehen. Was dieses Neuron kann, schauen wir uns anhand eines Beispiels in Python an.</p>
+<p>Die <strong>Eingabedaten X</strong> werden nun mit den <strong>Gewichten w</strong> verrechnet. Das Neuron bildet anschließend die Summe und gibt diese als <strong>Ausgabewert y</strong> aus. Wie die Werte für die Gewichte bestimmt werden, wird im Kapitel <a class="reference internal" href="4_NN_learning.html#nn-learning"><span class="std std-ref">Lernvorgang</span></a> erläutert. Für das weitere Vorgehen, reicht es aus zu wissen, dass es diese Gewichte gibt.</p>
+<p>Dies sind die Grundlagen zum Verständnis des konzeptionellen Aufbaus neuronaler Netze. Was dieses Neuron kann, wird anhand eines Beispiels in Python gezeigt.</p>
 </div>
 <div class="section" id="lineare-regression-ohne-bias">
 <h2>Lineare Regression ohne Bias<a class="headerlink" href="#lineare-regression-ohne-bias" title="Permalink to this headline">¶</a></h2>
-<p>evt weglassen und nur mit Bias erklären</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
-
-<span class="n">IFrame</span><span class="p">(</span><span class="s2">&quot;https://www.geogebra.org/m/zg8duqnw&quot;</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="1000"
-    height="1000"
-    src="https://www.geogebra.org/m/zg8duqnw"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
-</div>
+<p>In dem folgenden Beispiel, geht es darum anhand der linearen Regression die Funktionsweise eines Neurons zu demonstrieren. Solange das Neuron noch keine Aktivierungsfunktion besitzt, arbeitet es wie die lineare Regression.</p>
 <p><a class="reference external" href="https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2">Linear Regression and Bias</a></p>
 <p><strong>Beispiel: Millimeter in Zoll umrechnen</strong></p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -452,76 +458,61 @@
     <span class="mf">0.590551</span><span class="p">,</span>
     <span class="mf">2.3622</span>
 <span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+
+<span class="c1"># Da ohne Bias: fit_intercept = False </span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Modell mit den Daten trainieren</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># das Gewicht (Steigung / Koeffizient)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Das (gelernte) Gewicht =&quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">))</span>
+
+<span class="n">Millimeter</span> <span class="o">=</span> <span class="mf">25.4</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Millimeter</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;mm * Gewicht = &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Millimeter</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;Zoll&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression(fit_intercept=False)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Das (gelernte) Gewicht =[0.03937]
+25.4mm * Gewicht = [0.9999981]Zoll
 </pre></div>
 </div>
 </div>
 </div>
-<p>Das Modell hat nun den Zusammenhang der Trainingsdaten gelernt.
-Das gelernte Gewicht entspricht dabei der Steigung der Regressionsgeraden.</p>
+<p>Die Länge von 25,4 mm entspricht der Länge von 1 Zoll. Das Modell hat den Zusammenhang der Trainingsdaten gelernt. Das gelernte Gewicht entspricht dabei der Steigung der Regressionsgeraden.</p>
+<p>Dieser gelernte Zusammenhang kann nun auch auf neue Daten angewendet werden. Eine „Vorhersage“ für eine Reihe von Werten bekommt man mit der <em>predict-Methode</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Steigung bzw Koeffizient oder Gewicht</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.03937]
-</pre></div>
-</div>
-</div>
-</div>
-<p>Diesen gelernten Zusammenhang können wir nun auch auf neue Daten anwenden:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="mf">0.03937</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.9370000000000003
-</pre></div>
-</div>
-</div>
-</div>
-<p>Eine “Vorhersage” für eine Reihe an Werten bekommt man mit der predict-Methode:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">120</span><span class="p">],</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mehrere Werte vorhersagen lassen</span>
+<span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">254</span><span class="p">],</span>
     <span class="p">[</span><span class="mi">130</span><span class="p">]</span>
 <span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.72440047, 5.11810051])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([9.999981  , 5.11810051])
 </pre></div>
 </div>
 </div>
 </div>
-<p>Das einzelne Neuron ist bereits in der Lage den Zusammenhang zwischen Millimeter und Zoll aus den Trainingsdaten zu lernen.</p>
+<p>Das einzelne Neuron ist bereits in der Lage den Zusammenhang zwischen Millimeter und Zoll aus Trainingsdaten zu lernen. Da Millimeter und Zoll, beide im Ursprung bei null beginnen, war das Neuron auch ohne Bias-Term in der Lage, den Zusammenhang korrekt zu lernen.</p>
 </div>
 <div class="section" id="lineare-regression-mit-bias">
 <h2>Lineare Regression mit Bias<a class="headerlink" href="#lineare-regression-mit-bias" title="Permalink to this headline">¶</a></h2>
+<p>Um den Zusammenhang zwischen Grad Celsius und Fahrenheit zu lernen, d.<span class="math notranslate nohighlight">\(~\)</span>h. eine optimale Regressionsgerade berechnen zu können, ist bei diesem Beispiel die Verwendung des Bias-Term notwendig <a class="reference internal" href="#neuron-bias"><span class="std std-ref">Modell eines einzelnen Neurons mit Bias</span></a>. Der Bias-Term gibt dem Neuron einen zusätzlichen Freiheitsgrad, der es ermöglicht, nicht nur die Steigung zu variieren, sondern auch die Ausgleichsgerade in Y-Richtung zu verschieben (siehe <span class="xref myst">folgende Abbildung</span>)</p>
+<div class="figure align-default" id="residuals-bias">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/residuals.png"><img alt="residuals" class="bg-primary mb-1" src="../_images/residuals.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Regressionsgerade durch Bias-Term verschiebbar in Y-Richtung.</span><a class="headerlink" href="#residuals-bias" title="Permalink to this image">¶</a></p>
+</div>
 <p><strong>Beispiel: Grad Celsius in Fahrenheit umrechnen</strong></p>
-<div class="figure align-default" id="id2">
+<div class="figure align-default" id="neuron-bias">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/neuron_bias.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/neuron_bias.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Modell eines einzelnen Neurons mit Bias.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Modell eines einzelnen Neurons mit Bias.</span><a class="headerlink" href="#neuron-bias" title="Permalink to this image">¶</a></p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -536,28 +527,12 @@ Das gelernte Gewicht entspricht dabei der Steigung der Regressionsgeraden.</p>
     <span class="mi">32</span><span class="p">,</span>
     <span class="mi">68</span>
 <span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression()
-</pre></div>
-</div>
-</div>
-</div>
-<p>Dadurch, dass wir dem Modell mit <strong>fit_intercept = True</strong> einen weiteren Freiheitsgrad zur Verfügung stellen, ist das Modell in der Lage den Zusammenhang zwischen Grad Celsius und Fahrenheit zu lernen.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -572,122 +547,25 @@ Das gelernte Gewicht entspricht dabei der Steigung der Regressionsgeraden.</p>
 <p>Das Neuron hat den Zusammenhang korrekt gelernt.</p>
 <p>Die Berechnungsformel lautet:
 <strong>°F = °C * 1,8 + 32 (von Celsius nach Fahrenheit)</strong></p>
-<p><strong>Beispiel: Verbrauch von Autos:</strong></p>
-<p>Ein weiteres berühmtes Machinelearningbeispiel ist der <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/auto+mpg">MPG Datensatz</a>.</p>
-<p><strong>Verbrauch von Autos vorhersagen</strong></p>
-<p><strong>Aufgabe:</strong></p>
-<p>Eine Firma hat ein neues Auto angekündigt, aber noch keine Verbrauchsdaten angegeben. Kannst du den Verbrauch (in l/100km) des Autos schätzen, indem du ein Modell trainierst?</p>
-<p>Das Auto hat:</p>
-<ul class="simple">
-<li><p>8 Zylinder</p></li>
-<li><p>200PS</p></li>
-<li><p>2500kg</p></li>
-</ul>
-<p>Lese dazu die Datei <code class="docutils literal notranslate"><span class="pre">mpg-dataset.csv</span></code> ein. Trainiere anschließend ein Modell, und sage den Verbrauch (in l/100km) dieses Autos vorher!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mpg_to_l_per_100km</span><span class="p">(</span><span class="n">mpg</span><span class="p">):</span>
-    <span class="n">LITERS_PER_GALLON</span> <span class="o">=</span> <span class="mf">3.785411784</span>
-    <span class="n">KILOMETERS_PER_MILES</span> <span class="o">=</span> <span class="mf">1.609344</span>
-
-    <span class="k">return</span> <span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">LITERS_PER_GALLON</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">KILOMETERS_PER_MILES</span> <span class="o">*</span> <span class="n">mpg</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">mpg_to_l_per_100km</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.352145833333333
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;mpg-dataset.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;cylinders&quot;</span><span class="p">,</span> <span class="s2">&quot;horsepower&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">mpg_to_l_per_100km</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;mpg&quot;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression()
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.2757425  0.03284566 0.00229432]
--0.523209321982586
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">2500</span><span class="p">]</span>
-<span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[13.98766161]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\Martin\anaconda3\envs\py37\lib\site-packages\sklearn\base.py:451: UserWarning: X does not have valid feature names, but LinearRegression was fitted with feature names
-  &quot;X does not have valid feature names, but&quot;
-</pre></div>
-</div>
-</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Setze ungenaue Trainigswerte ein und schau wie sich das Ergebnis verändert.</p>
 </div>
 </div>
 <div class="section" id="aktivierungsfunktion">
 <h2>Aktivierungsfunktion<a class="headerlink" href="#aktivierungsfunktion" title="Permalink to this headline">¶</a></h2>
 <p><strong>Wozu ist die Aktivierungsfunktion nötig?</strong></p>
-<p>Die vereinfachten, linearen Neuronen lassen sich nicht hintereinander schalten/verknüpfen bzw macht es keinen Sinn dies zu tun. Eine Beispielrechnung verdeutlicht das:</p>
-<p><strong>Beispiel:</strong>
-Am Eingang X liegt eine 5 an und am Ausgang soll eine 20 ausgegeben werden. Die beiden Gewichte bekommen 2 als Faktor. Das gleiche Ergebnis würde heraus kommen wenn man ein Neuron mit einem Gewicht und dem Faktor 4 verwendet.</p>
-<div class="figure align-default" id="id3">
+<p>Um aus vielen Neuronen ein neuronales Netz zu erzeugen, ist es notwendig, diese hintereinander zu schalten. Die vereinfachten, linearen Neuronen lassen sich aber nicht hintereinander schalten bzw. verknüpfen, da es  keinen Sinn ergibt dies zu tun. Eine Beispielrechnung <a class="reference internal" href="#activation-series"><span class="std std-ref">Lineare Neuronen in Reihe geschaltet</span></a> verdeutlicht das.</p>
+<p><strong>Beispiel:</strong><br />
+Am Eingang X liegt eine 5 an und am Ausgang soll eine 20 ausgegeben werden. Die beiden Gewichte bekommen 2 als Faktor. Das gleiche Ergebnis würde herauskommen, wenn man ein Neuron mit einem Gewicht und dem Faktor 4 verwendet.</p>
+<div class="figure align-default" id="activation-series">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/neuron_series.png"><img alt="sig" class="bg-primary mb-1" src="../_images/neuron_series.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Lineare Neuronen in Reihe geschalten.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Lineare Neuronen in Reihe geschaltet.</span><a class="headerlink" href="#activation-series" title="Permalink to this image">¶</a></p>
 </div>
-<ul class="simple">
-<li><p>“hintereinanderschalten” von vereinfachten, linearen Neuronen ohne Aktivierungsfunktion nicht möglich</p></li>
-<li><p>Bisher keine Ja/Nein Antworten oder Ausgabewerte zwischen 0 und 1 möglich</p></li>
-</ul>
-<p>Die <strong>Sigmoidfunktion</strong> bildet die Ergebnisse auf den Zahlenbereich zwischen 0 und 1 ab. Die Ergebnisse können in der Form als eine Wahrscheinlichkeit aufgefasst werden:</p>
+<p>Des Weiteren ist es mit einem linearen Neuron ohne Aktivierungsfunktion bisher nicht möglich eine Ja/Nein Antwort oder Ausgabewerte zwischen 0 und 1 zu erhalten. Um dies zu erreichen, wird eine Aktivierungsfunktion benötigt.</p>
+</div>
+<div class="section" id="sigmoid-als-aktivierungsfunktion">
+<span id="sigmoid"></span><h2>Sigmoid als Aktivierungsfunktion<a class="headerlink" href="#sigmoid-als-aktivierungsfunktion" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import matplotlib, numpy and math</span>
@@ -712,47 +590,22 @@ Am Eingang X liegt eine 5 an und am Ausgang soll eine 20 ausgegeben werden. Die 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1_neuron_49_0.png" src="../_images/1_neuron_49_0.png" />
+<img alt="../_images/1_neuron_32_0.png" src="../_images/1_neuron_32_0.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># Major ticks every 20, minor ticks every 5</span>
-<span class="n">major_ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">minor_ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">major_ticks</span><span class="p">)</span>
-<span class="c1">#ax.set_xticks(minor_ticks, minor=True)</span>
-<span class="c1">#ax.set_yticks(major_ticks)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">minor_ticks</span><span class="p">,</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># And a corresponding grid</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
-
-<span class="c1"># Or if you want different settings for the grids:</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/1_neuron_50_0.png" src="../_images/1_neuron_50_0.png" />
-</div>
-</div>
+<p>Die Eingabewerte von -6 bis 6 werden auf einen Zahlenbereich zwischen 0 und 1 umgerechnet.</p>
 </div>
 <div class="section" id="logistische-regression">
-<h2>Logistische Regression<a class="headerlink" href="#logistische-regression" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-default" id="id4">
+<span id="logistic-reg"></span><h2>Logistische Regression<a class="headerlink" href="#logistische-regression" title="Permalink to this headline">¶</a></h2>
+<p>Das Neuron besitzt nun eine (Sigmoid-) Aktivierungsfunktion <a class="reference internal" href="#neuron-activation"><span class="std std-ref">Neuron mit Aktivierungsfunktion</span></a>. Es arbeitet jetzt wie die logistische Regression und kommt der Funktionsweise eines KNN schon sehr nah.</p>
+<div class="figure align-default" id="neuron-activation">
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/neuron_activation.png"><img alt="pozi" class="bg-primary mb-1" src="../_images/neuron_activation.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Modell eines einzelnen Neurons mit Bias und Aktivierungsfunktion.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Modell eines einzelnen Neurons Aktivierungsfunktion.</span><a class="headerlink" href="#neuron-activation" title="Permalink to this image">¶</a></p>
 </div>
+<p>Neuronale Netze werden oft für Fragestellungen eingesetzt, bei der eine Ja/Nein Antwort benötigt wird. In der Medizin: Brustkrebs Ja oder Nein?</p>
 <p><strong>Beispiel: Wird ein Studierender die Prüfung bestehen?</strong></p>
-<div class="cell docutils container">
+<p>In diesem einfachen Beispiel wurden Daten von Studierenden aufgenommen. Die X-Werte sind die Anzahl an Stunden, die zur Vorbereitung auf eine Prüfung aufgewendet wurden. Die y-Werte stellen die Labels dar und geben an, ob bei der jeweiligen Stundenzahl die Prüfung bestanden wurde oder nicht.</p>
+<div class="cell tag_hide-input tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># X = Wie viele Stunden wurde gelernt?</span>
 
@@ -765,6 +618,8 @@ Am Eingang X liegt eine 5 an und am Ausgang soll eine 20 ausgegeben werden. Die 
     <span class="p">[</span><span class="mi">30</span><span class="p">],</span>
 <span class="p">]</span>
 
+<span class="c1"># wurde die Prüfung bestanden?: 1 = ja ; 0= nein</span>
+
 <span class="n">y</span> <span class="o">=</span> <span class="p">[</span>
     <span class="mi">1</span><span class="p">,</span> 
     <span class="mi">1</span><span class="p">,</span>
@@ -773,53 +628,35 @@ Am Eingang X liegt eine 5 an und am Ausgang soll eine 20 ausgegeben werden. Die 
     <span class="mi">0</span><span class="p">,</span> 
     <span class="mi">0</span><span class="p">,</span>
 <span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">)</span>
+
+<span class="c1"># Modell trainieren</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogisticRegression(C=100000)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">44</span><span class="p">]</span>
+
+<span class="c1"># Vorhersage Wahrscheinlichkeit des bestehens der Prüfung bei gegebener Lernstundenanzahl:</span>
+<span class="n">proba</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">40</span><span class="p">]</span>
 <span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">proba</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># wird bestehen [%]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">proba</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># wird nicht bestehen [%]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5182602366346037
+0.48173976336539626
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">([</span>
-    <span class="p">[</span><span class="mi">35</span><span class="p">]</span>
-<span class="p">])</span>
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dieser Code ist ausführbar. Klicke das Raketen Symbol in der oberen Leiste und wähle Colab aus.</p>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.99873289, 0.00126711]])
-</pre></div>
-</div>
-</div>
-</div>
+<p>Die Funktionsweise eines Neurons wurde nun erläutert. Im  <a class="reference internal" href="4_NN_learning.html#nn-learning"><span class="std std-ref">nächsten Kapitel</span></a> geht es darum, wie aus solchen Neuronen ein neuronales Netz erstellt werden kann.</p>
 </div>
 </div>
 
@@ -855,10 +692,10 @@ Am Eingang X liegt eine 5 an und am Ausgang soll eine 20 ausgegeben werden. Die 
             <p class="prev-next-title">Datensatz 2 (Schrauben)</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="logReg_28x28.html" title="next page">
+    <a class='right-next' id="next-link" href="2_logReg_learning.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Logistische Regression</p>
+        <p class="prev-next-title">Logistische Regression (Funktionsweise)</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -871,7 +708,12 @@ Am Eingang X liegt eine 5 an und am Ausgang soll eine 20 ausgegeben werden. Die 
     
       By Martin Weilepp<br/>
     
-        &copy; Copyright 2021.<br/>
+      <div class="extra_footer">
+        <p>
+HTWG Konstanz
+</p>
+
+      </div>
   </p>
 </footer>
 </main>

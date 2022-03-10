@@ -52,6 +52,7 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://martin86we.github.io/Masterthesis_2022/03_CNN/CNN_2_224x224.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Bibliography" href="../bibliography.html" />
@@ -108,8 +109,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Eigenst.html">
+   Eidesstattliche Erklärung
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../00_Intro/intro.html">
-   Masterarbeit
+   Aufgabenstellung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Nomenklatur.html">
+   Nomenklatur
   </a>
  </li>
  <li class="toctree-l1">
@@ -147,17 +158,22 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/logReg_28x28.html">
+  <a class="reference internal" href="../02_NN/2_logReg_learning.html">
+   Logistische Regression (Funktionsweise)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_NN/3_logReg_28x28.html">
    Logistische Regression
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/2_NN_learning.html">
+  <a class="reference internal" href="../02_NN/4_NN_learning.html">
    Neuronales Netz (Funktionsweise)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/NN_28x28.html">
+  <a class="reference internal" href="../02_NN/5_NN_28x28.html">
    Neuronales Netz
   </a>
  </li>
@@ -252,6 +268,21 @@
 
             <!-- Source interaction buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Martin86We/Masterthesis_2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/Martin86We/Masterthesis_2022/edit/main/03_CNN/CNN_2_224x224.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -266,7 +297,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/Martin86We/Masterthesis_2022/main?urlpath=lab/tree/03_CNN/CNN_2_224x224.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Martin86We/Masterthesis_2022/main?urlpath=tree/03_CNN/CNN_2_224x224.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -274,7 +305,7 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/drive/1Q_-4-XPH8WrtrilVFsH9ng-QvGbCD4iF/github/Martin86We/Masterthesis_2022/blob/main/03_CNN/CNN_2_224x224.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/Martin86We/Masterthesis_2022/blob/main/03_CNN/CNN_2_224x224.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -302,28 +333,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bild-anzeigen">
-   Bild anzeigen
+  <a class="reference internal nav-link" href="#bilder-anzeigen">
+   Bilder anzeigen
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ubersicht-modelle">
-   Übersicht Modelle
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#c">
-   C
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#d">
-   D
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#e">
-   E
+  <a class="reference internal nav-link" href="#vergleich-der-cnn-modelle">
+   Vergleich der CNN Modelle
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -332,18 +348,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modell-f">
-   Modell F
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modell-g">
-   Modell G
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modell-h">
-   Modell H
+  <a class="reference internal nav-link" href="#fazit">
+   Fazit
   </a>
  </li>
 </ul>
@@ -372,28 +378,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bild-anzeigen">
-   Bild anzeigen
+  <a class="reference internal nav-link" href="#bilder-anzeigen">
+   Bilder anzeigen
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ubersicht-modelle">
-   Übersicht Modelle
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#c">
-   C
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#d">
-   D
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#e">
-   E
+  <a class="reference internal nav-link" href="#vergleich-der-cnn-modelle">
+   Vergleich der CNN Modelle
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -402,18 +393,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modell-f">
-   Modell F
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modell-g">
-   Modell G
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modell-h">
-   Modell H
+  <a class="reference internal nav-link" href="#fazit">
+   Fazit
   </a>
  </li>
 </ul>
@@ -446,13 +427,13 @@
 </div>
 <div class="section" id="datensatz-laden">
 <h2>Datensatz laden<a class="headerlink" href="#datensatz-laden" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;Dataset_224x224/X_train.npy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;Dataset_224x224/y_train.npy&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;../01_Dataset/Dataset_224x224/X_train.npy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;../01_Dataset/Dataset_224x224/y_train.npy&#39;</span><span class="p">)</span>
 
-<span class="n">X_test</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;Dataset_224x224/X_test.npy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">y_test</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;Dataset_224x224/y_test.npy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="n">X_test</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../01_Dataset/Dataset_224x224/X_test.npy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">224</span><span class="p">,</span><span class="mi">224</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y_test</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../01_Dataset/Dataset_224x224/y_test.npy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
 
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
 <span class="n">y_test</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
@@ -470,8 +451,8 @@ y_train shape:(7560, 6)
 </div>
 </div>
 </div>
-<div class="section" id="bild-anzeigen">
-<h2>Bild anzeigen<a class="headerlink" href="#bild-anzeigen" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bilder-anzeigen">
+<h2>Bilder anzeigen<a class="headerlink" href="#bilder-anzeigen" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -501,16 +482,15 @@ y_train shape:(7560, 6)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/CNN_2_224x224_6_0.png" src="../_images/CNN_2_224x224_6_0.png" />
+<img alt="../_images/CNN_2_224x224_5_0.png" src="../_images/CNN_2_224x224_5_0.png" />
 </div>
 </div>
-<p><a class="reference external" href="https://www.pluralsight.com/guides/data-visualization-deep-learning-model-using-matplotlib">https://www.pluralsight.com/guides/data-visualization-deep-learning-model-using-matplotlib</a></p>
 </div>
-<div class="section" id="ubersicht-modelle">
-<h2>Übersicht Modelle<a class="headerlink" href="#ubersicht-modelle" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vergleich-der-cnn-modelle">
+<h2>Vergleich der CNN Modelle<a class="headerlink" href="#vergleich-der-cnn-modelle" title="Permalink to this headline">¶</a></h2>
 <div class="tabbed-set docutils">
-<input checked="checked" id="915044a1-658a-457e-8923-058093ca7b15" name="cce8348b-f999-4602-b0f4-fa663d2f0de9" type="radio">
-</input><label class="tabbed-label" for="915044a1-658a-457e-8923-058093ca7b15">
+<input checked="checked" id="ab3930ab-82c5-428a-bffa-91dfd611b47b" name="fbbdfa93-1407-4d98-80ce-f900f4c56767" type="radio">
+</input><label class="tabbed-label" for="ab3930ab-82c5-428a-bffa-91dfd611b47b">
 Modell A</label><div class="tabbed-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modell Aufbau</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
@@ -533,15 +513,15 @@ Modell A</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="e4365d5c-784b-4087-84ad-23283f68591c" name="cce8348b-f999-4602-b0f4-fa663d2f0de9" type="radio">
-</input><label class="tabbed-label" for="e4365d5c-784b-4087-84ad-23283f68591c">
+<input id="6076e7b7-2bed-4751-92a1-7736f5b158e6" name="fbbdfa93-1407-4d98-80ce-f900f4c56767" type="radio">
+</input><label class="tabbed-label" for="6076e7b7-2bed-4751-92a1-7736f5b158e6">
 Architektur</label><div class="tabbed-content docutils">
 <div class="figure align-default" id="model-fig">
 <a class="reference internal image-reference" href="../_images/model_1_plot.png"><img alt="../_images/model_1_plot.png" src="../_images/model_1_plot.png" style="height: 350px;" /></a>
 </div>
 </div>
-<input id="a6fd9859-b9b4-45ee-ae93-3b3c34e804b1" name="cce8348b-f999-4602-b0f4-fa663d2f0de9" type="radio">
-</input><label class="tabbed-label" for="a6fd9859-b9b4-45ee-ae93-3b3c34e804b1">
+<input id="6af16b17-840e-44f4-b858-92143baaaff3" name="fbbdfa93-1407-4d98-80ce-f900f4c56767" type="radio">
+</input><label class="tabbed-label" for="6af16b17-840e-44f4-b858-92143baaaff3">
 Evaluierung</label><div class="tabbed-content docutils">
 <table class="colwidths-auto table">
 <thead>
@@ -550,8 +530,8 @@ Evaluierung</label><div class="tabbed-content docutils">
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_9_0.png" src="../_images/CNN_2_224x224_9_0.png" /></span></p></td>
-<td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_10_1.png" src="../_images/CNN_2_224x224_10_1.png" /></span></p></td>
+<tr class="row-even"><td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_7_0.png" src="../_images/CNN_2_224x224_7_0.png" /></span></p></td>
+<td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_7_1.png" src="../_images/CNN_2_224x224_7_1.png" /></span></p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:center"><p><center>Die erreichte Genauigkeit beträgt: <span class="pasted-text">0.893</span></center></p></td>
 <td class="text-align:center"><p><center> Der Loss: <span class="pasted-text">1.71</span></center></p></td>
@@ -559,11 +539,19 @@ Evaluierung</label><div class="tabbed-content docutils">
 </tbody>
 </table>
 </div>
+<input id="87e39610-e00a-46ca-ab2d-9959752f416e" name="fbbdfa93-1407-4d98-80ce-f900f4c56767" type="radio">
+</input><label class="tabbed-label" for="87e39610-e00a-46ca-ab2d-9959752f416e">
+Confusion Matrix</label><div class="tabbed-content docutils">
+<div class="figure align-center" id="id1">
+<img alt="../_images/1Conv2d_10_3x3_relu_confMat.png" src="../_images/1Conv2d_10_3x3_relu_confMat.png" />
+</div>
+</div>
 </div>
 <p><span class="math notranslate nohighlight">\(~\)</span></p>
+<p><span class="math notranslate nohighlight">\(~\)</span></p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="2db4b7f3-4b02-40ef-973a-c7683b8b10cd" name="b60f4a09-49a0-4662-b443-f70e9a68f04a" type="radio">
-</input><label class="tabbed-label" for="2db4b7f3-4b02-40ef-973a-c7683b8b10cd">
+<input checked="checked" id="2c5ef04d-bca4-42fa-aca7-a21fbf741fa4" name="93850d93-3b07-4e81-9854-609167031bb0" type="radio">
+</input><label class="tabbed-label" for="2c5ef04d-bca4-42fa-aca7-a21fbf741fa4">
 Modell B</label><div class="tabbed-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modell Aufbau</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
@@ -586,15 +574,15 @@ Modell B</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="4b33338e-6b2f-40fd-aabc-62153ccf3b8e" name="b60f4a09-49a0-4662-b443-f70e9a68f04a" type="radio">
-</input><label class="tabbed-label" for="4b33338e-6b2f-40fd-aabc-62153ccf3b8e">
+<input id="772641bb-808c-45b1-93f2-a1aff6020b77" name="93850d93-3b07-4e81-9854-609167031bb0" type="radio">
+</input><label class="tabbed-label" for="772641bb-808c-45b1-93f2-a1aff6020b77">
 Architektur</label><div class="tabbed-content docutils">
 <div class="figure align-default" id="model-b-fig">
 <a class="reference internal image-reference" href="../_images/model_1_plot.png"><img alt="../_images/model_1_plot.png" src="../_images/model_1_plot.png" style="height: 350px;" /></a>
 </div>
 </div>
-<input id="e8b6022e-bf79-43e7-8517-965e66ae9cfd" name="b60f4a09-49a0-4662-b443-f70e9a68f04a" type="radio">
-</input><label class="tabbed-label" for="e8b6022e-bf79-43e7-8517-965e66ae9cfd">
+<input id="f9a8eded-7589-461b-8402-712abddf9334" name="93850d93-3b07-4e81-9854-609167031bb0" type="radio">
+</input><label class="tabbed-label" for="f9a8eded-7589-461b-8402-712abddf9334">
 Evaluierung</label><div class="tabbed-content docutils">
 <table class="colwidths-auto table">
 <thead>
@@ -603,22 +591,27 @@ Evaluierung</label><div class="tabbed-content docutils">
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_12_0.png" src="../_images/CNN_2_224x224_12_0.png" /></span></p></td>
-<td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_12_1.png" src="../_images/CNN_2_224x224_12_1.png" /></span></p></td>
+<tr class="row-even"><td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><center>Die erreichte Genauigkeit beträgt: <span class="pasted-text">0.926</span></center></p></td>
-<td class="text-align:center"><p><center> Der Loss: <span class="pasted-text">5.14</span></center></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><center>Die erreichte Genauigkeit beträgt: </center></p></td>
+<td class="text-align:center"><p><center> Der Loss: </center></p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<input id="ceb4b5e7-62a2-4d9c-a97b-6362cb7067d8" name="93850d93-3b07-4e81-9854-609167031bb0" type="radio">
+</input><label class="tabbed-label" for="ceb4b5e7-62a2-4d9c-a97b-6362cb7067d8">
+Confusion Matrix</label><div class="tabbed-content docutils">
+<div class="figure align-center" id="id2">
+<img alt="../_images/1Conv2d_10_3x3_relu_confMat.png" src="../_images/1Conv2d_10_3x3_relu_confMat.png" />
 </div>
 </div>
-<div class="section" id="c">
-<h2>C<a class="headerlink" href="#c" title="Permalink to this headline">¶</a></h2>
+</div>
+<p><span class="math notranslate nohighlight">\(~\)</span></p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="2180875f-6631-49ca-8fbb-1306c4d2a966" name="238bc4db-b2f7-48ba-b6c5-f5b79a9d634a" type="radio">
-</input><label class="tabbed-label" for="2180875f-6631-49ca-8fbb-1306c4d2a966">
+<input checked="checked" id="8bbd8365-76fa-4b70-aa79-18fd1c80afee" name="5e7b6a47-85b1-431b-bc10-cebe9c35e1c0" type="radio">
+</input><label class="tabbed-label" for="8bbd8365-76fa-4b70-aa79-18fd1c80afee">
 Modell C</label><div class="tabbed-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modell Aufbau</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
@@ -641,15 +634,15 @@ Modell C</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="551bc968-23c4-4c29-a0ab-8730532d81c8" name="238bc4db-b2f7-48ba-b6c5-f5b79a9d634a" type="radio">
-</input><label class="tabbed-label" for="551bc968-23c4-4c29-a0ab-8730532d81c8">
+<input id="6bdba0ea-e6b9-4c95-b6fd-80459a17a1ae" name="5e7b6a47-85b1-431b-bc10-cebe9c35e1c0" type="radio">
+</input><label class="tabbed-label" for="6bdba0ea-e6b9-4c95-b6fd-80459a17a1ae">
 Architektur</label><div class="tabbed-content docutils">
 <div class="figure align-default" id="modelb-fig">
 <a class="reference internal image-reference" href="../_images/model_C_plot.png"><img alt="../_images/model_C_plot.png" src="../_images/model_C_plot.png" style="height: 350px;" /></a>
 </div>
 </div>
-<input id="29ea7231-00cd-45b2-8046-680624ac41e7" name="238bc4db-b2f7-48ba-b6c5-f5b79a9d634a" type="radio">
-</input><label class="tabbed-label" for="29ea7231-00cd-45b2-8046-680624ac41e7">
+<input id="b3881dbb-1e5a-43b2-abe2-41c226f19e8a" name="5e7b6a47-85b1-431b-bc10-cebe9c35e1c0" type="radio">
+</input><label class="tabbed-label" for="b3881dbb-1e5a-43b2-abe2-41c226f19e8a">
 Evaluierung</label><div class="tabbed-content docutils">
 <table class="colwidths-auto table">
 <thead>
@@ -658,22 +651,27 @@ Evaluierung</label><div class="tabbed-content docutils">
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_16_0.png" src="../_images/CNN_2_224x224_16_0.png" /></span></p></td>
-<td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_16_1.png" src="../_images/CNN_2_224x224_16_1.png" /></span></p></td>
+<tr class="row-even"><td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><center>Die erreichte Genauigkeit beträgt: <span class="pasted-text">0.938</span></center></p></td>
-<td class="text-align:center"><p><center> Der Loss: <span class="pasted-text">0.53</span></center></p></td>
+<tr class="row-odd"><td class="text-align:center"><p><center>Die erreichte Genauigkeit beträgt: </center></p></td>
+<td class="text-align:center"><p><center> Der Loss: </center></p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<input id="30f24632-0cf8-4448-b276-f8dfc8ebabfb" name="5e7b6a47-85b1-431b-bc10-cebe9c35e1c0" type="radio">
+</input><label class="tabbed-label" for="30f24632-0cf8-4448-b276-f8dfc8ebabfb">
+Confusion Matrix</label><div class="tabbed-content docutils">
+<div class="figure align-center" id="id3">
+<img alt="../_images/1Conv2d_10_3x3_MaxP_2x2_confMat.png" src="../_images/1Conv2d_10_3x3_MaxP_2x2_confMat.png" />
 </div>
 </div>
-<div class="section" id="d">
-<h2>D<a class="headerlink" href="#d" title="Permalink to this headline">¶</a></h2>
+</div>
+<p><span class="math notranslate nohighlight">\(~\)</span></p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="fbcfe6ad-2771-49c8-bcae-1f8bf886cf25" name="0725cc98-6a35-434d-af82-c395b4796498" type="radio">
-</input><label class="tabbed-label" for="fbcfe6ad-2771-49c8-bcae-1f8bf886cf25">
+<input checked="checked" id="432f53c6-662e-4e71-a013-8aa079c854f6" name="713f2763-2d71-4929-9229-278edc8ad312" type="radio">
+</input><label class="tabbed-label" for="432f53c6-662e-4e71-a013-8aa079c854f6">
 Modell D</label><div class="tabbed-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modell Aufbau</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
@@ -696,15 +694,15 @@ Modell D</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="27bbf12e-1b4d-4acf-aaf9-6074031626bf" name="0725cc98-6a35-434d-af82-c395b4796498" type="radio">
-</input><label class="tabbed-label" for="27bbf12e-1b4d-4acf-aaf9-6074031626bf">
+<input id="00807a44-cbb0-493e-889b-6373d9368561" name="713f2763-2d71-4929-9229-278edc8ad312" type="radio">
+</input><label class="tabbed-label" for="00807a44-cbb0-493e-889b-6373d9368561">
 Architektur</label><div class="tabbed-content docutils">
 <div class="figure align-default" id="modeld-fig">
 <a class="reference internal image-reference" href="../_images/model_D_plot.png"><img alt="../_images/model_D_plot.png" src="../_images/model_D_plot.png" style="height: 350px;" /></a>
 </div>
 </div>
-<input id="857867e6-7d1b-498c-bffc-e5a69dcaa40f" name="0725cc98-6a35-434d-af82-c395b4796498" type="radio">
-</input><label class="tabbed-label" for="857867e6-7d1b-498c-bffc-e5a69dcaa40f">
+<input id="3097f894-642b-4fda-b222-a61a4f8b8b0e" name="713f2763-2d71-4929-9229-278edc8ad312" type="radio">
+</input><label class="tabbed-label" for="3097f894-642b-4fda-b222-a61a4f8b8b0e">
 Evaluierung</label><div class="tabbed-content docutils">
 <table class="colwidths-auto table">
 <thead>
@@ -713,8 +711,8 @@ Evaluierung</label><div class="tabbed-content docutils">
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_20_0.png" src="../_images/CNN_2_224x224_20_0.png" /></span></p></td>
-<td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_20_1.png" src="../_images/CNN_2_224x224_20_1.png" /></span></p></td>
+<tr class="row-even"><td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_17_0.png" src="../_images/CNN_2_224x224_17_0.png" /></span></p></td>
+<td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_17_1.png" src="../_images/CNN_2_224x224_17_1.png" /></span></p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:center"><p><center>Die erreichte Genauigkeit beträgt: <span class="pasted-text">0.943</span></center></p></td>
 <td class="text-align:center"><p><center> Der Loss: <span class="pasted-text">1.53</span></center></p></td>
@@ -722,13 +720,18 @@ Evaluierung</label><div class="tabbed-content docutils">
 </tbody>
 </table>
 </div>
+<input id="edd51fc5-29c8-4012-a590-18db93ab61a9" name="713f2763-2d71-4929-9229-278edc8ad312" type="radio">
+</input><label class="tabbed-label" for="edd51fc5-29c8-4012-a590-18db93ab61a9">
+Confusion Matrix</label><div class="tabbed-content docutils">
+<div class="figure align-center" id="id4">
+<img alt="../_images/1Conv2d_32_3x3_MaxP_2x2_confMat.png" src="../_images/1Conv2d_32_3x3_MaxP_2x2_confMat.png" />
 </div>
 </div>
-<div class="section" id="e">
-<h2>E<a class="headerlink" href="#e" title="Permalink to this headline">¶</a></h2>
+</div>
+<p><span class="math notranslate nohighlight">\(~\)</span></p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="72add187-2a4e-482e-be30-d25b4037630c" name="af7e3f4b-f575-4b68-8ac2-5e65e33aa50a" type="radio">
-</input><label class="tabbed-label" for="72add187-2a4e-482e-be30-d25b4037630c">
+<input checked="checked" id="33e1c60a-1855-4d69-a761-efcb91175fc3" name="042869c0-0b15-4152-9b52-d7c0d47cac15" type="radio">
+</input><label class="tabbed-label" for="33e1c60a-1855-4d69-a761-efcb91175fc3">
 Modell E</label><div class="tabbed-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modell Aufbau</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
@@ -751,15 +754,15 @@ Modell E</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="927bda59-7ad9-465c-b011-884b01696661" name="af7e3f4b-f575-4b68-8ac2-5e65e33aa50a" type="radio">
-</input><label class="tabbed-label" for="927bda59-7ad9-465c-b011-884b01696661">
+<input id="cc989ff5-344a-4df0-9521-8594a7d8ef9a" name="042869c0-0b15-4152-9b52-d7c0d47cac15" type="radio">
+</input><label class="tabbed-label" for="cc989ff5-344a-4df0-9521-8594a7d8ef9a">
 Architektur</label><div class="tabbed-content docutils">
 <div class="figure align-default" id="modele-fig">
 <a class="reference internal image-reference" href="../_images/model_E_plot.png"><img alt="../_images/model_E_plot.png" src="../_images/model_E_plot.png" style="height: 350px;" /></a>
 </div>
 </div>
-<input id="935e729b-90af-478e-945d-97d0a5ff202a" name="af7e3f4b-f575-4b68-8ac2-5e65e33aa50a" type="radio">
-</input><label class="tabbed-label" for="935e729b-90af-478e-945d-97d0a5ff202a">
+<input id="3fbff34a-8cc0-4a47-a392-38e59b441902" name="042869c0-0b15-4152-9b52-d7c0d47cac15" type="radio">
+</input><label class="tabbed-label" for="3fbff34a-8cc0-4a47-a392-38e59b441902">
 Evaluierung</label><div class="tabbed-content docutils">
 <table class="colwidths-auto table">
 <thead>
@@ -768,8 +771,8 @@ Evaluierung</label><div class="tabbed-content docutils">
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_23_0.png" src="../_images/CNN_2_224x224_23_0.png" /></span></p></td>
-<td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_23_1.png" src="../_images/CNN_2_224x224_23_1.png" /></span></p></td>
+<tr class="row-even"><td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_20_0.png" src="../_images/CNN_2_224x224_20_0.png" /></span></p></td>
+<td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_20_1.png" src="../_images/CNN_2_224x224_20_1.png" /></span></p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:center"><p><center>Die erreichte Genauigkeit beträgt: <span class="pasted-text">0.899</span></center></p></td>
 <td class="text-align:center"><p><center> Der Loss: <span class="pasted-text">2.30</span></center></p></td>
@@ -777,17 +780,21 @@ Evaluierung</label><div class="tabbed-content docutils">
 </tbody>
 </table>
 </div>
+<input id="43179c66-5f97-4e20-b7f1-8a9b57874bfc" name="042869c0-0b15-4152-9b52-d7c0d47cac15" type="radio">
+</input><label class="tabbed-label" for="43179c66-5f97-4e20-b7f1-8a9b57874bfc">
+Confusion Matrix</label><div class="tabbed-content docutils">
+<div class="figure align-center" id="id5">
+<img alt="../_images/1Conv2d_32_3x3_MaxP_2x2_confMat.png" src="../_images/1Conv2d_32_3x3_MaxP_2x2_confMat.png" />
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="dropout">
 <h2>Dropout<a class="headerlink" href="#dropout" title="Permalink to this headline">¶</a></h2>
-<p>Es könnte sein, dass das CNN bestimmte Verbindungen besonders hoch gewichtet wie z.B Bildinhalte die nicht zum Objekt gehören. Mit Dropout können Verbindungen unterbrochen werden und somit das Training “erschwert” werden. Das bringt ein robusteres Modell hervor, welches auf den Testdaten eine höhere Genauigkeit erreicht. Gerade bei vielen Features soll sich das CNN nicht nur auf wenige Merkmale “fixieren” obwohl dies zu einer höheren Trainings Genauigkeit führen würde.</p>
-</div>
-<div class="section" id="modell-f">
-<h2>Modell F<a class="headerlink" href="#modell-f" title="Permalink to this headline">¶</a></h2>
+<p>Es könnte sein, dass das CNN bestimmte Verbindungen besonders hoch gewichtet wie z.<span class="math notranslate nohighlight">\(~\)</span>B Bildinhalte, die nicht zum Objekt gehören. Mit Dropout werden Verbindungen unterbrochen, womit das Training „erschwert“ wird. Das bringt ein robusteres Modell hervor, welches auf den Testdaten eine höhere Genauigkeit erreicht. Gerade bei vielen Features soll sich das CNN nicht nur auf wenige Merkmale „fixieren“, obwohl dies zu einer höheren Trainingsgenauigkeit führen würde.</p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="c0c11451-ce39-4ec2-87e1-3bf17dcbf394" name="c3d6e7fa-e673-4df8-a780-df3692b24d61" type="radio">
-</input><label class="tabbed-label" for="c0c11451-ce39-4ec2-87e1-3bf17dcbf394">
+<input checked="checked" id="5617b72e-b2b1-4feb-939c-5641b84b58a1" name="165f3e5f-c8db-439d-b40b-107f4c4b3d1c" type="radio">
+</input><label class="tabbed-label" for="5617b72e-b2b1-4feb-939c-5641b84b58a1">
 Modell F</label><div class="tabbed-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modell Aufbau</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
@@ -812,15 +819,15 @@ Modell F</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="70fa9104-5116-446f-a6c4-3237b3e7a81b" name="c3d6e7fa-e673-4df8-a780-df3692b24d61" type="radio">
-</input><label class="tabbed-label" for="70fa9104-5116-446f-a6c4-3237b3e7a81b">
+<input id="3e962165-357e-4b7e-885a-e3f64637b8f2" name="165f3e5f-c8db-439d-b40b-107f4c4b3d1c" type="radio">
+</input><label class="tabbed-label" for="3e962165-357e-4b7e-885a-e3f64637b8f2">
 Architektur</label><div class="tabbed-content docutils">
 <div class="figure align-default" id="modelf-fig">
 <a class="reference internal image-reference" href="../_images/model_F_plot.png"><img alt="../_images/model_F_plot.png" src="../_images/model_F_plot.png" style="height: 700px;" /></a>
 </div>
 </div>
-<input id="48cc0036-e114-4a71-a50e-a2929cae4f87" name="c3d6e7fa-e673-4df8-a780-df3692b24d61" type="radio">
-</input><label class="tabbed-label" for="48cc0036-e114-4a71-a50e-a2929cae4f87">
+<input id="3c6d71a1-71e9-4baa-92d1-08c27f90f9a5" name="165f3e5f-c8db-439d-b40b-107f4c4b3d1c" type="radio">
+</input><label class="tabbed-label" for="3c6d71a1-71e9-4baa-92d1-08c27f90f9a5">
 Evaluierung</label><div class="tabbed-content docutils">
 <table class="colwidths-auto table">
 <thead>
@@ -829,8 +836,8 @@ Evaluierung</label><div class="tabbed-content docutils">
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_27_0.png" src="../_images/CNN_2_224x224_27_0.png" /></span></p></td>
-<td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_27_1.png" src="../_images/CNN_2_224x224_27_1.png" /></span></p></td>
+<tr class="row-even"><td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_24_0.png" src="../_images/CNN_2_224x224_24_0.png" /></span></p></td>
+<td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_24_1.png" src="../_images/CNN_2_224x224_24_1.png" /></span></p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:center"><p><center>Die erreichte Genauigkeit beträgt: <span class="pasted-text">0.857</span></center></p></td>
 <td class="text-align:center"><p><center> Der Loss: <span class="pasted-text">107.76</span></center></p></td>
@@ -838,13 +845,18 @@ Evaluierung</label><div class="tabbed-content docutils">
 </tbody>
 </table>
 </div>
+<input id="8203616a-5454-4693-a63f-b2d58e16df02" name="165f3e5f-c8db-439d-b40b-107f4c4b3d1c" type="radio">
+</input><label class="tabbed-label" for="8203616a-5454-4693-a63f-b2d58e16df02">
+Confusion Matrix</label><div class="tabbed-content docutils">
+<div class="figure align-center" id="id6">
+<img alt="../_images/2Conv2d_1MaxP_1dropout_confMat.png" src="../_images/2Conv2d_1MaxP_1dropout_confMat.png" />
 </div>
 </div>
-<div class="section" id="modell-g">
-<h2>Modell G<a class="headerlink" href="#modell-g" title="Permalink to this headline">¶</a></h2>
+</div>
+<p><span class="math notranslate nohighlight">\(~\)</span></p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="f4865591-468a-4bd1-9d71-54b895a2b6ef" name="5302203e-85aa-45cd-8c0b-10fb2a9ccb46" type="radio">
-</input><label class="tabbed-label" for="f4865591-468a-4bd1-9d71-54b895a2b6ef">
+<input checked="checked" id="6f9deb83-0381-421c-ba38-5f10455dc123" name="720eb6a0-7f69-4493-b84d-5bcc4f4943a6" type="radio">
+</input><label class="tabbed-label" for="6f9deb83-0381-421c-ba38-5f10455dc123">
 Modell F</label><div class="tabbed-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modell Aufbau</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
@@ -875,15 +887,15 @@ Modell F</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="b4aa94a1-d8e1-4e9c-a91d-f0669da84f55" name="5302203e-85aa-45cd-8c0b-10fb2a9ccb46" type="radio">
-</input><label class="tabbed-label" for="b4aa94a1-d8e1-4e9c-a91d-f0669da84f55">
+<input id="5fa305f7-03a6-4202-a37f-c41d43af829e" name="720eb6a0-7f69-4493-b84d-5bcc4f4943a6" type="radio">
+</input><label class="tabbed-label" for="5fa305f7-03a6-4202-a37f-c41d43af829e">
 Architektur</label><div class="tabbed-content docutils">
 <div class="figure align-default" id="modelg-fig">
 <a class="reference internal image-reference" href="../_images/model_G_plot.png"><img alt="../_images/model_G_plot.png" src="../_images/model_G_plot.png" style="height: 700px;" /></a>
 </div>
 </div>
-<input id="7b81f7ca-585e-43fb-b695-4f42d054ac50" name="5302203e-85aa-45cd-8c0b-10fb2a9ccb46" type="radio">
-</input><label class="tabbed-label" for="7b81f7ca-585e-43fb-b695-4f42d054ac50">
+<input id="a5977f48-a9a1-4cfd-86bf-8c5b4f03b3d3" name="720eb6a0-7f69-4493-b84d-5bcc4f4943a6" type="radio">
+</input><label class="tabbed-label" for="a5977f48-a9a1-4cfd-86bf-8c5b4f03b3d3">
 Evaluierung</label><div class="tabbed-content docutils">
 <table class="colwidths-auto table">
 <thead>
@@ -892,8 +904,8 @@ Evaluierung</label><div class="tabbed-content docutils">
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_31_0.png" src="../_images/CNN_2_224x224_31_0.png" /></span></p></td>
-<td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_31_1.png" src="../_images/CNN_2_224x224_31_1.png" /></span></p></td>
+<tr class="row-even"><td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_27_0.png" src="../_images/CNN_2_224x224_27_0.png" /></span></p></td>
+<td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_27_1.png" src="../_images/CNN_2_224x224_27_1.png" /></span></p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:center"><p><center>Die erreichte Genauigkeit beträgt: <span class="pasted-text">0.991</span></center></p></td>
 <td class="text-align:center"><p><center> Der Loss: <span class="pasted-text">0.11</span></center></p></td>
@@ -901,13 +913,18 @@ Evaluierung</label><div class="tabbed-content docutils">
 </tbody>
 </table>
 </div>
+<input id="d6c42ff9-d31d-415d-b8c7-c3871f338898" name="720eb6a0-7f69-4493-b84d-5bcc4f4943a6" type="radio">
+</input><label class="tabbed-label" for="d6c42ff9-d31d-415d-b8c7-c3871f338898">
+Confusion Matrix</label><div class="tabbed-content docutils">
+<div class="figure align-center" id="id7">
+<img alt="../_images/4Conv2d_2MaxP_2dropout_confMat.png" src="../_images/4Conv2d_2MaxP_2dropout_confMat.png" />
 </div>
 </div>
-<div class="section" id="modell-h">
-<h2>Modell H<a class="headerlink" href="#modell-h" title="Permalink to this headline">¶</a></h2>
+</div>
+<p><span class="math notranslate nohighlight">\(~\)</span></p>
 <div class="tabbed-set docutils">
-<input checked="checked" id="d74110cd-d13c-4412-8bdb-aeade345c4f8" name="7b630870-bd73-48cd-aa7d-4488d4f41a57" type="radio">
-</input><label class="tabbed-label" for="d74110cd-d13c-4412-8bdb-aeade345c4f8">
+<input checked="checked" id="4f967642-38f7-411c-80ac-cea65dcfd555" name="2017d9a0-134b-4581-9a65-dc72f3263a6b" type="radio">
+</input><label class="tabbed-label" for="4f967642-38f7-411c-80ac-cea65dcfd555">
 Modell H</label><div class="tabbed-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modell Aufbau</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
@@ -938,15 +955,15 @@ Modell H</label><div class="tabbed-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="40803bc9-ed8c-478d-86b7-191505fa83d3" name="7b630870-bd73-48cd-aa7d-4488d4f41a57" type="radio">
-</input><label class="tabbed-label" for="40803bc9-ed8c-478d-86b7-191505fa83d3">
+<input id="19bd9c25-a1ea-4d0f-b1e3-82dfd9c2190a" name="2017d9a0-134b-4581-9a65-dc72f3263a6b" type="radio">
+</input><label class="tabbed-label" for="19bd9c25-a1ea-4d0f-b1e3-82dfd9c2190a">
 Architektur</label><div class="tabbed-content docutils">
 <div class="figure align-default" id="modelh-fig">
 <a class="reference internal image-reference" href="../_images/model_H_plot.png"><img alt="../_images/model_H_plot.png" src="../_images/model_H_plot.png" style="height: 700px;" /></a>
 </div>
 </div>
-<input id="76a4dec2-8a7e-4ee5-87cd-77ceef4b3e93" name="7b630870-bd73-48cd-aa7d-4488d4f41a57" type="radio">
-</input><label class="tabbed-label" for="76a4dec2-8a7e-4ee5-87cd-77ceef4b3e93">
+<input id="50c2cebc-c111-4eb5-9546-4d3a2a41e91d" name="2017d9a0-134b-4581-9a65-dc72f3263a6b" type="radio">
+</input><label class="tabbed-label" for="50c2cebc-c111-4eb5-9546-4d3a2a41e91d">
 Evaluierung</label><div class="tabbed-content docutils">
 <table class="colwidths-auto table">
 <thead>
@@ -955,8 +972,8 @@ Evaluierung</label><div class="tabbed-content docutils">
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_34_0.png" src="../_images/CNN_2_224x224_34_0.png" /></span></p></td>
-<td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_34_1.png" src="../_images/CNN_2_224x224_34_1.png" /></span></p></td>
+<tr class="row-even"><td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_30_0.png" src="../_images/CNN_2_224x224_30_0.png" /></span></p></td>
+<td class="text-align:center"><p><span class="pasted-inline"><img alt="../_images/CNN_2_224x224_30_1.png" src="../_images/CNN_2_224x224_30_1.png" /></span></p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:center"><p><center>Die erreichte Genauigkeit beträgt: <span class="pasted-text">0.990</span></center></p></td>
 <td class="text-align:center"><p><center> Der Loss: <span class="pasted-text">0.36</span></center></p></td>
@@ -964,7 +981,20 @@ Evaluierung</label><div class="tabbed-content docutils">
 </tbody>
 </table>
 </div>
+<input id="7d8a4670-3fb1-47f0-b0a6-34eea7c042b2" name="2017d9a0-134b-4581-9a65-dc72f3263a6b" type="radio">
+</input><label class="tabbed-label" for="7d8a4670-3fb1-47f0-b0a6-34eea7c042b2">
+Confusion Matrix</label><div class="tabbed-content docutils">
+<div class="figure align-center" id="id8">
+<img alt="../_images/4Conv2d_2MaxP_2dropout_Epoch=30_confMat.png" src="../_images/4Conv2d_2MaxP_2dropout_Epoch=30_confMat.png" />
 </div>
+</div>
+</div>
+</div>
+<div class="section" id="fazit">
+<h2>Fazit<a class="headerlink" href="#fazit" title="Permalink to this headline">¶</a></h2>
+<p>Das Ziel dieser Masterarbeit war es, mit Hilfe von künstlichen neuronalen Netzen, eine Bilderkennung zu entwickeln. Dabei hat sich gezeigt, dass die Beschaffung der Daten für einen Trainingsdatensatz, den größten Anteil am Gesamtaufwand ausmacht.</p>
+<p>Für die Anwendung in einem Sortierroboter, sollten die Modelle unabhängig von der Beleuchtung und dem Schattenwurf, in der Lage sein, die Schrauben zu erkennen.</p>
+<p>In dieser Arbeit, die den Weg für Weiterentwicklungen bereiten sollte, wurden eine Beleuchtungsstation entwickelt um einen Schattenwurf zu vermeiden.</p>
 </div>
 </div>
 
@@ -1016,7 +1046,12 @@ Evaluierung</label><div class="tabbed-content docutils">
     
       By Martin Weilepp<br/>
     
-        &copy; Copyright 2021.<br/>
+      <div class="extra_footer">
+        <p>
+HTWG Konstanz
+</p>
+
+      </div>
   </p>
 </footer>
 </main>

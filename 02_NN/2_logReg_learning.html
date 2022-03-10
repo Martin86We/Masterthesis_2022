@@ -1,0 +1,1419 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logistische Regression (Funktionsweise) &#8212; Anwendung neuronaler Netze in einem Sortierroboter</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://martin86we.github.io/Masterthesis_2022/02_NN/2_logReg_learning.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Logistische Regression" href="3_logReg_28x28.html" />
+    <link rel="prev" title="Einzelnes Neuron" href="1_neuron.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Anwendung neuronaler Netze in einem Sortierroboter</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Deckblatt.html">
+   <center>
+    Masterarbeit
+   </center>
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Intro
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Eigenst.html">
+   Eidesstattliche Erklärung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/intro.html">
+   Aufgabenstellung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Nomenklatur.html">
+   Nomenklatur
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Einleitung.html">
+   Einleitung
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dataset
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Dataset/dataset_28x28.html">
+   Datensatz 1 (Schraubenköpfe)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Dataset/dataset_224x224.html">
+   Datensatz 2 (Schrauben)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Neural Net
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_neuron.html">
+   Einzelnes Neuron
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Logistische Regression (Funktionsweise)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_logReg_28x28.html">
+   Logistische Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_NN_learning.html">
+   Neuronales Netz (Funktionsweise)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_NN_28x28.html">
+   Neuronales Netz
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Convolutional Neural Net
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/CNN.html">
+   Convolutional Neural Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/Pooling.html">
+   Pooling Layer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/CNN_1_28x28.html">
+   CNN 1 (Schraubenköpfe)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/CNN_2_224x224.html">
+   CNN 2 (Schrauben)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/02_NN/2_logReg_learning.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Martin86We/Masterthesis_2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/Martin86We/Masterthesis_2022/edit/main/02_NN/2_logReg_learning.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Martin86We/Masterthesis_2022/main?urlpath=tree/02_NN/2_logReg_learning.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/Martin86We/Masterthesis_2022/blob/main/02_NN/2_logReg_learning.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Logistische Regression (Funktionsweise)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#einfaches-beispiel">
+   Einfaches Beispiel
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistische-regression-mehrere-parameter">
+   Logistische Regression (mehrere Parameter)
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Logistische Regression (Funktionsweise)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Logistische Regression (Funktionsweise)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#einfaches-beispiel">
+   Einfaches Beispiel
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logistische-regression-mehrere-parameter">
+   Logistische Regression (mehrere Parameter)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="logistische-regression-funktionsweise">
+<h1>Logistische Regression (Funktionsweise)<a class="headerlink" href="#logistische-regression-funktionsweise" title="Permalink to this headline">¶</a></h1>
+<p>Im <a class="reference internal" href="1_neuron.html#logistic-reg"><span class="std std-ref">vorherigen Abschnitt</span></a> wurde die logistische Regression anhand eines Beispiels vorgestellt. In diesem Abschnitt wird die Funktionsweise der log. Regression mit Code-Beispielen genauer untersucht.</p>
+<div class="figure align-default" id="neuron1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/neuron_one_input.png"><img alt="neuron" class="bg-primary mb-1" src="../_images/neuron_one_input.png" style="width: 600px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Modell eines Neurons mit einem Input.</span><a class="headerlink" href="#neuron1" title="Permalink to this image">¶</a></p>
+</div>
+<p><strong>Logistische Regression mit einem Eingangswert am Beispiel:</strong></p>
+<p>Die Sigmoidfunktion <span class="math notranslate nohighlight">\(S(x)=\frac{1}{(1+e^{ -x })}\)</span> in Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">S</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Erinnerung: Das <a class="reference internal" href="1_neuron.html#neuron-activation"><span class="std std-ref">Neuron</span></a> aus dem <a class="reference internal" href="1_neuron.html#logistic-reg"><span class="std std-ref">vorherigen Abschnitt</span></a>,<br />
+führt diese Berechnung aus: <span class="math notranslate nohighlight">\(S(ax+b)\)</span>.</p>
+<p>In Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">S</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Die Kostenfunktion: <span class="math notranslate nohighlight">\(J\left(\Theta\right)=-\frac{1}{m}\Sigma_{i=1}\left[y^{\left(i\right)}\log\left(h\left(x^{\left(i\right)}\right)\right)+\left(1-y^{\left(i\right)}\right)\log\left(1-h\left(x^{\left(i\right)}\right)\right)\right]\)</span>
+(<a class="reference external" href="https://towardsdatascience.com/building-a-logistic-regression-in-python-301d27367c24">Quelle</a>  )</p>
+<p>in Python: (<a class="reference external" href="https://math.stackexchange.com/questions/477207/derivative-of-cost-function-for-logistic-regression">Herleitung</a>)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">J</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>Ableitungen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">J_ableitung_a</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">S</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">J_ableitung_b</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">S</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Geogebra Beispiel:</strong> (Quelle: Jannis Seemann, Udemy Kurs (unveröffentlicht))
+Die Funktion <span class="math notranslate nohighlight">\(S(x)\)</span> in Geogebra interaktiv erkunden:</p>
+<ul class="simple">
+<li><p>A: z.B. Patient hat Tumor</p></li>
+<li><p>B: z.B. Patient hat keinen Tumor</p></li>
+<li><p>Die Parameter a und b können über die Schieberegler angepasst werden.</p></li>
+<li><p>Die Fehler ErrorA und ErrorB sollen möglichst gering ausfallen</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Mit den Schiebereglern die Parameter a und b solange anpassen, bis die Kosten costA und costB minimal werden.<br />
+Das ist, was das KNN intern selbstständig erledigt.</p>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+
+<span class="n">IFrame</span><span class="p">(</span><span class="s2">&quot;https://www.geogebra.org/m/hndyx9gh&quot;</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="1000"
+    height="1000"
+    src="https://www.geogebra.org/m/hndyx9gh"
+    frameborder="0"
+    allowfullscreen
+
+></iframe>
+</div></div>
+</div>
+</div>
+<div class="section" id="einfaches-beispiel">
+<h1>Einfaches Beispiel<a class="headerlink" href="#einfaches-beispiel" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_scroll-output tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="c1"># Volljährigkeit vorhersagen!</span>
+<span class="c1"># Spalte 1: Alter</span>
+<span class="c1"># Spalte 2: Volljährig: Ja / Nein?</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">S</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">S</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">J</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span>
+
+
+<span class="k">def</span> <span class="nf">J_ableitung_a</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">S</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">J_ableitung_b</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">S</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>
+
+
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">):</span>
+    <span class="n">da</span> <span class="o">=</span> <span class="n">J_ableitung_a</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">J_ableitung_b</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">da</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">db</span>
+
+    <span class="n">cost</span> <span class="o">=</span> <span class="n">J</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kosten: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cost</span><span class="p">))</span>
+
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">16</span><span class="p">,</span> <span class="mi">22</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 4.549934130627048
+Kosten: 2.9376697928329976
+Kosten: 1.3693797440496909
+Kosten: 1.4258480540039917
+Kosten: 2.7688815344452973
+Kosten: 1.2182243003165445
+Kosten: 1.6021216158164207
+Kosten: 2.874740448906407
+Kosten: 1.31248590788559
+Kosten: 1.4604054127745647
+Kosten: 2.7969160483879225
+Kosten: 1.2430129383255524
+Kosten: 1.530145447437553
+Kosten: 2.839397865338674
+Kosten: 1.280972939804821
+Kosten: 1.4595386780798696
+Kosten: 2.798190210258761
+Kosten: 1.24435881298296
+Kosten: 1.4861481969134391
+Kosten: 2.8151619694374723
+Kosten: 1.2595980193000174
+Kosten: 1.4450883020924874
+Kosten: 2.7901861323209283
+Kosten: 1.237536344542189
+Kosten: 1.4526985709969036
+Kosten: 2.7955745609383817
+Kosten: 1.2424811189401035
+Kosten: 1.4251794399991777
+Kosten: 2.7782446197140014
+Kosten: 1.2272797892470477
+Kosten: 1.423920389884545
+Kosten: 2.7779222424794257
+Kosten: 1.2271748324313723
+Kosten: 1.4031179330495587
+Kosten: 2.7643774714988028
+Kosten: 1.215383337775811
+Kosten: 1.3975246423739038
+Kosten: 2.7610228528103806
+Kosten: 1.2126202240998991
+Kosten: 1.3803184239735833
+Kosten: 2.7494250550162698
+Kosten: 1.202599827643586
+Kosten: 1.3725412437695639
+Kosten: 2.7443389778488663
+Kosten: 1.1983396088884184
+Kosten: 1.3574161613964029
+Kosten: 2.7337639650599637
+Kosten: 1.1892689351938557
+Kosten: 1.348531222915737
+Kosten: 2.727614366008286
+Kosten: 1.1841079766381923
+Kosten: 1.3347098663858912
+Kosten: 2.7175724709630633
+Kosten: 1.1755536775458062
+Kosten: 1.325283742409105
+Kosten: 2.7107205420396365
+Kosten: 1.1698149834428488
+Kosten: 1.3123456617806235
+Kosten: 2.700938725761956
+Kosten: 1.1615369520980328
+Kosten: 1.302691162535298
+Kosten: 2.693589683718717
+Kosten: 1.15540473150482
+Kosten: 1.2903968504159773
+Kosten: 2.683907715689496
+Kosten: 1.1472634343626722
+Kosten: 1.2806945485619439
+Kosten: 2.6761840331802165
+Kosten: 1.140848385470488
+Kosten: 1.2689000721692414
+Kosten: 2.666502706212588
+Kosten: 1.1327587140965105
+Kosten: 1.2592587211076671
+Kosten: 2.658481366876269
+Kosten: 1.1261311890216532
+Kosten: 1.2478724146527715
+Kosten: 2.6487354756053803
+Kosten: 1.1180384270530925
+Kosten: 1.2383603325381765
+Kosten: 2.6404678035382534
+Kosten: 1.111246050604562
+Kosten: 1.2273198570883501
+Kosten: 2.630611375610776
+Kosten: 1.1031127756957895
+Kosten: 1.217981950487179
+Kosten: 2.62213409650947
+Kosten: 1.0961902445953402
+Kosten: 1.2072416091824747
+Kosten: 2.6121318966468863
+Kosten: 1.087988829874402
+Kosten: 1.1981090267010275
+Kosten: 2.603473641927582
+Kosten: 1.080963645584654
+Kosten: 1.1876324299332852
+Kosten: 2.5932959769141153
+Kosten: 1.0726717143085533
+Kosten: 1.1787283021225663
+Kosten: 2.5844813588590143
+Kosten: 1.0655677420595708
+Kosten: 1.1684839171608428
+Kosten: 2.5741006537186903
+Kosten: 1.057165217512759
+Kosten: 1.1598269459343709
+Kosten: 2.5651530201253805
+Kosten: 1.0500050542527994
+Kosten: 1.1497852589161104
+Kosten: 2.554541360498622
+Kosten: 1.0414720936483353
+Kosten: 1.14139207044916
+Kosten: 2.5454848089425317
+Kosten: 1.03427875712754
+Kosten: 1.1315237040987303
+Kosten: 2.5346120362858304
+Kosten: 1.0255942064213703
+Kosten: 1.1234104250422436
+Kosten: 2.5254729654579555
+Kosten: 1.0183923901936704
+Kosten: 1.113684899652913
+Kosten: 2.514305154399053
+Kosten: 1.0095326096868615
+Kosten: 1.1058681468151839
+Kosten: 2.5051134214281015
+Kosten: 1.0023495686161359
+Kosten: 1.0962531917526512
+Kosten: 2.4936117575705263
+Kosten: 0.9932876399209092
+Kosten: 1.0887504776806483
+Kosten: 2.4844013252533617
+Kosten: 0.9861536173678159
+Kosten: 1.0792119673248992
+Kosten: 2.4725215891079837
+Kosten: 0.9768590944026022
+Kosten: 1.0720413703581766
+Kosten: 2.463330347837283
+Kosten: 0.9698070452856302
+Kosten: 1.0625441013696713
+Kosten: 2.451023420320411
+Kosten: 0.9602465734234689
+Kosten: 1.0557229160942094
+Kosten: 2.441891646945923
+Kosten: 0.9533107717492105
+Kosten: 1.0462325582172725
+Kosten: 2.4291056750892834
+Kosten: 0.9434500597344244
+Kosten: 1.0397745525070405
+Kosten: 2.420072376687377
+Kosten: 0.9366630340403472
+Kosten: 1.0302611513318107
+Kosten: 2.4067574132559266
+Kosten: 0.9264707701194747
+Kosten: 1.0241720725971193
+Kosten: 2.3978536956540295
+Kosten: 0.9198579662471268
+Kosten: 1.0146153732160899
+Kosten: 2.38396961053176
+Kosten: 0.9093122092713103
+Kosten: 1.0088865779088232
+Kosten: 2.3752083997487285
+Kosten: 0.9028839849197151
+Kosten: 0.9992830458598504
+Kosten: 2.3607364127306005
+Kosten: 0.8919811511443597
+Kosten: 0.9938837074113209
+Kosten: 2.352098621931524
+Kosten: 0.8857223646821154
+Kosten: 0.984254321772423
+Kosten: 2.3370556235212194
+Kosten: 0.8744879619858446
+Kosten: 0.9791236894716236
+Kosten: 2.3284744766305407
+Kosten: 0.868346706834282
+Kosten: 0.9695203603480246
+Kosten: 2.312927187135141
+Kosten: 0.8568453406725659
+Kosten: 0.9645628789834327
+Kosten: 2.3042749066599613
+Kosten: 0.8507242463099635
+Kosten: 0.9550699922976572
+Kosten: 2.2883481324243067
+Kosten: 0.8390644155582497
+Kosten: 0.9501572195402203
+Kosten: 2.2794319108952235
+Kosten: 0.8328197936029711
+Kosten: 0.9408841343367677
+Kosten: 2.263302879021624
+Kosten: 0.8211475935318502
+Kosten: 0.9358672467875291
+Kosten: 2.253878211741276
+Kosten: 0.8146021588325674
+Kosten: 0.9269288313176248
+Kosten: 2.237749539445763
+Kosten: 0.8030789746904367
+Kosten: 0.9216627838617608
+Kosten: 2.2275558830187845
+Kosten: 0.7960509637151515
+Kosten: 0.913149371899796
+Kosten: 2.2116058508915657
+Kosten: 0.7848153787103009
+Kosten: 0.9075239445921897
+Kosten: 2.2004200884458385
+Kosten: 0.7771594093730058
+Kosten: 0.8994689268563808
+Kosten: 2.1847410692331866
+Kosten: 0.7662827878774819
+Kosten: 0.8934348102966366
+Kosten: 2.1724301368177583
+Kosten: 0.7579276314326112
+Kosten: 0.8857938927076957
+Kosten: 2.1569792172137032
+Kosten: 0.7473818719918603
+Kosten: 0.8793686353311068
+Kosten: 2.1435228344941506
+Kosten: 0.7383440425132527
+Kosten: 0.8720235442901593
+Kosten: 2.1281114595109014
+Kosten: 0.7280003858651926
+Kosten: 0.8652683460248034
+Kosten: 2.1135715858614463
+Kosten: 0.7183587538852857
+Kosten: 0.8580555313824311
+Kosten: 2.097902778276103
+Kosten: 0.7080215749317736
+Kosten: 0.8510295176809616
+Kosten: 2.0823427160462797
+Kosten: 0.6978588232309049
+Kosten: 0.843776198034517
+Kosten: 2.0660691662988464
+Kosten: 0.6873130864974675
+Kosten: 0.8364888570673683
+Kosten: 2.049454907703512
+Kosten: 0.6766507467783089
+Kosten: 0.8290287817684835
+Kosten: 2.032203765900522
+Kosten: 0.6656855366982201
+Kosten: 0.8214071959442747
+Kosten: 2.014318704656099
+Kosten: 0.6544368596301685
+Kosten: 0.8135560078002456
+Kosten: 1.9956313462440336
+Kosten: 0.6428152574250524
+Kosten: 0.8054161082819107
+Kosten: 1.9759811120961004
+Kosten: 0.6307443628351207
+Kosten: 0.796895193499742
+Kosten: 1.955120445077284
+Kosten: 0.618103003123396
+Kosten: 0.7878627883835668
+Kosten: 1.932693600669203
+Kosten: 0.6047193238042098
+Kosten: 0.7781201799809404
+Kosten: 1.9081519531528217
+Kosten: 0.5903312718602177
+Kosten: 0.7673458659095139
+Kosten: 1.880594365966066
+Kosten: 0.5745163338799079
+Kosten: 0.754975871255048
+Kosten: 1.8484097670478612
+Kosten: 0.5565408247323906
+Kosten: 0.7399112920557486
+Kosten: 1.8083751985958327
+Kosten: 0.5350065811685002
+Kosten: 0.7196873578035782
+Kosten: 1.7529631716052727
+Kosten: 0.5069313465759989
+Kosten: 0.687591678842132
+Kosten: 1.6601689759295997
+Kosten: 0.4652951886768086
+Kosten: 0.6197964433271086
+Kosten: 1.4391404161909567
+Kosten: 0.40160805816168876
+Kosten: 0.42884193729383635
+Kosten: 0.5851916753980124
+Kosten: 0.7175698301873944
+Kosten: 1.741921360362001
+Kosten: 0.5018325905709536
+Kosten: 0.6668979444327933
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 1.5937839277881178
+Kosten: 0.43912564645924096
+Kosten: 0.5595127656351143
+Kosten: 1.2125970111085753
+Kosten: 0.39696368833515044
+Kosten: 0.43766478784278123
+Kosten: 0.5560105820958022
+Kosten: 1.1995992086834901
+Kosten: 0.39599612022411246
+Kosten: 0.4411921928777449
+Kosten: 0.5635105397604566
+Kosten: 1.2303849413473573
+Kosten: 0.38783231877591473
+Kosten: 0.4075551697891557
+Kosten: 0.47650293904928304
+Kosten: 0.8559469328321095
+Kosten: 0.5433130548394512
+Kosten: 1.1507788606545437
+Kosten: 0.39777735713776047
+Kosten: 0.4704026973961391
+Kosten: 0.6071864855953825
+Kosten: 1.3921447852272797
+Kosten: 0.3843351081217469
+Kosten: 0.40560456081531787
+Kosten: 0.518918940129864
+Kosten: 0.6438434374041831
+Kosten: 1.5124843282796734
+Kosten: 0.4096611252857862
+Kosten: 0.4897950540484742
+Kosten: 0.927620640503669
+Kosten: 0.4740372572155726
+Kosten: 0.8581279205436978
+Kosten: 0.5110047252641282
+Kosten: 1.0215563711000644
+Kosten: 0.4225926596231881
+Kosten: 0.6199276708038225
+Kosten: 0.6296893968433026
+Kosten: 1.4625198837022546
+Kosten: 0.3941528919421932
+Kosten: 0.45284498580679117
+Kosten: 0.7683134508978599
+Kosten: 0.5481122932979053
+Kosten: 1.1728097756376614
+Kosten: 0.37236616948928986
+Kosten: 0.3930927333777243
+Kosten: 0.4526104582687253
+Kosten: 0.7717699464864701
+Kosten: 0.5353292944337209
+Kosten: 1.123155601344427
+Kosten: 0.37644916624496144
+Kosten: 0.42106820080644
+Kosten: 0.5130192911406513
+Kosten: 1.034474611770096
+Kosten: 0.3965617073694181
+Kosten: 0.519912692041448
+Kosten: 0.598481224109957
+Kosten: 1.3516906211686068
+Kosten: 0.36775013338488355
+Kosten: 0.3874488386033976
+Kosten: 0.48397272019954607
+Kosten: 0.5758842148664031
+Kosten: 1.2718899744767789
+Kosten: 0.3583257262620189
+Kosten: 0.3603822316696948
+Kosten: 0.3700367839215725
+Kosten: 0.3993531042558096
+Kosten: 0.5455940187433012
+Kosten: 0.5856975854516959
+Kosten: 1.3037226852152537
+Kosten: 0.3585142388845148
+Kosten: 0.3678672767011219
+Kosten: 0.4106791122207158
+Kosten: 0.48890336723107547
+Kosten: 0.9390355289980187
+Kosten: 0.41069154310257244
+Kosten: 0.604614001572385
+Kosten: 0.5639875165112188
+Kosten: 1.2248463730523904
+Kosten: 0.35084131186542417
+Kosten: 0.350683109478513
+Kosten: 0.3508837866752288
+Kosten: 0.35227774609833373
+Kosten: 0.3586089970080029
+Kosten: 0.3774844128027354
+Kosten: 0.4657600497133805
+Kosten: 0.5394988118436058
+Kosten: 1.134276716845281
+Kosten: 0.3512497090550697
+Kosten: 0.3610025407544317
+Kosten: 0.3872541463010803
+Kosten: 0.5132122311872229
+Kosten: 0.5512986683898186
+Kosten: 1.1752377852126032
+Kosten: 0.3457332770703825
+Kosten: 0.3464545641293906
+Kosten: 0.3493485855081491
+Kosten: 0.36144100329870077
+Kosten: 0.3914149163996774
+Kosten: 0.5367785212339281
+Kosten: 0.543903813424332
+Kosten: 1.146399453804264
+Kosten: 0.34384110154490727
+Kosten: 0.3468546324489572
+Kosten: 0.3559744668583405
+Kosten: 0.39473433162052024
+Kosten: 0.4549181869768936
+Kosten: 0.8052519951455054
+Kosten: 0.43541382133363055
+Kosten: 0.7261946066725056
+Kosten: 0.46990642782632475
+Kosten: 0.8655997016622022
+Kosten: 0.4045469667151973
+Kosten: 0.6005083650566905
+Kosten: 0.5149024694129617
+Kosten: 1.0369303614560297
+Kosten: 0.34981960389734496
+Kosten: 0.3823299271018745
+Kosten: 0.4331880090500062
+Kosten: 0.7198678884516284
+Kosten: 0.45995796303444375
+Kosten: 0.826793387225499
+Kosten: 0.41016076820428665
+Kosten: 0.628032903222887
+Kosten: 0.4926428616890686
+Kosten: 0.9519393288320549
+Kosten: 0.36257377439121274
+Kosten: 0.4397806068969945
+Kosten: 0.48695133627130577
+Kosten: 0.9298841569726314
+Kosten: 0.3658695037731387
+Kosten: 0.4553833127244494
+Kosten: 0.49182543943493334
+Kosten: 0.9472857153112733
+Kosten: 0.3580646658969083
+Kosten: 0.4280849306213905
+Kosten: 0.47335652413483204
+Kosten: 0.8775499908475061
+Kosten: 0.3760899819279446
+Kosten: 0.4999031159016689
+Kosten: 0.49523897211318263
+Kosten: 0.9578864561450785
+Kosten: 0.3499832947064922
+Kosten: 0.40339340826295295
+Kosten: 0.44869130466250134
+Kosten: 0.7834419425636195
+Kosten: 0.4039035602781253
+Kosten: 0.6111781552799979
+Kosten: 0.4691323584402857
+Kosten: 0.8599931704691852
+Kosten: 0.3721466459902185
+Kosten: 0.49087478632976583
+Kosten: 0.4821525937287388
+Kosten: 0.9070610321918792
+Kosten: 0.35489661183486737
+Kosten: 0.4288511326886612
+Kosten: 0.4596002699043531
+Kosten: 0.8234531023648263
+Kosten: 0.3781335008996282
+Kosten: 0.5168215479465326
+Kosten: 0.4748470067555852
+Kosten: 0.8785667936496283
+Kosten: 0.35737228035116514
+Kosten: 0.4420637924598328
+Kosten: 0.45989387538361676
+Kosten: 0.8232914588947868
+Kosten: 0.3717682179035393
+Kosten: 0.49625969034031514
+Kosten: 0.4672027891081616
+Kosten: 0.8490461742362753
+Kosten: 0.36049478542608854
+Kosten: 0.4569795611469419
+Kosten: 0.45834030233645295
+Kosten: 0.8161864463401381
+Kosten: 0.3679762806838289
+Kosten: 0.48541388003792485
+Kosten: 0.45936754710610544
+Kosten: 0.8190792701471246
+Kosten: 0.36406317776101754
+Kosten: 0.4728519162127203
+Kosten: 0.45468952615373515
+Kosten: 0.8014765336617803
+Kosten: 0.36679609348789494
+Kosten: 0.48390802014818046
+Kosten: 0.4523161718378303
+Kosten: 0.792191633441648
+Kosten: 0.366863639941788
+Kosten: 0.4853898302415953
+Kosten: 0.4489876934848674
+Kosten: 0.779550723429287
+Kosten: 0.3680490300758635
+Kosten: 0.49069721417927775
+Kosten: 0.4457449296001485
+Kosten: 0.7672804435358739
+Kosten: 0.36913179673901725
+Kosten: 0.4955199779087371
+Kosten: 0.44235674991557206
+Kosten: 0.7545659212303487
+Kosten: 0.37037506886064286
+Kosten: 0.5007777547415587
+Kosten: 0.4388404382409273
+Kosten: 0.7414777178164681
+Kosten: 0.3717499940337816
+Kosten: 0.5063654092798737
+Kosten: 0.435185854209066
+Kosten: 0.7279900759884411
+Kosten: 0.3732575972208283
+Kosten: 0.512282426266232
+Kosten: 0.4313860868658162
+Kosten: 0.7140896890705868
+Kosten: 0.37489235821431527
+Kosten: 0.5185060714665538
+Kosten: 0.4274390653872214
+Kosten: 0.6997811309186434
+Kosten: 0.37663984092602143
+Kosten: 0.5249838997361713
+Kosten: 0.42335111307366885
+Kosten: 0.6850987629513564
+Kosten: 0.37847237434743897
+Kosten: 0.5316199014164166
+Kosten: 0.41914185527497433
+Kosten: 0.6701227837076593
+Kosten: 0.38034399169443295
+Kosten: 0.5382585735423896
+Kosten: 0.4148500787695715
+</pre></div>
+</div>
+<img alt="../_images/2_logReg_learning_9_2.png" src="../_images/2_logReg_learning_9_2.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----
+[0.25473227 0.41000569]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="logistische-regression-mehrere-parameter">
+<h1>Logistische Regression (mehrere Parameter)<a class="headerlink" href="#logistische-regression-mehrere-parameter" title="Permalink to this headline">¶</a></h1>
+<p>In der Regel werden mehrere Parameter benötigt. Ein Bild mit 28×28 Pixeln, benötigt z.<span class="math notranslate nohighlight">\(~\)</span>B. 784 Eingänge, für jedes Pixel einen. Ein Beispiel soll den Vorgang verdeutlichen:</p>
+<p><strong>Beispiel: AND-Ausdruck Lernen:</strong></p>
+<p>Es wird jetzt, mit dem <a class="reference internal" href="1_neuron.html#neuron-activation"><span class="std std-ref">Neuron</span></a> aus dem vorherigen Kapitel, ein “AND-Ausdruck” gelernt. Dieses Neuron besitzt zwei Eingänge und einen Bias-Term, an dem der Eingang immer 1 ist.</p>
+<p>Die folgende Tabelle stellt alle 4 Varianten mit der gewünschten Antwort aus der Sigmoid-Funktion:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p><span class="math notranslate nohighlight">\(X_{0}\)</span></p></th>
+<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(X_{1}\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(X_{0}\)</span> AND <span class="math notranslate nohighlight">\(X_{1}\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(S(X_{0} *w_{0}+X_{1}*w_{1}+b)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>0</p></td>
+<td class="text-align:left"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(&lt; 0.5\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>0</p></td>
+<td class="text-align:left"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(&lt; 0.5\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>1</p></td>
+<td class="text-align:left"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(&lt; 0.5\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>1</p></td>
+<td class="text-align:left"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(&gt; 0.5\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Die <a class="reference internal" href="1_neuron.html#sigmoid"><span class="std std-ref">Sigmoidfunktion</span></a> soll bei dem Zustand 0 (<span class="math notranslate nohighlight">\(X_{0}\)</span> AND <span class="math notranslate nohighlight">\(X_{1}= 0 \)</span>) Werte ausgeben, die kleiner als 0.5 sind und bei dem Zustand 1 (<span class="math notranslate nohighlight">\(X_{0}\)</span> AND <span class="math notranslate nohighlight">\(X_{1}= 1 \)</span>) Werte die größer sind als 0.5.</p>
+<p>Die Gewichte (w) und der Bias (b) werden frei gewählt. Anschließend das Ergebnis in der Tabelle überprüft:</p>
+<p><span class="math notranslate nohighlight">\(w_{0} = 10\)</span><br />
+<span class="math notranslate nohighlight">\(w_{1} = 10\)</span><br />
+<span class="math notranslate nohighlight">\(b = -15\)</span></p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p><span class="math notranslate nohighlight">\(X_{0}\)</span></p></th>
+<th class="text-align:left head"><p><span class="math notranslate nohighlight">\(X_{1}\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(X_{0}\)</span> AND <span class="math notranslate nohighlight">\(X_{1}\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(S(X_{0} *w_{0}+X_{1}*w_{1}+b)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>0</p></td>
+<td class="text-align:left"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(S(0*10+0*10-15) = S(-15)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>0</p></td>
+<td class="text-align:left"><p>1</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(S(0*10+1*10-15) = S(-5)\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>1</p></td>
+<td class="text-align:left"><p>0</p></td>
+<td class="text-align:center"><p>0</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(S(1*10+0*10-15) = S(-5)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>1</p></td>
+<td class="text-align:left"><p>1</p></td>
+<td class="text-align:center"><p>1</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(S(1*10+1*10-15) = S(5)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Die Sigmoidfunktion gibt für Werte größer als Null Werte aus die größer als 0.5 sind und bei Eingabewerten <span class="math notranslate nohighlight">\(&lt; 0\)</span> gibt die Sigmoid-Funktion Werte zurück die kleiner als 0.5 sind.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sigmoidfunktionswert bei x = 5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9933071490757153
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sigmoidfunktionswert bei x = -5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0066928509242848554
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mit diesen Gewichten und dem gewählten Bias-Wert würde das Modell die Funktion eines AND-Ausdrucks übernehmen können. Das folgende Programm trainiert ein logistisches Regressionsmodell und versucht den AND-Ausdruck somit zu erlernen. Die Gewichte und der Bias-Wert unterscheiden sich deutlich von den frei gewählten Parametern (siehe Output des folgenden Programms).</p>
+<div class="cell tag_scroll-output tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1"># Beispiel aus Kurs von Jannis Seemann (Deep Learning Kurs)</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+<span class="p">])</span>
+
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="mf">0.0</span><span class="p">,</span>
+    <span class="mf">0.0</span><span class="p">,</span>
+    <span class="mf">0.0</span><span class="p">,</span>
+    <span class="mf">1.0</span>
+<span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">S</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">S</span><span class="p">(</span><span class="n">w0</span> <span class="o">*</span> <span class="n">x0</span> <span class="o">+</span> <span class="n">w1</span> <span class="o">*</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">J</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">))</span> <span class="o">+</span> \
+                    <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">)))</span>
+
+
+<span class="k">def</span> <span class="nf">J_ableitung_w0</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x0</span> <span class="o">*</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">J_ableitung_w1</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x1</span> <span class="o">*</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">J_ableitung_b</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>
+
+
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">w0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">w1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
+
+    <span class="n">dw0</span> <span class="o">=</span> <span class="n">J_ableitung_w0</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">X_train</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_train</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">dw1</span> <span class="o">=</span> <span class="n">J_ableitung_w1</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">X_train</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_train</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">J_ableitung_b</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">X_train</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_train</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y_train</span><span class="p">)</span>
+
+    <span class="n">w0</span> <span class="o">=</span> <span class="n">w0</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">dw0</span>
+    <span class="n">w1</span> <span class="o">=</span> <span class="n">w1</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">dw1</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">db</span>
+
+    <span class="n">cost</span> <span class="o">=</span> <span class="n">J</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">X_train</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_train</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kosten: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cost</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gewichte: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;w0 = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">w0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;w1 = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">w1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vorhersage für X0=1,X1=1: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vorhersage für X0=1,X1=0: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vorhersage für X0=0,X1=0: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 1.3582096467052187
+Kosten: 1.3138428070565964
+Kosten: 1.2708614099661517
+Kosten: 1.2292968839670224
+Kosten: 1.1891759331572511
+Kosten: 1.1505200989640452
+Kosten: 1.1133453875402337
+Kosten: 1.0776619759898272
+Kosten: 1.043474008544762
+Kosten: 1.0107794910536225
+Kosten: 0.9795702888246732
+Kosten: 0.9498322291727783
+Kosten: 0.92154530617514
+Kosten: 0.8946839813863061
+Kosten: 0.8692175708371741
+Kosten: 0.8451107057579671
+Kosten: 0.8223238522868354
+Kosten: 0.8008138740584053
+Kosten: 0.7805346210467576
+Kosten: 0.7614375283346361
+Kosten: 0.7434722095062399
+Kosten: 0.7265870309811757
+Kosten: 0.7107296556608356
+Kosten: 0.6958475465745632
+Kosten: 0.681888423626537
+Kosten: 0.6688006689094551
+Kosten: 0.6565336782496122
+Kosten: 0.6450381585935687
+Kosten: 0.6342663724854998
+Kosten: 0.6241723321923868
+Kosten: 0.6147119470124944
+Kosten: 0.6058431279712472
+Kosten: 0.5975258545013031
+Kosten: 0.5897222078615776
+Kosten: 0.582396376017557
+Kosten: 0.5755146345262445
+Kosten: 0.5690453076840086
+Kosten: 0.5629587138402217
+Kosten: 0.5572270983839149
+Kosten: 0.5518245574990615
+Kosten: 0.5467269553751739
+Kosten: 0.5419118371674235
+Kosten: 0.5373583396338045
+Kosten: 0.5330471010418414
+Kosten: 0.5289601716369556
+Kosten: 0.5250809256997457
+Kosten: 0.5213939759893542
+Kosten: 0.5178850911729975
+Kosten: 0.5145411166751315
+Kosten: 0.5113498992407247
+Kosten: 0.5083002153926766
+Kosten: 0.5053817038705387
+Kosten: 0.5025848020634514
+Kosten: 0.4999006863919039
+Kosten: 0.4973212165481118
+Kosten: 0.49483888347125193
+Kosten: 0.49244676090958284
+Kosten: 0.49013846040490705
+Kosten: 0.4879080895244451
+Kosten: 0.4857502131597564
+Kosten: 0.4836598177108043
+Kosten: 0.4816322779747651
+Kosten: 0.4796633265629743
+Kosten: 0.47774902567492017
+Kosten: 0.4758857410649229
+Kosten: 0.4740701180447086
+Kosten: 0.47229905937317096
+Kosten: 0.4705697048929711
+Kosten: 0.4688794127820658
+Kosten: 0.4672257422966202
+Kosten: 0.4656064378899486
+Kosten: 0.4640194146000548
+Kosten: 0.4624627446059438
+Kosten: 0.4609346448601286
+Kosten: 0.45943346571161425
+Kosten: 0.4579576804401124
+Kosten: 0.4565058756283106
+Kosten: 0.45507674230469847
+Kosten: 0.4536690677947491
+Kosten: 0.4522817282231759
+Kosten: 0.4509136816145565
+Kosten: 0.4495639615438449
+Kosten: 0.4482316712922105
+Kosten: 0.44691597846724657
+Kosten: 0.4456161100499354
+Kosten: 0.4443313478338119
+Kosten: 0.4430610242246048
+Kosten: 0.44180451837122536
+Kosten: 0.4405612526013607
+Kosten: 0.4393306891371287
+Kosten: 0.43811232706825803
+Kosten: 0.43690569956210756
+Kosten: 0.4357103712915376
+Kosten: 0.43452593606319745
+Kosten: 0.4333520146302221
+Kosten: 0.43218825267464156
+Kosten: 0.43103431894600064
+Kosten: 0.42988990354379286
+Kosten: 0.4287547163323171
+Kosten: 0.427628485477493
+Gewichte: 
+w0 = 0.6973907742909592
+w1 = 0.6973907742909592
+b = -1.429754565727575
+Vorhersage für X0=1,X1=1: 
+0.49125763676948403
+Vorhersage für X0=1,X1=0: 
+0.32467622414630287
+Vorhersage für X0=0,X1=0: 
+0.19313692861610518
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Die Vorhersage stimmt noch nicht, die Vorhersage sollte über 0.5 liegen, liegt aber nur bei 0.49. Das Model benötigt mehr Trainingsdurchläufe.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Erhöhe die Anzahl der Trainingsdurchläufe von 100 auf 1000</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```python
+for i in range(0, 1000):
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "Martin86We/Masterthesis_2022",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./02_NN"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="1_neuron.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Einzelnes Neuron</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="3_logReg_28x28.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Logistische Regression</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Martin Weilepp<br/>
+    
+      <div class="extra_footer">
+        <p>
+HTWG Konstanz
+</p>
+
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

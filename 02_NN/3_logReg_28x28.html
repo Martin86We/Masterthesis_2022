@@ -1,0 +1,1890 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logistische Regression &#8212; Anwendung neuronaler Netze in einem Sortierroboter</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://martin86we.github.io/Masterthesis_2022/02_NN/3_logReg_28x28.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Neuronales Netz (Funktionsweise)" href="4_NN_learning.html" />
+    <link rel="prev" title="Logistische Regression (Funktionsweise)" href="2_logReg_learning.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Anwendung neuronaler Netze in einem Sortierroboter</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Deckblatt.html">
+   <center>
+    Masterarbeit
+   </center>
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Intro
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Eigenst.html">
+   Eidesstattliche Erklärung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/intro.html">
+   Aufgabenstellung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Nomenklatur.html">
+   Nomenklatur
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Einleitung.html">
+   Einleitung
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Dataset
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Dataset/dataset_28x28.html">
+   Datensatz 1 (Schraubenköpfe)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01_Dataset/dataset_224x224.html">
+   Datensatz 2 (Schrauben)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Neural Net
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_neuron.html">
+   Einzelnes Neuron
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_logReg_learning.html">
+   Logistische Regression (Funktionsweise)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Logistische Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_NN_learning.html">
+   Neuronales Netz (Funktionsweise)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_NN_28x28.html">
+   Neuronales Netz
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Convolutional Neural Net
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/CNN.html">
+   Convolutional Neural Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/Pooling.html">
+   Pooling Layer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/CNN_1_28x28.html">
+   CNN 1 (Schraubenköpfe)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03_CNN/CNN_2_224x224.html">
+   CNN 2 (Schrauben)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/02_NN/3_logReg_28x28.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Martin86We/Masterthesis_2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/Martin86We/Masterthesis_2022/edit/main/02_NN/3_logReg_28x28.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Martin86We/Masterthesis_2022/main?urlpath=tree/02_NN/3_logReg_28x28.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/Martin86We/Masterthesis_2022/blob/main/02_NN/3_logReg_28x28.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datensatz-laden">
+   Datensatz laden
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datensatz-stichprobe">
+   Datensatz Stichprobe
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#formatieren">
+   Formatieren
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#one-hot-encoding">
+   One-Hot-Encoding
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modell-trainieren-sechkant">
+   ## Modell trainieren (Sechkant)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modell-genauigkeit-sechskant">
+   Modell Genauigkeit (Sechskant)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modell-trainieren-innensechkant">
+   Modell trainieren (Innensechkant)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modell-genauigkeit-innensechskant">
+   Modell Genauigkeit (Innensechskant)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#falsch-erkennung">
+   Falsch-Erkennung
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Logistische Regression</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datensatz-laden">
+   Datensatz laden
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datensatz-stichprobe">
+   Datensatz Stichprobe
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#formatieren">
+   Formatieren
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#one-hot-encoding">
+   One-Hot-Encoding
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modell-trainieren-sechkant">
+   ## Modell trainieren (Sechkant)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modell-genauigkeit-sechskant">
+   Modell Genauigkeit (Sechskant)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modell-trainieren-innensechkant">
+   Modell trainieren (Innensechkant)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modell-genauigkeit-innensechskant">
+   Modell Genauigkeit (Innensechskant)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#falsch-erkennung">
+   Falsch-Erkennung
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="logistische-regression">
+<h1>Logistische Regression<a class="headerlink" href="#logistische-regression" title="Permalink to this headline">¶</a></h1>
+<p>Im <a class="reference internal" href="1_neuron.html#logistic-reg"><span class="std std-ref">vorherigen Abschnitt</span></a> wurde mit der log. Regression “vorhergesagt”, ob ein Student die Prüfung bestehen wird oder nicht. Dies war ein sehr einfaches Beispiel und diente lediglich dem Verständnis.</p>
+<p>In diesem Abschnitt wird die log. Regression verwendet, um Bilder zu erkennen.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import Bibliotheken</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">asarray</span><span class="p">,</span> <span class="n">load</span>
+<span class="c1">#import cv2</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="datensatz-laden">
+<h2>Datensatz laden<a class="headerlink" href="#datensatz-laden" title="Permalink to this headline">¶</a></h2>
+<p>In <a class="reference internal" href="../01_Dataset/dataset_28x28.html#dataset1"><span class="std std-ref">Kapitel 1</span></a> wurde der Datensatz erzeugt. Jetzt wird dieser Datensatz geladen, um damit die log. Regression zu trainieren.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Laden des Trainings- und Testdatensatzes</span>
+
+<span class="n">X_train</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../01_Dataset/dataset_28x28/X_train.npy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">255.0</span> <span class="c1"># normalisieren</span>
+<span class="n">y_train</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../01_Dataset/dataset_28x28/y_train.npy&#39;</span><span class="p">)</span>
+<span class="n">X_test</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../01_Dataset/dataset_28x28/X_test.npy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">255.0</span>  <span class="c1"># normalisieren</span>
+<span class="n">y_test</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../01_Dataset/dataset_28x28/y_test.npy&#39;</span><span class="p">)</span>
+
+<span class="c1"># Form und Anzahl der Datensätze</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Anzahl Trainingsdaten: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Anzahl Testdaten: &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6421, 28, 28, 1)
+Anzahl Trainingsdaten: 6421
+(2753, 28, 28, 1)
+Anzahl Testdaten: 2753
+</pre></div>
+</div>
+</div>
+</div>
+<p>Der Datensatz enthält 6421 Trainings- und 2753 Testdatensätze, aus Schraubenkopfbildern der Größe 28x28 Pixel.</p>
+</div>
+<div class="section" id="datensatz-stichprobe">
+<h2>Datensatz Stichprobe<a class="headerlink" href="#datensatz-stichprobe" title="Permalink to this headline">¶</a></h2>
+<p>Das folgende Programm gibt zufällig ein Beispiel aus dem Trainingsdatensatz aus. Das gibt einen schnellen Einblick in die Daten:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randrange</span>
+
+
+<span class="c1"># Kategorien:</span>
+
+<span class="c1"># 0 = innensechskant</span>
+<span class="c1"># 1 = philips</span>
+<span class="c1"># 2 = pozidriv</span>
+<span class="c1"># 3 = sechskant</span>
+<span class="c1"># 4 = torx</span>
+
+<span class="c1"># zufällig ein Beispiel aus dem Datensatz anzeigen</span>
+<span class="n">i</span><span class="o">=</span><span class="n">randrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">))</span>
+<span class="c1"># reshape von (28,28,1) zu (28,28)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">),</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kategorie:&quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y_train</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kategorie:1
+</pre></div>
+</div>
+<img alt="../_images/3_logReg_28x28_9_1.png" src="../_images/3_logReg_28x28_9_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="formatieren">
+<h2>Formatieren<a class="headerlink" href="#formatieren" title="Permalink to this headline">¶</a></h2>
+<p>Da das Neuron an jedem Eingang nur einen Wert erwartet, müssen die Bilder umgeformt werden. Alle Pixelwerte werden in einer Zeile, hintereinander angeordnet. Bei 28x28 Pixel ergeben sich 784 Eingänge für das Neuron.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># converting X, 28x28=784, die Pixelmatrix wird in einem Vektor umgeformt</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">784</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">784</span><span class="p">)</span>
+
+<span class="c1"># converting list to array</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6421, 784)
+(6421,)
+(2753, 784)
+(2753,)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="one-hot-encoding">
+<h2>One-Hot-Encoding<a class="headerlink" href="#one-hot-encoding" title="Permalink to this headline">¶</a></h2>
+<p>Das logistische Regressionsmodell kann erstmal nur darauf trainiert werden, ein Objekt von anderen zu unterscheiden. Dafür müssen die Labels (y_train &amp; y_test) umgewandelt werden. Bisher sind Werte von 0 bis 4 enthalten, die für die jeweilige Kategorie stehen. Da die logistische Regression nur mit Werten zwischen 0 und 1 arbeiten kann, müssen die Labels dem so genannten “One-Hot-Encoding” unterzogen werden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># auf eine Klasse trainieren, One-Hot-Encoding</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;One-Hot_Encoded:&quot;</span><span class="p">)</span>
+<span class="c1"># 3 = sechskant</span>
+<span class="n">y_train_3</span><span class="o">=</span><span class="n">y_train</span> <span class="o">==</span> <span class="mi">3</span> <span class="c1"># False,True,...</span>
+<span class="n">y_test_3</span> <span class="o">=</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_train_3</span><span class="p">)</span>
+
+<span class="c1"># False,True,... in Werte zw. 0...1 umwandeln</span>
+<span class="n">y_train_3</span> <span class="o">=</span> <span class="n">y_train_3</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> 
+<span class="n">y_test_3</span> <span class="o">=</span> <span class="n">y_test_3</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Umwandlung in Float-Werte:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_train_3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>One-Hot_Encoded:
+[False False False ... False False False]
+Umwandlung in Float-Werte:
+[0. 0. 0. ... 0. 0. 0.]
+[4 1 0 ... 4 4 4]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="modell-trainieren-sechkant">
+<h2>## Modell trainieren (Sechkant)<a class="headerlink" href="#modell-trainieren-sechkant" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_output_scroll tag_hide-input tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">expit</span>
+
+
+<span class="k">def</span> <span class="nf">S</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">expit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="c1"># return 1 / (1 + np.exp(-x))</span>
+
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">S</span><span class="p">(</span><span class="n">w</span> <span class="o">@</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">J</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span> <span class="o">+</span> \
+                    <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span>
+
+
+<span class="k">def</span> <span class="nf">J_ableitung_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">*</span> <span class="n">e</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">J_ableitung_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># print(X_train.shape)</span>
+<span class="c1"># exit()</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">))</span> <span class="c1"># bei der NUll ist Steigung am größten-&gt;numerisch besser</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">):</span>
+
+    <span class="n">dw</span> <span class="o">=</span> <span class="n">J_ableitung_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_3</span><span class="p">)</span> <span class="c1"># y_train_3 = Sechskant</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">J_ableitung_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_3</span><span class="p">)</span>
+
+    <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">dw</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">db</span>
+
+    <span class="n">cost</span> <span class="o">=</span> <span class="n">J</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_3</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kosten: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cost</span><span class="p">))</span>
+    
+<span class="c1"># Quelle. Jannis Seemann, Udemy-Kurs Deep Learning (unveröffentlicht)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kosten: 0.42289340183108526
+Kosten: 0.39025636130448693
+Kosten: 0.37023593326767007
+Kosten: 0.35319485045124654
+Kosten: 0.33777629019299793
+Kosten: 0.32363103919505287
+Kosten: 0.31059615214831926
+Kosten: 0.29855409078903256
+Kosten: 0.2874048433514228
+Kosten: 0.2770598654516103
+Kosten: 0.267440310808401
+Kosten: 0.2584760330348266
+Kosten: 0.2501047056282456
+Kosten: 0.24227097885582088
+Kosten: 0.23492568648110618
+Kosten: 0.228025118282468
+Kosten: 0.22153036538807527
+Kosten: 0.2154067385081702
+Kosten: 0.2096232551825004
+Kosten: 0.20415219025331777
+Kosten: 0.19896868308511817
+Kosten: 0.19405039504214996
+Kosten: 0.18937721108276206
+Kosten: 0.18493097984893564
+Kosten: 0.18069528721212555
+Kosten: 0.17665525882198238
+Kosten: 0.17279738775971837
+Kosten: 0.16910938390654795
+Kosten: 0.1655800420934835
+Kosten: 0.16219912650114526
+Kosten: 0.1589572691297648
+Kosten: 0.15584588046436387
+Kosten: 0.15285707072306634
+Kosten: 0.14998358030251
+Kosten: 0.14721871822816177
+Kosten: 0.1445563075832875
+Kosten: 0.14199063703230247
+Kosten: 0.13951641767565845
+Kosten: 0.13712874457729968
+Kosten: 0.13482306239461428
+Kosten: 0.13259513461695638
+Kosten: 0.13044101598409447
+Kosten: 0.1283570277119703
+Kosten: 0.12633973520131347
+Kosten: 0.12438592794610022
+Kosten: 0.12249260139456838
+Kosten: 0.12065694054633169
+Kosten: 0.11887630509580234
+Kosten: 0.11714821595521482
+Kosten: 0.11547034301057234
+Kosten: 0.11384049398123637
+Kosten: 0.11225660426902495
+Kosten: 0.11071672769588382
+Kosten: 0.1092190280407257
+Kosten: 0.1077617712961118
+Kosten: 0.10634331857428468
+Kosten: 0.10496211959981136
+Kosten: 0.10361670673291058
+Kosten: 0.1023056894735317
+Kosten: 0.10102774940154263
+Kosten: 0.09978163551305463
+Kosten: 0.09856615991703875
+Kosten: 0.09738019386004938
+Kosten: 0.0962226640501139
+Kosten: 0.09509254925372963
+Kosten: 0.09398887714247586
+Kosten: 0.09291072136802973
+Kosten: 0.09185719884641726
+Kosten: 0.09082746723414777
+Kosten: 0.08982072258051108
+Kosten: 0.08883619714177358
+Kosten: 0.08787315734432045
+Kosten: 0.086930901884963
+Kosten: 0.08600875995768813
+Kosten: 0.08510608959707838
+Kosten: 0.08422227612948427
+Kosten: 0.08335673072381089
+Kosten: 0.08250888903447096
+Kosten: 0.08167820992969296
+Kosten: 0.08086417429894746
+Kosten: 0.08006628393376301
+Kosten: 0.07928406047668747
+Kosten: 0.07851704443356462
+Kosten: 0.07776479424469238
+Kosten: 0.0770268854107789
+Kosten: 0.07630290966993743
+Kosten: 0.07559247422225028
+Kosten: 0.0748952009987047
+Kosten: 0.0742107259715454
+Kosten: 0.07353869850331317
+Kosten: 0.07287878073204518
+Kosten: 0.07223064699029678
+Kosten: 0.07159398325582154
+Kosten: 0.0709684866319002
+Kosten: 0.07035386485545546
+Kosten: 0.06974983583122425
+Kosten: 0.0691561271903801
+Kosten: 0.06857247587211011
+Kosten: 0.06799862772675944
+Kosten: 0.06743433713924663
+Kosten: 0.06687936667154497
+Kosten: 0.06633348672310661
+Kosten: 0.06579647520817991
+Kosten: 0.06526811724904205
+Kosten: 0.06474820488423329
+Kosten: 0.06423653679093767
+Kosten: 0.06373291802071218
+Kosten: 0.06323715974781698
+Kosten: 0.06274907902944685
+Kosten: 0.06226849857720871
+Kosten: 0.06179524653923068
+Kosten: 0.061329156292327415
+Kosten: 0.06087006624368071
+Kosten: 0.06041781964152774
+Kosten: 0.05997226439438241
+Kosten: 0.0595332528983385
+Kosten: 0.05910064187203867
+Kosten: 0.05867429219890834
+Kosten: 0.05825406877628523
+Kosten: 0.05783984037109263
+Kosten: 0.057431479481725584
+Kosten: 0.05702886220583947
+Kosten: 0.05663186811374603
+Kosten: 0.05624038012714165
+Kosten: 0.05585428440290469
+Kosten: 0.05547347022171652
+Kosten: 0.055097829881272
+Kosten: 0.054727258593860906
+Kosten: 0.05436165438810937
+Kosten: 0.05400091801468806
+Kosten: 0.05364495285579713
+Kosten: 0.053293664838254866
+Kosten: 0.052946962350020894
+Kosten: 0.05260475615999715
+Kosten: 0.052266959340956244
+Kosten: 0.051933487195455555
+Kosten: 0.05160425718460193
+Kosten: 0.05127918885954035
+Kosten: 0.050958203795543965
+Kosten: 0.05064122552859141
+Kosten: 0.05032817949432267
+Kosten: 0.050018992969267415
+Kosten: 0.04971359501425077
+Kosten: 0.04941191641987918
+Kosten: 0.04911388965401996
+Kosten: 0.04881944881118827
+Kosten: 0.048528529563761476
+Kosten: 0.04824106911494345
+Kosten: 0.04795700615340737
+Kosten: 0.047676280809545196
+Kosten: 0.04739883461325855
+Kosten: 0.047124610453229174
+Kosten: 0.046853552537605384
+Kosten: 0.04658560635605077
+Kosten: 0.046320718643097905
+Kosten: 0.04605883734275568
+Kosten: 0.04579991157431966
+Kosten: 0.04554389159933995
+Kosten: 0.04529072878969764
+Kosten: 0.045040375596749456
+Kosten: 0.04479278552149817
+Kosten: 0.04454791308574789
+Kosten: 0.04430571380420832
+Kosten: 0.04406614415751038
+Kosten: 0.04382916156609832
+Kosten: 0.0435947243649673
+Kosten: 0.043362791779211346
+Kosten: 0.04313332390035398
+Kosten: 0.04290628166343204
+Kosten: 0.04268162682480357
+Kosten: 0.04245932194065364
+Kosten: 0.04223933034617386
+Kosten: 0.04202161613538998
+Kosten: 0.04180614414161252
+Kosten: 0.04159287991849186
+Kosten: 0.04138178972165219
+Kosten: 0.04117284049088666
+Kosten: 0.04096599983289115
+Kosten: 0.04076123600452036
+Kosten: 0.04055851789654629
+Kosten: 0.04035781501790101
+Kosten: 0.04015909748038905
+Kosten: 0.03996233598385076
+Kosten: 0.03976750180176297
+Kosten: 0.039574566767260885
+Kosten: 0.0393835032595676
+Kosten: 0.03919428419081644
+Kosten: 0.039006882993254284
+Kosten: 0.03882127360681144
+Kosten: 0.038637430467027875
+Kosten: 0.03845532849332115
+Kosten: 0.03827494307758822
+Kosten: 0.0380962500731267
+Kosten: 0.03791922578386765
+Kosten: 0.03774384695390871
+Kosten: 0.0375700907573372
+Kosten: 0.03739793478833538
+Kosten: 0.03722735705155769
+Kosten: 0.03705833595277131
+Kosten: 0.036890850289751656
+Kosten: 0.03672487924342585
+Kosten: 0.03656040236925493
+Kosten: 0.03639739958884678
+Kosten: 0.03623585118179579
+Kosten: 0.03607573777773801
+Kosten: 0.03591704034861782
+Kosten: 0.03575974020115927
+Kosten: 0.03560381896953443
+Kosten: 0.03544925860822478
+Kosten: 0.03529604138506788
+Kosten: 0.03514414987448473
+Kosten: 0.034993566950882155
+Kosten: 0.03484427578222521
+Kosten: 0.03469625982377362
+Kosten: 0.034549502811978515
+Kosten: 0.03440398875853409
+Kosten: 0.034259701944579314
+Kosten: 0.034116626915046286
+Kosten: 0.033974748473150004
+Kosten: 0.03383405167501548
+Kosten: 0.033694521824439126
+Kosten: 0.03355614446777898
+Kosten: 0.03341890538897201
+Kosten: 0.03328279060467311
+Kosten: 0.0331477863595129
+Kosten: 0.03301387912147132
+Kosten: 0.03288105557736393
+Kosten: 0.032749302628436415
+Kosten: 0.0326186073860655
+Kosten: 0.032488957167562955
+Kosten: 0.032360339492079705
+Kosten: 0.0322327420766078
+Kosten: 0.032106152832075664
+Kosten: 0.03198055985953746
+Kosten: 0.0318559514464503
+Kosten: 0.03173231606303971
+Kosten: 0.031609642358749024
+Kosten: 0.031487919158771825
+Kosten: 0.031367135460664046
+Kosten: 0.03124728043103518
+Kosten: 0.031128343402313862
+Kosten: 0.03101031386958888
+Kosten: 0.030893181487521557
+Kosten: 0.03077693606732776
+Kosten: 0.03066156757382917
+Kosten: 0.030547066122570122
+Kosten: 0.03043342197699906
+Kosten: 0.03032062554571429
+Kosten: 0.030208667379769294
+Kosten: 0.030097538170038875
+Kosten: 0.02998722874464372
+Kosten: 0.02987773006643081
+Kosten: 0.029769033230509903
+Kosten: 0.029661129461843686
+Kosten: 0.029554010112890126
+Kosten: 0.02944766666129634
+Kosten: 0.029342090707642085
+Kosten: 0.029237273973232315
+Kosten: 0.029133208297936357
+Kosten: 0.029029885638074376
+Kosten: 0.028927298064347903
+Kosten: 0.02882543775981471
+Kosten: 0.02872429701790709
+Kosten: 0.02862386824049063
+Kosten: 0.02852414393596544
+Kosten: 0.02842511671740584
+Kosten: 0.028326779300739506
+Kosten: 0.028229124502964224
+Kosten: 0.02813214524040166
+Kosten: 0.028035834526987942
+Kosten: 0.02794018547259749
+Kosten: 0.027845191281403926
+Kosten: 0.027750845250272056
+Kosten: 0.027657140767184164
+Kosten: 0.027564071309697506
+Kosten: 0.027471630443433284
+Kosten: 0.027379811820596477
+Kosten: 0.027288609178524253
+Kosten: 0.027198016338264946
+Kosten: 0.027108027203184462
+Kosten: 0.027018635757600537
+Kosten: 0.026929836065444454
+Kosten: 0.026841622268948654
+Kosten: 0.026753988587361298
+Kosten: 0.026666929315684137
+Kosten: 0.026580438823437275
+Kosten: 0.026494511553446766
+Kosten: 0.026409142020655755
+Kosten: 0.026324324810959487
+Kosten: 0.026240054580061914
+Kosten: 0.02615632605235495
+Kosten: 0.026073134019818946
+Kosten: 0.02599047334094455
+Kosten: 0.025908338939674442
+Kosten: 0.025826725804365964
+Kosten: 0.025745628986773218
+Kosten: 0.025665043601047915
+Kosten: 0.025584964822759803
+Kosten: 0.025505387887934636
+Kosten: 0.025426308092111174
+Kosten: 0.02534772078941503
+Kosten: 0.025269621391649625
+Kosten: 0.025192005367404884
+Kosten: 0.02511486824118159
+Kosten: 0.025038205592532146
+Kosten: 0.024962013055216996
+Kosten: 0.024886286316377303
+Kosten: 0.02481102111572111
+Kosten: 0.024736213244726243
+Kosten: 0.024661858545856147
+Kosten: 0.024587952911790723
+Kosten: 0.024514492284670657
+Kosten: 0.024441472655355793
+Kosten: 0.024368890062696647
+Kosten: 0.024296740592818188
+Kosten: 0.024225020378417828
+Kosten: 0.024153725598074625
+Kosten: 0.024082852475571497
+Kosten: 0.024012397279228975
+Kosten: 0.023942356321250937
+Kosten: 0.02387272595708179
+Kosten: 0.02380350258477463
+Kosten: 0.023734682644371344
+Kosten: 0.023666262617292155
+Kosten: 0.023598239025736916
+Kosten: 0.023530608432096325
+Kosten: 0.023463367438372847
+Kosten: 0.023396512685612925
+Kosten: 0.023330040853347372
+Kosten: 0.023263948659042414
+Kosten: 0.023198232857559568
+Kosten: 0.023132890240625283
+Kosten: 0.023067917636308874
+Kosten: 0.02300331190850958
+Kosten: 0.022939069956452632
+Kosten: 0.02287518871419338
+Kosten: 0.02281166515012964
+Kosten: 0.022748496266522897
+Kosten: 0.02268567909902665
+Kosten: 0.0226232107162231
+Kosten: 0.022561088219167563
+Kosten: 0.022499308740940062
+Kosten: 0.022437869446204798
+Kosten: 0.02237676753077637
+Kosten: 0.022316000221193597
+Kosten: 0.022255564774299998
+Kosten: 0.02219545847683108
+Kosten: 0.022135678645008816
+Kosten: 0.022076222624142012
+Kosten: 0.022017087788233802
+Kosten: 0.02195827153959517
+Kosten: 0.021899771308464343
+Kosten: 0.021841584552633363
+Kosten: 0.021783708757079266
+Kosten: 0.021726141433602367
+Kosten: 0.021668880120469473
+Kosten: 0.02161192238206328
+Kosten: 0.02155526580853718
+Kosten: 0.021498908015475295
+Kosten: 0.021442846643558073
+Kosten: 0.021387079358233373
+Kosten: 0.021331603849392256
+Kosten: 0.021276417831050207
+Kosten: 0.021221519041033053
+Kosten: 0.02116690524066813
+Kosten: 0.02111257421447979
+Kosten: 0.02105852376988994
+Kosten: 0.02100475173692336
+Kosten: 0.020951255967916898
+Kosten: 0.02089803433723403
+Kosten: 0.02084508474098292
+Kosten: 0.020792405096739623
+Kosten: 0.02073999334327469
+Kosten: 0.020687847440284606
+Kosten: 0.02063596536812704
+Kosten: 0.020584345127559835
+Kosten: 0.020532984739484526
+Kosten: 0.020481882244693213
+Kosten: 0.020431035703619458
+Kosten: 0.020380443196092845
+Kosten: 0.02033010282109732
+Kosten: 0.0202800126965331
+Kosten: 0.020230170958981723
+Kosten: 0.02018057576347555
+Kosten: 0.020131225283269567
+Kosten: 0.020082117709617264
+Kosten: 0.020033251251549516
+Kosten: 0.019984624135657013
+Kosten: 0.019936234605875396
+Kosten: 0.01988808092327403
+Kosten: 0.019840161365847632
+Kosten: 0.019792474228310618
+Kosten: 0.019745017821895406
+Kosten: 0.019697790474152224
+Kosten: 0.019650790528753317
+Kosten: 0.019604016345298517
+Kosten: 0.01955746629912503
+Kosten: 0.019511138781118667
+Kosten: 0.019465032197528688
+Kosten: 0.019419144969784877
+Kosten: 0.01937347553431746
+Kosten: 0.019328022342379004
+Kosten: 0.01928278385986962
+Kosten: 0.019237758567164427
+Kosten: 0.01919294495894259
+Kosten: 0.01914834154402058
+Kosten: 0.01910394684518555
+Kosten: 0.019059759399032858
+Kosten: 0.019015777755805083
+Kosten: 0.018972000479233038
+Kosten: 0.018928426146379893
+Kosten: 0.018885053347486348
+Kosten: 0.018841880685818862
+Kosten: 0.018798906777519393
+Kosten: 0.018756130251457594
+Kosten: 0.01871354974908489
+Kosten: 0.018671163924290385
+Kosten: 0.018628971443259017
+Kosten: 0.01858697098433164
+Kosten: 0.018545161237866734
+Kosten: 0.01850354090610421
+Kosten: 0.018462108703031166
+Kosten: 0.018420863354249223
+Kosten: 0.018379803596843547
+Kosten: 0.01833892817925442
+Kosten: 0.018298235861149207
+Kosten: 0.018257725413297416
+Kosten: 0.018217395617446383
+Kosten: 0.01817724526619943
+Kosten: 0.018137273162894898
+Kosten: 0.018097478121487286
+Kosten: 0.018057858966429884
+Kosten: 0.0180184145325589
+Kosten: 0.017979143664979033
+Kosten: 0.017940045218950644
+Kosten: 0.017901118059778627
+Kosten: 0.01786236106270208
+Kosten: 0.017823773112786424
+Kosten: 0.017785353104815934
+Kosten: 0.0177470999431882
+Kosten: 0.01770901254181008
+Kosten: 0.017671089823994464
+Kosten: 0.017633330722359015
+Kosten: 0.01759573417872568
+Kosten: 0.01755829914402178
+Kosten: 0.017521024578182515
+Kosten: 0.017483909450054156
+Kosten: 0.01744695273729915
+Kosten: 0.017410153426302043
+Kosten: 0.017373510512076352
+Kosten: 0.017337022998173933
+Kosten: 0.01730068989659324
+Kosten: 0.017264510227691064
+Kosten: 0.017228483020093856
+Kosten: 0.017192607310610713
+Kosten: 0.01715688214414781
+Kosten: 0.01712130657362279
+Kosten: 0.017085879659881845
+Kosten: 0.017050600471616245
+Kosten: 0.01701546808528099
+Kosten: 0.016980481585013835
+Kosten: 0.01694564006255595
+Kosten: 0.01691094261717294
+Kosten: 0.01687638835557705
+Kosten: 0.0168419763918506
+Kosten: 0.01680770584737013
+Kosten: 0.01677357585073145
+Kosten: 0.01673958553767545
+Kosten: 0.0167057340510155
+Kosten: 0.016672020540564887
+Kosten: 0.016638444163065716
+Kosten: 0.016605004082118475
+Kosten: 0.01657169946811233
+Kosten: 0.016538529498156606
+Kosten: 0.01650549335601273
+Kosten: 0.01647259023202735
+Kosten: 0.01643981932306583
+Kosten: 0.016407179832447032
+Kosten: 0.016374670969878605
+Kosten: 0.01634229195139281
+Kosten: 0.01631004199928391
+Kosten: 0.016277920342045213
+Kosten: 0.016245926214307885
+Kosten: 0.016214058856779862
+Kosten: 0.016182317516185693
+Kosten: 0.01615070144520714
+Kosten: 0.0161192099024243
+Kosten: 0.01608784215225766
+Kosten: 0.01605659746491061
+Kosten: 0.0160254751163129
+Kosten: 0.01599447438806433
+Kosten: 0.015963594567379644
+Kosten: 0.015932834947033778
+Kosten: 0.015902194825307508
+Kosten: 0.015871673505934224
+Kosten: 0.015841270298047005
+Kosten: 0.015810984516126416
+Kosten: 0.015780815479948758
+Kosten: 0.015750762514535322
+Kosten: 0.015720824950101575
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="modell-genauigkeit-sechskant">
+<h2>Modell Genauigkeit (Sechskant)<a class="headerlink" href="#modell-genauigkeit-sechskant" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Testbilder bei denen das Modell über 50 % wahrscheinlichkeit dafür ausgibt, dass es sich um eine Sechskantschraube handelt.</span>
+<span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="c1"># False True False...</span>
+
+<span class="c1"># umformen </span>
+<span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">y_test_pred</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># [True False] -&gt;&gt; [1. 0.]</span>
+<span class="n">y_test_pred</span><span class="o">=</span><span class="n">y_test_pred</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># Genauigkeit berechnen</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;erreichte Genauigkeit: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_test_3</span> <span class="o">==</span> <span class="n">y_test_pred</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">+</span> <span class="s2">&quot; %&quot;</span><span class="p">)</span>
+
+<span class="c1"># Anteil der Klasse am Gesamten Testdatensatz</span>
+<span class="n">imgs</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">y_test_3</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">imgs</span><span class="o">=</span><span class="n">imgs</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">imgs</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot; Sechskant von insgesamt &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test_3</span><span class="p">))</span><span class="o">+</span><span class="s2">&quot; Testbildern.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Anteil = &quot;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">imgs</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test_3</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>erreichte Genauigkeit: 100.0 %
+575 Sechskant von insgesamt 2753 Testbildern.
+Anteil = 0.20886305848165637
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die logistische Regression konnte alle Sechskant-Bilder korrekt von allen anderen unterscheiden. Das entspricht einer Genauigkeit von 100<span class="math notranslate nohighlight">\(~\)</span>%, ein sehr gutes Ergebnis für dieses einfache Modell. Die Ursache für das sehr gute Ergebnis, liegt darin begründet, dass sich der Sechskant sehr deutlich von den anderen Schraubenklassen unterscheidet. Die Erkennung der Schraubenarten Innensechskant, Philips, Pozidriv und Torx, war für dieses Modell kaum noch möglich.</p>
+</div>
+<div class="section" id="modell-trainieren-innensechkant">
+<h2>Modell trainieren (Innensechkant)<a class="headerlink" href="#modell-trainieren-innensechkant" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># auf eine Klasse trainieren, One-Hot-Encoding</span>
+<span class="c1"># 0 = Innensechskant</span>
+<span class="n">y_train_0</span><span class="o">=</span><span class="n">y_train</span> <span class="o">==</span> <span class="mi">0</span> <span class="c1"># False,True,...</span>
+<span class="n">y_test_0</span> <span class="o">=</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="c1"># False,True,... in Werte zw. 0...1 umwandeln</span>
+<span class="n">y_train_0</span> <span class="o">=</span> <span class="n">y_train_0</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> 
+<span class="n">y_test_0</span> <span class="o">=</span> <span class="n">y_test_0</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> 
+
+<span class="c1"># Modell trainieren</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">784</span><span class="p">))</span> <span class="c1"># bei der NUll ist Steigung am größten-&gt;numerisch besser</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">):</span>
+
+    <span class="n">dw</span> <span class="o">=</span> <span class="n">J_ableitung_w</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_0</span><span class="p">)</span> <span class="c1"># y_train_0 = Innensechskant</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">J_ableitung_b</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_0</span><span class="p">)</span>
+
+    <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">dw</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">db</span>
+
+    <span class="n">cost</span> <span class="o">=</span> <span class="n">J</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train_0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kosten: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cost</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>One-Hot_Encoded:
+[False False  True ... False False False]
+Kosten: 0.4818346186250685
+Kosten: 0.46103999268174495
+Kosten: 0.45009265731350745
+Kosten: 0.44100208784447387
+Kosten: 0.4328362271202209
+Kosten: 0.4253885669508601
+Kosten: 0.4185656701155267
+Kosten: 0.4122985703656496
+Kosten: 0.40652802270304905
+Kosten: 0.4012016284027364
+Kosten: 0.39627289871356913
+Kosten: 0.3917006241504276
+Kosten: 0.38744830567420324
+Kosten: 0.38348362559914456
+Kosten: 0.37977796287586074
+Kosten: 0.3763059558036491
+Kosten: 0.37304511178794675
+Kosten: 0.3699754616314478
+Kosten: 0.3670792548070002
+Kosten: 0.3643406917716148
+Kosten: 0.36174568935797596
+Kosten: 0.3592816754560544
+Kosten: 0.3569374094756466
+Kosten: 0.3547028254035497
+Kosten: 0.35256889460242524
+Kosten: 0.35052750582234826
+Kosten: 0.3485713601994376
+Kosten: 0.34669387929342843
+Kosten: 0.34488912446551884
+Kosten: 0.34315172611949357
+Kosten: 0.3414768215243608
+Kosten: 0.33986000010757894
+Kosten: 0.338297255256729
+Kosten: 0.3367849417966203
+Kosten: 0.335319738420571
+Kosten: 0.3338986144512064
+Kosten: 0.33251880038946974
+Kosten: 0.33117776178244906
+Kosten: 0.3298731760026229
+Kosten: 0.32860291158459837
+Kosten: 0.32736500981152683
+Kosten: 0.3261576682831893
+Kosten: 0.3249792262321097
+Kosten: 0.32382815138376403
+Kosten: 0.3227030281826521
+Kosten: 0.3216025472282492
+Kosten: 0.3205254957841532
+Kosten: 0.31947074924048424
+Kosten: 0.3184372634241441
+Kosten: 0.3174240676642036
+Kosten: 0.3164302585307128
+Kosten: 0.31545499417485007
+Kosten: 0.3144974892067252
+Kosten: 0.3135570100545017
+Kosten: 0.3126328707549354
+Kosten: 0.31172442913107035
+Kosten: 0.3108310833177845
+Kosten: 0.3099522686002333
+Kosten: 0.3090874545340734
+Kosten: 0.3082361423197258
+Kosten: 0.3073978624059219
+Kosten: 0.306572172300408
+Kosten: 0.30575865456802087
+Kosten: 0.3049569149984034
+Kosten: 0.3041665809274711
+Kosten: 0.30338729969836054
+Kosten: 0.302618737249037
+Kosten: 0.3018605768150317
+Kosten: 0.3011125177369182
+Kosten: 0.3003742743631677
+Kosten: 0.29964557503993333
+Kosten: 0.2989261611801317
+Kosten: 0.2982157864049227
+Kosten: 0.2975142157513418
+Kosten: 0.29682122494042973
+Kosten: 0.29613659970072964
+Kosten: 0.2954601351424993
+Kosten: 0.29479163517840873
+Kosten: 0.29413091198688474
+Kosten: 0.2934777855146008
+Kosten: 0.2928320830149341
+Kosten: 0.29219363861948505
+Kosten: 0.291562292940016
+Kosten: 0.2909378926983916
+Kosten: 0.2903202903823185
+Kosten: 0.28970934392486464
+Kosten: 0.28910491640591657
+Kosten: 0.28850687577388423
+Kosten: 0.2879150945861087
+Kosten: 0.2873294497665534
+Kosten: 0.2867498223794789
+Kosten: 0.28617609741790845
+Kosten: 0.28560816360578667
+Kosten: 0.28504591321282396
+Kosten: 0.2844892418811014
+Kosten: 0.28393804846258075
+Kosten: 0.2833922348667374
+Kosten: 0.2828517059175906
+Kosten: 0.2823163692194656
+Kosten: 0.28178613503087224
+Kosten: 0.28126091614593174
+Kosten: 0.2807406277828297
+Kosten: 0.2802251874788084
+Kosten: 0.27971451499125327
+Kosten: 0.2792085322044582
+Kosten: 0.27870716304168774
+Kosten: 0.27821033338218015
+Kosten: 0.2777179709827649
+Kosten: 0.27723000540378945
+Kosten: 0.27674636793907154
+Kosten: 0.2762669915496188
+Kosten: 0.2757918108008697
+Kosten: 0.27532076180323123
+Kosten: 0.27485378215570516
+Kosten: 0.27439081089240613
+Kosten: 0.27393178843179267
+Kosten: 0.2734766565284406
+Kosten: 0.27302535822720464
+Kosten: 0.2725778378196206
+Kosten: 0.2721340408024121
+Kosten: 0.2716939138379778
+Kosten: 0.2712574047167379
+Kosten: 0.2708244623212319
+Kosten: 0.27039503659186476
+Kosten: 0.2699690784942048
+Kosten: 0.2695465399877451
+Kosten: 0.2691273739960435
+Kosten: 0.2687115343781642
+Kosten: 0.2682989759013475
+Kosten: 0.2678896542148386
+Kosten: 0.2674835258248137
+Kosten: 0.2670805480703405
+Kosten: 0.26668067910031984
+Kosten: 0.2662838778513547
+Kosten: 0.26589010402649693
+Kosten: 0.2654993180748269
+Kosten: 0.2651114811718203
+Kosten: 0.2647265552004663
+Kosten: 0.2643445027330916
+Kosten: 0.2639652870138625
+Kosten: 0.2635888719419246
+Kosten: 0.2632152220551531
+Kosten: 0.26284430251448165
+Kosten: 0.2624760790887816
+Kosten: 0.2621105181402668
+Kosten: 0.2617475866103977
+Kosten: 0.26138725200626195
+Kosten: 0.2610294823874094
+Kosten: 0.26067424635312036
+Kosten: 0.260321513030088
+Kosten: 0.25997125206049587
+Kosten: 0.2596234335904739
+Kosten: 0.259278028258914
+Kosten: 0.2589350071866341
+Kosten: 0.25859434196586994
+Kosten: 0.25825600465008663
+Kosten: 0.2579199677440918
+Kosten: 0.25758620419444117
+Kosten: 0.2572546873801226
+Kosten: 0.25692539110350865
+Kosten: 0.2565982895815666
+Kosten: 0.2562733574373152
+Kosten: 0.25595056969151914
+Kosten: 0.2556299017546124
+Kosten: 0.25531132941884155
+Kosten: 0.25499482885061936
+Kosten: 0.25468037658308385
+Kosten: 0.25436794950885266
+Kosten: 0.25405752487296634
+Kosten: 0.25374908026601517
+Kosten: 0.2534425936174406
+Kosten: 0.2531380431890076
+Kosten: 0.25283540756844036
+Kosten: 0.2525346656632167
+Kosten: 0.252235796694515
+Kosten: 0.25193878019131
+Kosten: 0.25164359598461056
+Kosten: 0.25135022420183667
+Kosten: 0.2510586452613299
+Kosten: 0.25076883986699394
+Kosten: 0.2504807890030599
+Kosten: 0.2501944739289749
+Kosten: 0.2499098761744065
+Kosten: 0.2496269775343632
+Kosten: 0.2493457600644248
+Kosten: 0.24906620607608101
+Kosten: 0.248788298132174
+Kosten: 0.2485120190424422
+Kosten: 0.24823735185916315
+Kosten: 0.24796427987289102
+Kosten: 0.24769278660828803
+Kosten: 0.24742285582004514
+Kosten: 0.24715447148889155
+Kosten: 0.24688761781768823
+Kosten: 0.2466222792276056
+Kosten: 0.24635844035438173
+Kosten: 0.2460960860446582
+Kosten: 0.24583520135239417
+Kosten: 0.24557577153535293
+Kosten: 0.24531778205166282
+Kosten: 0.24506121855644755
+Kosten: 0.24480606689852588
+Kosten: 0.2445523131171784
+Kosten: 0.24429994343897915
+Kosten: 0.24404894427469212
+Kosten: 0.24379930221622856
+Kosten: 0.24355100403366603
+Kosten: 0.24330403667232559
+Kosten: 0.24305838724990758
+Kosten: 0.2428140430536832
+Kosten: 0.24257099153774095
+Kosten: 0.24232922032028703
+Kosten: 0.24208871718099803
+Kosten: 0.24184947005842436
+Kosten: 0.2416114670474442
+Kosten: 0.2413746963967656
+Kosten: 0.24113914650647694
+Kosten: 0.24090480592564306
+Kosten: 0.24067166334994786
+Kosten: 0.24043970761938063
+Kosten: 0.24020892771596558
+Kosten: 0.239979312761535
+Kosten: 0.23975085201554316
+Kosten: 0.23952353487292036
+Kosten: 0.2392973508619676
+Kosten: 0.23907228964228994
+Kosten: 0.2388483410027671
+Kosten: 0.23862549485956228
+Kosten: 0.2384037412541661
+Kosten: 0.2381830703514776
+Kosten: 0.2379634724379188
+Kosten: 0.23774493791958368
+Kosten: 0.23752745732042096
+Kosten: 0.23731102128044898
+Kosten: 0.23709562055400252
+Kosten: 0.2368812460080118
+Kosten: 0.2366678886203103
+Kosten: 0.2364555394779748
+Kosten: 0.23624418977569292
+Kosten: 0.23603383081416035
+Kosten: 0.23582445399850657
+Kosten: 0.23561605083674672
+Kosten: 0.23540861293826235
+Kosten: 0.2352021320123074
+Kosten: 0.23499659986654048
+Kosten: 0.23479200840558265
+Kosten: 0.23458834962959996
+Kosten: 0.23438561563291072
+Kosten: 0.23418379860261654
+Kosten: 0.23398289081725634
+Kosten: 0.23378288464548436
+Kosten: 0.23358377254476953
+Kosten: 0.23338554706011816
+Kosten: 0.23318820082281722
+Kosten: 0.23299172654919947
+Kosten: 0.23279611703942926
+Kosten: 0.23260136517630867
+Kosten: 0.2324074639241039
+Kosten: 0.23221440632739088
+Kosten: 0.23202218550992043
+Kosten: 0.23183079467350248
+Kosten: 0.2316402270969084
+Kosten: 0.23145047613479178
+Kosten: 0.23126153521662685
+Kosten: 0.23107339784566475
+Kosten: 0.2308860575979064
+Kosten: 0.23069950812109266
+Kosten: 0.2305137431337108
+Kosten: 0.23032875642401723
+Kosten: 0.23014454184907635
+Kosten: 0.22996109333381415
+Kosten: 0.22977840487008852
+Kosten: 0.22959647051577345
+Kosten: 0.22941528439385822
+Kosten: 0.2292348406915616
+Kosten: 0.22905513365945934
+Kosten: 0.22887615761062682
+Kosten: 0.22869790691979414
+Kosten: 0.2285203760225152
+Kosten: 0.22834355941435067
+Kosten: 0.2281674516500626
+Kosten: 0.2279920473428225
+Kosten: 0.22781734116343225
+Kosten: 0.2276433278395563
+Kosten: 0.2274700021549668
+Kosten: 0.2272973589488003
+Kosten: 0.22712539311482532
+Kosten: 0.22695409960072327
+Kosten: 0.22678347340737798
+Kosten: 0.22661350958817822
+Kosten: 0.2264442032483303
+Kosten: 0.22627554954418166
+Kosten: 0.22610754368255373
+Kosten: 0.2259401809200867
+Kosten: 0.22577345656259357
+Kosten: 0.22560736596442313
+Kosten: 0.22544190452783486
+Kosten: 0.22527706770238118
+Kosten: 0.22511285098430045
+Kosten: 0.22494924991591853
+Kosten: 0.22478626008505978
+Kosten: 0.22462387712446674
+Kosten: 0.22446209671122866
+Kosten: 0.22430091456621812
+Kosten: 0.22414032645353724
+Kosten: 0.22398032817997116
+Kosten: 0.2238209155944499
+Kosten: 0.22366208458751843
+Kosten: 0.22350383109081448
+Kosten: 0.22334615107655456
+Kosten: 0.22318904055702668
+Kosten: 0.22303249558409102
+Kosten: 0.2228765122486886
+Kosten: 0.22272108668035598
+Kosten: 0.2225662150467481
+Kosten: 0.22241189355316737
+Kosten: 0.22225811844210017
+Kosten: 0.22210488599275988
+Kosten: 0.22195219252063655
+Kosten: 0.22180003437705303
+Kosten: 0.2216484079487278
+Kosten: 0.22149730965734388
+Kosten: 0.22134673595912385
+Kosten: 0.22119668334441164
+Kosten: 0.2210471483372594
+Kosten: 0.22089812749502086
+Kosten: 0.22074961740795038
+Kosten: 0.22060161469880799
+Kosten: 0.22045411602246934
+Kosten: 0.22030711806554176
+Kosten: 0.22016061754598606
+Kosten: 0.22001461121274268
+Kosten: 0.21986909584536413
+Kosten: 0.21972406825365182
+Kosten: 0.21957952527729857
+Kosten: 0.21943546378553608
+Kosten: 0.21929188067678657
+Kosten: 0.2191487728783207
+Kosten: 0.2190061373459187
+Kosten: 0.21886397106353755
+Kosten: 0.2187222710429816
+Kosten: 0.21858103432357884
+Kosten: 0.218440257971861
+Kosten: 0.21829993908124784
+Kosten: 0.21816007477173693
+Kosten: 0.21802066218959595
+Kosten: 0.21788169850706096
+Kosten: 0.2177431809220375
+Kosten: 0.21760510665780664
+Kosten: 0.2174674729627343
+Kosten: 0.21733027710998518
+Kosten: 0.21719351639724005
+Kosten: 0.21705718814641747
+Kosten: 0.21692128970339838
+Kosten: 0.21678581843775516
+Kosten: 0.2166507717424843
+Kosten: 0.216516147033742
+Kosten: 0.21638194175058414
+Kosten: 0.21624815335470926
+Kosten: 0.21611477933020476
+Kosten: 0.21598181718329737
+Kosten: 0.2158492644421057
+Kosten: 0.21571711865639706
+Kosten: 0.21558537739734732
+Kosten: 0.21545403825730325
+Kosten: 0.21532309884954898
+Kosten: 0.21519255680807478
+Kosten: 0.21506240978734942
+Kosten: 0.21493265546209503
+Kosten: 0.2148032915270653
+Kosten: 0.21467431569682613
+Kosten: 0.21454572570553979
+Kosten: 0.2144175193067512
+Kosten: 0.21428969427317737
+Kosten: 0.21416224839649964
+Kosten: 0.2140351794871581
+Kosten: 0.21390848537414947
+Kosten: 0.21378216390482654
+Kosten: 0.21365621294470127
+Kosten: 0.2135306303772497
+Kosten: 0.21340541410371944
+Kosten: 0.2132805620429401
+Kosten: 0.21315607213113533
+Kosten: 0.21303194232173778
+Kosten: 0.2129081705852068
+Kosten: 0.21278475490884718
+Kosten: 0.21266169329663173
+Kosten: 0.21253898376902475
+Kosten: 0.21241662436280861
+Kosten: 0.21229461313091227
+Kosten: 0.2121729481422416
+Kosten: 0.21205162748151218
+Kosten: 0.2119306492490845
+Kosten: 0.21181001156080037
+Kosten: 0.21168971254782193
+Kosten: 0.21156975035647277
+Kosten: 0.21145012314808068
+Kosten: 0.2113308290988222
+Kosten: 0.21121186639957
+Kosten: 0.21109323325574095
+Kosten: 0.21097492788714664
+Kosten: 0.21085694852784614
+Kosten: 0.21073929342599962
+Kosten: 0.21062196084372461
+Kosten: 0.21050494905695355
+Kosten: 0.21038825635529304
+Kosten: 0.21027188104188557
+Kosten: 0.21015582143327124
+Kosten: 0.21004007585925355
+Kosten: 0.20992464266276428
+Kosten: 0.20980952019973212
+Kosten: 0.20969470683895158
+Kosten: 0.20958020096195354
+Kosten: 0.20946600096287862
+Kosten: 0.20935210524835016
+Kosten: 0.20923851223735024
+Kosten: 0.2091252203610966
+Kosten: 0.20901222806292083
+Kosten: 0.2088995337981484
+Kosten: 0.20878713603398005
+Kosten: 0.20867503324937411
+Kosten: 0.20856322393493107
+Kosten: 0.20845170659277856
+Kosten: 0.20834047973645842
+Kosten: 0.20822954189081502
+Kosten: 0.20811889159188415
+Kosten: 0.20800852738678405
+Kosten: 0.20789844783360786
+Kosten: 0.20778865150131587
+Kosten: 0.20767913696963128
+Kosten: 0.20756990282893462
+Kosten: 0.20746094768016193
+Kosten: 0.207352270134702
+Kosten: 0.20724386881429635
+Kosten: 0.20713574235093915
+Kosten: 0.2070278893867791
+Kosten: 0.20692030857402247
+Kosten: 0.20681299857483637
+Kosten: 0.20670595806125433
+Kosten: 0.20659918571508193
+Kosten: 0.20649268022780423
+Kosten: 0.20638644030049372
+Kosten: 0.20628046464371977
+Kosten: 0.20617475197745883
+Kosten: 0.20606930103100551
+Kosten: 0.2059641105428852
+Kosten: 0.2058591792607673
+Kosten: 0.2057545059413791
+Kosten: 0.20565008935042156
+Kosten: 0.2055459282624851
+Kosten: 0.20544202146096666
+Kosten: 0.20533836773798833
+Kosten: 0.2052349658943152
+Kosten: 0.2051318147392766
+Kosten: 0.20502891309068577
+Kosten: 0.2049262597747619
+Kosten: 0.20482385362605265
+Kosten: 0.2047216934873575
+Kosten: 0.20461977820965171
+Kosten: 0.204518106652012
+Kosten: 0.20441667768154168
+Kosten: 0.20431549017329761
+Kosten: 0.20421454301021788
+Kosten: 0.20411383508304992
+Kosten: 0.20401336529027947
+Kosten: 0.20391313253806073
+Kosten: 0.20381313574014656
+Kosten: 0.20371337381782031
+Kosten: 0.20361384569982746
+Kosten: 0.20351455032230878
+Kosten: 0.2034154866287337
+Kosten: 0.2033166535698348
+Kosten: 0.20321805010354282
+Kosten: 0.20311967519492194
+Kosten: 0.2030215278161066
+Kosten: 0.20292360694623862
+Kosten: 0.20282591157140445
+Kosten: 0.20272844068457407
+Kosten: 0.20263119328554
+Kosten: 0.2025341683808566
+Kosten: 0.2024373649837809
+Kosten: 0.20234078211421339
+Kosten: 0.20224441879863966
+Kosten: 0.20214827407007288
+Kosten: 0.20205234696799584
+Kosten: 0.20195663653830545
+Kosten: 0.20186114183325624
+Kosten: 0.20176586191140483
+Kosten: 0.2016707958375556
+Kosten: 0.2015759426827061
+Kosten: 0.20148130152399363
+Kosten: 0.2013868714446421
+Kosten: 0.2012926515339092
+Kosten: 0.20119864088703515
+Kosten: 0.2011048386051905
+Kosten: 0.20101124379542548
+Kosten: 0.20091785557061975
+Kosten: 0.20082467304943244
+Kosten: 0.2007316953562528
+Kosten: 0.20063892162115138
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="modell-genauigkeit-innensechskant">
+<h2>Modell Genauigkeit (Innensechskant)<a class="headerlink" href="#modell-genauigkeit-innensechskant" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Testbilder bei denen das Modell über 50 % wahrscheinlichkeit dafür ausbibt, dass es sich um Innensechskant handelt.</span>
+<span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="c1"># False True False...</span>
+
+<span class="c1"># umformen </span>
+<span class="n">y_test_pred</span> <span class="o">=</span> <span class="n">y_test_pred</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># [True False] -&gt;&gt; [1. 0.]</span>
+<span class="n">y_test_pred</span><span class="o">=</span><span class="n">y_test_pred</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+
+
+<span class="c1"># Anteil der Klasse am Gesamten Testdatensatz</span>
+<span class="n">imgs_0</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">y_test_0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">imgs_0</span> <span class="o">=</span> <span class="n">imgs_0</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;von insgesamt &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test_0</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; Testbildern, sind &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">imgs_0</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; Innensechskant.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Anteil am gesamten Testdatensatz = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">imgs_0</span><span class="o">*</span><span class="mi">100</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test_0</span><span class="p">),</span><span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; %&quot;</span><span class="p">)</span>
+
+<span class="c1"># Genauigkeit berechnen</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Genauigkeit (scheinbar) : &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_test_0</span> <span class="o">==</span> <span class="n">y_test_pred</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span> <span class="s2">&quot; % &quot;</span><span class="p">)</span>
+
+<span class="c1"># Wie viel und welche Bilder wurden falsch erkannt?</span>
+<span class="n">imgs</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">)):</span>
+    
+    <span class="k">if</span> <span class="n">y_test_pred</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">y_test_0</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+        <span class="c1">#plt.imshow(X_test[i].reshape(28,28),cmap=&#39;gray&#39;)</span>
+        <span class="c1">#plt.show()</span>
+        <span class="c1">#print(i)</span>
+        <span class="n">imgs</span><span class="o">=</span><span class="n">imgs</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="c1">#print(imgs)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">imgs</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; von &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">imgs_0</span><span class="p">)</span><span class="o">+</span> <span class="s2">&quot; Innensechskantschrauben, wurden falsch erkannt.&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Die echte Genauigkeit beträgt somit lediglich &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">imgs</span><span class="o">/</span><span class="n">imgs_0</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span><span class="s2">&quot; %.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>von insgesamt 2753 Testbildern, sind 533 Innensechskant.
+Anteil am gesamten Testdatensatz = 19.4 %
+Genauigkeit (scheinbar) : 93.7 % 
+174 von 533 Innensechskantschrauben, wurden falsch erkannt.
+Die echte Genauigkeit beträgt somit lediglich 67.4 %.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Um einen Eindruck davon zu bekommen, bei welchen Bildern das Modell Schwierigkeiten hatte eine korrekte Vorhersage zu machen, werden einige dieser Bilder mit dem folgenden Programmcode angezeigt:</p>
+</div>
+<div class="section" id="falsch-erkennung">
+<h2>Falsch-Erkennung<a class="headerlink" href="#falsch-erkennung" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imgs</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
+    
+    <span class="k">if</span> <span class="n">y_test_pred</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">y_test_0</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">),</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">imgs</span><span class="o">=</span><span class="n">imgs</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3_logReg_28x28_27_0.png" src="../_images/3_logReg_28x28_27_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15
+</pre></div>
+</div>
+<img alt="../_images/3_logReg_28x28_27_2.png" src="../_images/3_logReg_28x28_27_2.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18
+</pre></div>
+</div>
+<img alt="../_images/3_logReg_28x28_27_4.png" src="../_images/3_logReg_28x28_27_4.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32
+</pre></div>
+</div>
+<img alt="../_images/3_logReg_28x28_27_6.png" src="../_images/3_logReg_28x28_27_6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63
+</pre></div>
+</div>
+<img alt="../_images/3_logReg_28x28_27_8.png" src="../_images/3_logReg_28x28_27_8.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es wurden schon leicht veränderte Bilder nicht mehr korrekt erkannt.</p>
+<p><strong>Die log. Regression (ein Neuron) kann lernen Bilder zu erkennen, ist aber wie erwartet nicht sehr leistungsfähig.<br />
+Im nächsten Abschnitt werden die ersten Schritte hin zu neuronalen Netzen gemacht</strong></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "Martin86We/Masterthesis_2022",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./02_NN"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2_logReg_learning.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Logistische Regression (Funktionsweise)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="4_NN_learning.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Neuronales Netz (Funktionsweise)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Martin Weilepp<br/>
+    
+      <div class="extra_footer">
+        <p>
+HTWG Konstanz
+</p>
+
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -32,8 +32,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['#Modell laden', "model = load_model('models/1Conv2d_32_3x3_MaxP_2x2.h5')", "history = np.load('models/1Conv2d_32_3x3_MaxP_2x2.npy',allow_pickle='TRUE').item()", '', "accuracy = history['accuracy']"]
+['#Modell laden', "model = load_model('models/1Conv2d_64_3x3_MaxP_2x2.h5')", "history = np.load('models/1Conv2d_64_3x3_MaxP_2x2.npy',allow_pickle='TRUE').item()", '', "accuracy = history['accuracy']"]
 ...
-['model.add(Conv2D(32, kernel_size=(3, 3), activation="relu", input_shape=(224,224,1,)))', 'model.add(MaxPooling2D(pool_size=(2, 2)))', 'model.add(Flatten())', 'model.add(Dense(6, activation="softmax"))', "plot_model(model, to_file='model_D_plot.png', show_shapes=True, show_layer_names=True)"]
+['model.add(MaxPooling2D(pool_size=(2, 2)))', 'model.add(Flatten())', 'model.add(Dense(6, activation="softmax"))', '', "plot_model(model, to_file='model_E_plot.png', show_shapes=True, show_layer_names=True)"]
 -------------------
 

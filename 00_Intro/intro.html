@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Masterarbeit &#8212; Anwendung neuronaler Netze in einem Sortierroboter</title>
+    <title>Aufgabenstellung &#8212; Anwendung neuronaler Netze in einem Sortierroboter</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -43,6 +43,8 @@
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe,.cell"
@@ -50,10 +52,11 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://martin86we.github.io/Masterthesis_2022/00_Intro/intro.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Einleitung" href="Einleitung.html" />
-    <link rel="prev" title="Masterarbeit" href="Deckblatt.html" />
+    <link rel="next" title="Nomenklatur" href="Nomenklatur.html" />
+    <link rel="prev" title="Eidesstattliche Erklärung" href="Eigenst.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -105,9 +108,19 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Eigenst.html">
+   Eidesstattliche Erklärung
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Masterarbeit
+   Aufgabenstellung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Nomenklatur.html">
+   Nomenklatur
   </a>
  </li>
  <li class="toctree-l1">
@@ -145,17 +158,22 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/logReg_28x28.html">
+  <a class="reference internal" href="../02_NN/2_logReg_learning.html">
+   Logistische Regression (Funktionsweise)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_NN/3_logReg_28x28.html">
    Logistische Regression
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/2_NN_learning.html">
+  <a class="reference internal" href="../02_NN/4_NN_learning.html">
    Neuronales Netz (Funktionsweise)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/NN_28x28.html">
+  <a class="reference internal" href="../02_NN/5_NN_28x28.html">
    Neuronales Netz
   </a>
  </li>
@@ -250,6 +268,21 @@
 
             <!-- Source interaction buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Martin86We/Masterthesis_2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/Martin86We/Masterthesis_2022/edit/main/00_Intro/intro.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -271,7 +304,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Masterarbeit</h1>
+                <h1>Aufgabenstellung</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -282,26 +315,27 @@
             
               <div>
                 
-  <p><img alt="Img AltText" src="https://www.ionos.de/digitalguide/fileadmin/DigitalGuide/Teaser/ki-t.jpg" /></p>
-<div class="tex2jax_ignore mathjax_ignore section" id="masterarbeit">
-<h1>Masterarbeit<a class="headerlink" href="#masterarbeit" title="Permalink to this headline">¶</a></h1>
+  <p><img alt="Img AltText" src="https://www.ionos.de/digitalguide/fileadmin/DigitalGuide/Teaser/ki-t.jpg" />
+<a class="reference external" href="https://www.ionos.de/digitalguide/fileadmin/DigitalGuide/Teaser/ki-t.jpg">Quelle</a></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="aufgabenstellung">
+<h1>Aufgabenstellung<a class="headerlink" href="#aufgabenstellung" title="Permalink to this headline">¶</a></h1>
 <p><strong>Anwendung neuronaler Netze in einem Sortierroboter</strong></p>
 <p>Künstliche Intelligenz (KI) findet immer mehr Einzug in Maschinen. Ein Bereich der KI ist das Deep
-Learning mit neuronalen Netzen, das sich z.B. hervorragend für Mustererkennung eignet. In dieser
+Learning mit neuronalen Netzen, das sich z.<span class="math notranslate nohighlight">\(~\)</span>B. hervorragend zur Mustererkennung eignet. In dieser
 Arbeit soll ein erster Schritt zu einem Sortierroboter gemacht werden, der im Endausbau geeignet ist,
 Schrauben nach Art (Holz-, Sechskant-, Inbusschrauben etc.), Durchmesser (M5, M6, M8 etc.) und
 Länge zu sortieren. In dieser Arbeit geht es aber zunächst nur um die Erkennung verschiedener
-Bauarten. Dabei sollen zunächst Schrauben in gleicher Ansicht und aus einheitlicher Richtung
+Bauarten. Dabei sollen vorerst Schrauben in gleicher Ansicht und aus einheitlicher Richtung
 betrachtet werden.</p>
 <p>In dieser Arbeit wird die Bilderkennung behandelt. Dazu sind folgende Schritte durchzuführen:</p>
 <ol class="simple">
 <li><p>Erzeugung einer Bilddatenbank mit Bildern von Schrauben verschiedener Bauart. Die Bilder
-sind mit CAD zu erzeugen, selber zu fotografieren oder aus dem Internet unter Beachtung
-des Copyrights zu sammeln. Eine Mischung der drei Quellen ist ebenfalls möglich.
+sind mittels CAD zu erzeugen, selbst zu fotografieren oder aus dem Internet unter Beachtung
+des Copyrights zu sammeln, falls dies erforderlich ist. Eine Mischung der drei Quellen ist ebenfalls möglich.
 Die Bilddatenbank soll leicht um weitere Kategorien und um weitere Bilder erweitert werden
-können. Es soll mit drei verschiedenen Schraubenarten begonnen werden.</p></li>
+können.</p></li>
 <li><p>Es ist, mit Python ein neuronales Netz zu erzeugen und für die Erkennung der
-Schraubenbauarten zu optimieren. Dabei ist vor allem folgende Netzstruktur auszuprobieren:</p></li>
+Schraubenbauarten zu optimieren. Dabei ist vor allem folgende Netzstruktur empirisch zu prüfen:</p></li>
 </ol>
 <ul class="simple">
 <li><p>2 bis 3 Convolutional Layer</p></li>
@@ -309,18 +343,17 @@ Schraubenbauarten zu optimieren. Dabei ist vor allem folgende Netzstruktur auszu
 <li><p>1 bis 2 fully connected Layer</p></li>
 </ul>
 <ol class="simple">
-<li><p>Das entwickelte Programm ist sehr gut zu kommentieren und zu strukturieren, so dass
+<li><p>Das entwickelte Programm ist klar zu strukturieren und vollständig zu kommentieren, so dass
 Studierende, die später an dem Projekt weiterarbeiten, sich sehr gut in die Software
 einarbeiten können.</p></li>
-<li><p>Das Anlernen von neuronalen Netzen erfordert eine Menge Rechenzeit. Deshalb ggf. ist es
-sinnvoll von Beginn an zu prüfen, ob durch die Nutzung aller Prozessorkerne des PC durch
-Parallelverarbeitung die Rechenzeit verringert werden kann.</p></li>
+<li><p>Das Anlernen von neuronalen Netzen erfordert eine Menge Rechenzeit. Deshalb ist es
+sinnvoll von Beginn an zu prüfen, ob durch die Nutzung einer GPU die Rechenzeit verringert werden kann.</p></li>
 <li><p>Der Schwierigkeitsgrad für die Erkennungssoftware ist schrittweise zu steigern. Beginnend
-mit Schrauben in identischer Lage mit identischer Beleuchtung hin zu Schrauben in
+mit Schrauben in identischer Lage, mit identischer Beleuchtung, hin zu Schrauben in
 unterschiedlicher Lage und ggf. unterschiedlicher Beleuchtung.
 Während des gesamten Projektes ist darauf zu achten, dass diese Arbeit der erste Schritt und damit
 die Grundlage sein soll, auf der vermutlich im Laufe der nächsten Jahre viele weitere Projektarbeiten
-aufbauen werden. Unter den zukünftigen Projektarbeitern werden Maschinenbaustudierende mit
+aufbauen werden. Unter den zukünftigen Bearbeitern werden Studierende mit
 wenig Programmiererfahrung sein.</p></li>
 </ol>
 </div>
@@ -350,17 +383,17 @@ wenig Programmiererfahrung sein.</p></li>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="Deckblatt.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Eigenst.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><center>Masterarbeit</center></p>
+            <p class="prev-next-title">Eidesstattliche Erklärung</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Einleitung.html" title="next page">
+    <a class='right-next' id="next-link" href="Nomenklatur.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Einleitung</p>
+        <p class="prev-next-title">Nomenklatur</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -373,7 +406,12 @@ wenig Programmiererfahrung sein.</p></li>
     
       By Martin Weilepp<br/>
     
-        &copy; Copyright 2021.<br/>
+      <div class="extra_footer">
+        <p>
+HTWG Konstanz
+</p>
+
+      </div>
   </p>
 </footer>
 </main>

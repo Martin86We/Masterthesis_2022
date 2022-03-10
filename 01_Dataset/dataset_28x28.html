@@ -43,6 +43,8 @@
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe,.cell"
@@ -50,6 +52,7 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://martin86we.github.io/Masterthesis_2022/01_Dataset/dataset_28x28.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Datensatz 2 (Schrauben)" href="dataset_224x224.html" />
@@ -106,8 +109,18 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Eigenst.html">
+   Eidesstattliche Erklärung
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../00_Intro/intro.html">
-   Masterarbeit
+   Aufgabenstellung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00_Intro/Nomenklatur.html">
+   Nomenklatur
   </a>
  </li>
  <li class="toctree-l1">
@@ -145,17 +158,22 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/logReg_28x28.html">
+  <a class="reference internal" href="../02_NN/2_logReg_learning.html">
+   Logistische Regression (Funktionsweise)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_NN/3_logReg_28x28.html">
    Logistische Regression
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/2_NN_learning.html">
+  <a class="reference internal" href="../02_NN/4_NN_learning.html">
    Neuronales Netz (Funktionsweise)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/NN_28x28.html">
+  <a class="reference internal" href="../02_NN/5_NN_28x28.html">
    Neuronales Netz
   </a>
  </li>
@@ -250,6 +268,21 @@
 
             <!-- Source interaction buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Martin86We/Masterthesis_2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/Martin86We/Masterthesis_2022/edit/main/01_Dataset/dataset_28x28.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -264,7 +297,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/Martin86We/Masterthesis_2022/main?urlpath=lab/tree/01_Dataset/dataset_28x28.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Martin86We/Masterthesis_2022/main?urlpath=tree/01_Dataset/dataset_28x28.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -272,7 +305,7 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/drive/1Q_-4-XPH8WrtrilVFsH9ng-QvGbCD4iF/github/Martin86We/Masterthesis_2022/blob/main/01_Dataset/dataset_28x28.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/Martin86We/Masterthesis_2022/blob/main/01_Dataset/dataset_28x28.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -315,8 +348,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#label-erzeugen">
-   Label erzeugen
+  <a class="reference internal nav-link" href="#labels-erzeugen">
+   Labels erzeugen
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -385,8 +418,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#label-erzeugen">
-   Label erzeugen
+  <a class="reference internal nav-link" href="#labels-erzeugen">
+   Labels erzeugen
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -424,60 +457,47 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="datensatz-1-schraubenkopfe">
-<h1>Datensatz 1 (Schraubenköpfe)<a class="headerlink" href="#datensatz-1-schraubenkopfe" title="Permalink to this headline">¶</a></h1>
-<p>Das Erstellen eigener Datensätze bietet einige Vorteile.
-Um z.B. mit einfachen Modellen starten zu können, sollte auch die Lernaufgabe zunächst so einfach wie möglich und so schwierig wie nötig gestaltet sein. Ein eigener Datensatz lässt sich sehr gut auf das Projekt zuschneiden. So ist es einfacher das Modell besser zu verstehen und nachvollziehen zu können.</p>
-<p>Um einfach zu beginnen, konzentrieren wir uns zunächst auf eine Eigenschaft der Schraube, dem Kopf bzw. der Antriebsart (Kreuzschlitz, Torx, Sechskant, usw.) und nehmen dafür einfache Grafiken, die sehr gut zu unterscheiden sind, damit sich das Modell nur auf die Form konzentrieren kann und nicht von Lichteinflüssen wie in realen Umgebungen beeinflusst wird. Die Auswahl viel auf folgende gängigen Antriebsarten:</p>
+<span id="dataset"></span><h1>Datensatz 1 (Schraubenköpfe)<a class="headerlink" href="#datensatz-1-schraubenkopfe" title="Permalink to this headline">¶</a></h1>
+<p>Neuronale Netze sind bemerkenswert gut darin, Muster in Daten zu finden, die bei der Vorhersage der Labels der Daten sehr hilfreich sind. Das bedeutet aber auch, dass wir mit den Daten, die wir dem Netz zum Lernen geben, vorsichtig sein müssen; mit jedem Muster in den Daten, das für unsere Aufgabenstellung irrelevant ist, kann das Netz etwas Falsches lernen. Indem wir die Daten in richtiger Weise vorverarbeiten, können wir unserem neuronalen Netz das Lernen der relevanten Muster so einfach wie möglich machen. <span id="id1">[<a class="reference internal" href="../bibliography.html#id2">Osinga, 2019</a>]</span></p>
+<p>Das Erstellen eigener Datensätze bietet einige Vorteile gegenüber fertigen Datensätzen.
+Um z.<span class="math notranslate nohighlight">\(~\)</span>B. mit einfachen Modellen starten zu können, sollte auch die Lernaufgabe zunächst so einfach wie möglich und so schwierig wie nötig gestaltet sein. Ein eigener Datensatz lässt sich sehr gut auf das Projekt zuschneiden. So ist es einfacher, das Modell besser zu verstehen und nachvollziehen zu können.</p>
+<p>Um einfach zu beginnen, konzentrieren wir uns zunächst auf einen Teil der Schraube, dem Kopf bzw. der Antriebsart (Kreuzschlitz, Torx, Sechskant, usw.) und nehmen dafür einfache Grafiken, die sehr gut zu unterscheiden sind, damit sich das Modell nur auf die Form konzentrieren kann und nicht von den Lichteinflüssen der realen Umgebung beeinflusst wird. Die Auswahl fiel auf folgende gängigen Antriebsarten:</p>
 <ul class="simple">
 <li><p>Innensechskant (Inbus)</p></li>
 <li><p>Philips (Kreuzschlitz)</p></li>
 <li><p>Pozidriv (Kreuzschlitz)</p></li>
 <li><p>Sechskant</p></li>
-<li><p>Torx</p></li>
+<li><p>Torx (Innensechsrund)</p></li>
 </ul>
-<p>Diese sind, zumindest für das menschliche Auge, gut zu unterscheiden und sollten von einem Modell, welches mit den MNIST-Daten funktioniert auch gut erkannt werden können.</p>
-<p>Es gibt jedoch auch schon gewisse Schwierigkeiten:</p>
+<p>Diese Schrauben Kategorien soll der Datensatz enthalten. Zu jeder Klasse existiert ein Bild.
+Die <a class="reference internal" href="#dataset1-bilder"><span class="std std-ref">Schraubenkopf Bilder</span></a> lassen sich gut voneinander unterscheiden, bringen jedoch schon kleinere Hürden für die Erkennung mit sich:</p>
 <ul class="simple">
 <li><p>Innensechskant und Torx ähneln sich, schwarzer Ring auf weißem Hintergrund, Innenkontur auch ähnlich</p></li>
 <li><p>Philips-Kreuzschlitz und Pozidriv-Kreuzschlitz sind nur durch die Einkerbungen im Pozidrivkopf zu unterscheiden</p></li>
-<li><p>Das Sechskant-Profil lässt sich von Allen am deutlichsten unterscheiden</p></li>
+<li><p>Das Sechskant-Profil lässt sich von allen am deutlichsten unterscheiden</p></li>
 </ul>
-<p>Es ist zu erwarten, dass die Modelle mit dem Sechskant weniger Schwierigkeiten haben werden als mit den anderen Profilen.</p>
-<p>So sollte dieser Datensatz einfach genug für den Anfang sein aber bringt auch schon die ersten Schwierigkeiten mit sich, welche die Performance der verschiedenen Modelle auf die Probe stellen.</p>
-<p>Die Wahl fiel nun auf die 5 Klassen (Innensechskant, Philips, Pozidriv, Sechskant, Torx). Diese Schrauben Kategorien soll der Datensatz enthalten. Zu jeder Klasse existiert ein Bild. Aus diesen 5 Bildern soll nun einen Datensatz mit mehreren tausend Bildern künstlich erzeugt werden.</p>
-<p>Da ein Datensatz, bestehend aus identischen Bildern keinen Sinn ergibt, da ein Modell ja in der Lage sein soll neue, aber ähnliche Bilder zu erkennen, muss es auch entsprechend trainiert werden, d.h. mit vielen verschiedenen Bildern je Kategorie.</p>
-<p>Image Data Generator:</p>
-<ul class="simple">
-<li><p>in Tensorflow/Keras enthalten</p></li>
-<li><p>ist in der Lage vorhandene Bilder zu transformieren (shift, rotate, roll, usw.) um den Trainingsdatensatz künstlich zu vergrößern</p></li>
-</ul>
+<p>Es ist zu erwarten, dass die Modelle weniger Schwierigkeiten haben werden den Sechskant von anderen zu unterscheiden, als z.<span class="math notranslate nohighlight">\(~\)</span>B. das Philips-Profil vom Pozidriv-Profil.</p>
+<p>So sollte dieser Datensatz einfach genug für den Anfang sein, aber bringt auch schon die ersten Schwierigkeiten mit sich, welche die Performance der verschiedenen Modelle auf die Probe stellen.</p>
+<p>Da die Modelle mit vielen verschiedenen Bildern je Kategorie trainiert werden sollen, wird mit Hilfe des Image Data Generator aus dem Tensorflow Paket ein künstlicher Datensatz erzeugt.
+Der Image Data Generator, ist in der Lage vorhandene Bilder zu transformieren (shift, rotate, roll, usw.). Somit kann ein Trainingsdatensatz künstlich vergrößert werden (<a class="reference internal" href="#dataset1"><span class="std std-ref">Datensatz aus wenigen Bildern</span></a>).</p>
 <div class="section" id="bilder-anzeigen">
-<h2>Bilder anzeigen<a class="headerlink" href="#bilder-anzeigen" title="Permalink to this headline">¶</a></h2>
-<p>Der Datensatz 1 wird aus nur 5 Bildern erzeugt. Die Bilder stellen die Schraubenköpfe Symbolartig dar. Desweiteren sind die Bilder 28 x 28 Pixel groß.</p>
-<div class="cell docutils container">
+<span id="dataset1-bilder"></span><h2>Bilder anzeigen<a class="headerlink" href="#bilder-anzeigen" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importieren der Matplotlib</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pozidriv</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;0_Schraubenkopfbilder_28x28/pozidriv/pozidriv 28x28_gray.jpg&#39;</span><span class="p">)</span>
+
+
+<span class="n">pozidriv</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;0_Schraubenkopfbilder_28x28/pozidriv/pozidriv 28x28_gray.jpg&#39;</span><span class="p">)</span>
 <span class="n">philips</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;0_Schraubenkopfbilder_28x28/philips/philips 28x28_gray.jpg&#39;</span><span class="p">)</span>
 <span class="n">innensechskant</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;0_Schraubenkopfbilder_28x28/innensechskant/innensechskant 28x28_gray.jpg&#39;</span><span class="p">)</span>
 <span class="n">sechskant</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;0_Schraubenkopfbilder_28x28/sechskant/sechskant 28x28_gray.jpg&#39;</span><span class="p">)</span>
 <span class="n">torx</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;0_Schraubenkopfbilder_28x28/torx/torx 28x28_gray.jpg&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pozidriv&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pozidriv</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
@@ -505,57 +525,55 @@ Um z.B. mit einfachen Modellen starten zu können, sollte auch die Lernaufgabe z
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dataset_28x28_7_0.png" src="../_images/dataset_28x28_7_0.png" />
+<img alt="../_images/dataset_28x28_2_0.png" src="../_images/dataset_28x28_2_0.png" />
 </div>
 </div>
-<p>Der Datensatz dient zum Trainieren und Testen der künstlichen neuronalen Netze. Es gibt verschiedene Wege einen Datensatz von Schraubenbildern zu erzeugen:</p>
-<ul class="simple">
-<li><p>virtuelle 3D Objekte mit Hilfe von CAD darstellen und daraus Bilder mit unterschiedlichen Ausrichtungen erzeugen</p></li>
-<li><p>Schraubenbilder aus Herstellerkatalogen oder dem Internet extrahieren</p></li>
-<li><p>Eigene Bilder mit einer Kamera anfertigen</p></li>
-</ul>
-<p>In dieser Arbeit werden die letzteren beiden Varianten vorgestellt. Zunächst wird gezeigt, wie aus wenigen externen Bildern ein Datensatz künstlich erzeugt werden kann. Diese künstlich erzeugten Daten besteht aus sehr wenigen Ursprungsbildern, die künstlich transformiert werden, um somit weitere, neue Bilder zu generieren.</p>
+<p>Aus diesen fünf gängigen Schrauben-Mitnahmeprofilen wird nun ein Datensatz erzeugt.</p>
 </div>
 <div class="section" id="datensatz-aus-wenigen-bildern">
-<h2>Datensatz aus wenigen Bildern<a class="headerlink" href="#datensatz-aus-wenigen-bildern" title="Permalink to this headline">¶</a></h2>
-<p>Dieser Erste Datensatz dient dazu, zu zeigen wie vorhandene Bilder künstlich leichten Veränderungen unterzogen werden können, um somit dem Modell einen umfangreicheren Trainingssatz bereit zu stellen. Des Weiteren werden in diesem künstlichen Datensatz lediglich verschiedene Schraubenkopfformen mit gleicher Ausrichtung verwendet.</p>
-<p>Als Einführung in das Thema Bilderkennung mit Neuronalen Netzen, wird eine einfache Bilderkennung mit Hilfe der Logistischen Regression erstellt. Die Logistischen Regression, ist sehr viel weniger leistungsfähig als ein NN.
-Aus diesen Bildern wird nun ein Datensatz erzeugt. Die Bilder werden mit Hilfe des “Image Data Generators” transformiert, d.h durch Rotation, Zoom, Verschiebung werden neue Varianten der Bilder generiert.</p>
+<span id="dataset1"></span><h2>Datensatz aus wenigen Bildern<a class="headerlink" href="#datensatz-aus-wenigen-bildern" title="Permalink to this headline">¶</a></h2>
+<p>Dieser erste Datensatz dient dazu, zu zeigen wie vorhandene Bilder künstlich leichten Veränderungen unterzogen werden können, um somit dem Modell einen umfangreicheren Trainingssatz bereitzustellen. Des Weiteren werden in diesem künstlichen Datensatz lediglich verschiedene Schraubenkopfformen mit gleicher Ausrichtung verwendet.</p>
+<p>Als Einführung in das Thema Bilderkennung mit neuronalen Netzen wird eine einfache Bilderkennung mit Hilfe der logistischen Regression erstellt. Die logistische Regression ist sehr viel weniger leistungsfähig als ein KNN, bietet sich durch die Einfachheit aber als Einstieg in das Thema der KNNs an.</p>
 </div>
 <div class="section" id="image-data-generator-konfiguration">
 <h2>Image Data Generator (Konfiguration)<a class="headerlink" href="#image-data-generator-konfiguration" title="Permalink to this headline">¶</a></h2>
-<p><strong>1. Random Rotations</strong><br />
-Die Bildrotation ist eine weit verbreitete Augmentationstechnike und ermöglicht es dem Modell, gegenüber der Ausrichtung des Objekts toleranter zu werden.
-Mit der ImageDataGenerator-Klasse können Bilder zufällig um einen beliebigen Winkel zwischen 0 und 360 Grad gedreht werden, indem Sie einen ganzzahligen Wert im rotation_range-Argument angeben.
-Wenn das Bild gedreht wird, bewegen sich einige Pixel aus dem Bild heraus und hinterlassen einen leeren Bereich, der ausgefüllt werden muss.
-Die Füllung kann auf verschiedene Arten geschehen, z. B. mit einem konstanten Wert oder den nächsten Pixelwerten usw.
-Dies wird im Argument fill_mode angegeben und der Standardwert ist „nearest“, wodurch einfach der leere Bereich durch die nächsten Pixelwerte ersetzt wird.</p>
-<p><strong>2. Random Shifts</strong>
-Es kann vorkommen, dass sich das Objekt nicht immer in der Mitte des Bildes befindet.
-Um das Modell darauf vorzubereiten, können die Pixel des Bildes entweder horizontal oder vertikal verschieben; Dies geschieht durch Hinzufügen eines bestimmten konstanten Werts zu allen Pixeln.
-Die ImageDataGenerator-Klasse hat das Argument height_shift_range für eine vertikale Bildverschiebung und width_shift_range für eine horizontale Bildverschiebung.
+<p>Die fünf Bilder werden mit Hilfe des “Image Data Generators” transformiert, d.<span class="math notranslate nohighlight">\(~\)</span>h durch Rotation, Zoom, Verschiebung werden weitere Varianten der Bilder generiert.</p>
+<div class="toggle docutils container">
+<p>Die wichtigsten Augmentationstechniken:</p>
+<p><strong>1. Random Rotations</strong></p>
+<p>Die Bildrotation ist eine weit verbreitete Augmentationstechnik und ermöglicht es dem Modell, gegenüber der Ausrichtung des Objekts toleranter zu werden.
+Mit der ImageDataGenerator-Klasse können Bilder zufällig um einen beliebigen Winkel (zwischen 0 und 360 Grad) gedreht werden, indem ein ganzzahliger Wert im rotation_range-Argument angegeben wird.</p>
+<p>Wenn das Bild gedreht wird, bewegen sich einige Pixel aus dem Bild heraus und hinterlassen einen leeren Bereich, der ausgefüllt werden muss.
+Die Füllung kann auf verschiedene Arten geschehen, z.<span class="math notranslate nohighlight">\(~\)</span>B. mit einem konstanten Wert oder den nächstgelegenen Pixelwerten.</p>
+<p>Dies wird im Argument fill_mode angegeben und der Standardwert ist „nearest“, wodurch einfach der leere Bereich  durch Pixelwerte in der näheren Umgebung ersetzt wird.</p>
+<p><strong>2. Random Shifts</strong></p>
+<p>Es kann vorkommen, dass sich das Objekt nicht immer in der Mitte des Bildes befindet.
+Um das Modell darauf vorzubereiten, können die Pixel des Bildes entweder horizontal oder vertikal verschoben werden.</p>
+<p>Mit den Argumenten <em>height_shift_range</em> und <em>width_shift_range</em> kann eine vertikale bzw. horizontale Bildverschiebung durchgeführt werden.
 Wenn der Wert eine Gleitkommazahl ist, würde dies den Prozentsatz der Breite oder Höhe des zu verschiebenden Bildes angeben.
-Andernfalls, wenn es sich um einen ganzzahligen Wert handelt, wird einfach die Breite oder Höhe um diese vielen Pixelwerte verschoben.</p>
-<p><strong>3. Random Flips</strong>
-Das Spiegeln von Bildern ist auch eine großartige Augmentationstechnik und es ist sinnvoll, sie mit vielen verschiedenen Objekten zu verwenden.
-Die ImageDataGenerator-Klasse hat die Parameter horizontal_flip und vertical_flip zum Spiegeln entlang der vertikalen oder horizontalen Achse.
+Andernfalls, wenn es sich um einen ganzzahligen Wert handelt, wird einfach die Breite oder Höhe um die jeweilige Anzahl von Pixelwerten verschoben.</p>
+<p><strong>3. Random Flips</strong></p>
+<p>Das Spiegeln von Bildern ist auch eine großartige Augmentationstechnik und es ist sinnvoll, sie mit vielen verschiedenen Objekten zu verwenden.
+Die Parameter <em>horizontal_flip</em> und <em>vertical_flip</em> werden zum Spiegeln entlang der vertikalen oder horizontalen Achse verwendet.
 Diese Technik sollte jedoch dem Objekt im Bild entsprechen.
-Zum Beispiel wäre das vertikale Umdrehen eines Autos keine sinnvolle Sache im Vergleich zu einem symmetrischen Objekt wie einem Fußball oder etwas anderem.</p>
-<p><strong>4. Random Brightness</strong>
-Es ändert zufällig die Helligkeit des Bildes. Es ist auch eine sehr nützliche Augmentationstechnik, da das Objekt die meiste Zeit nicht unter perfekten Lichtbedingungen steht.
-Daher ist es unerlässlich, unser Modell auf Bildern unter verschiedenen Lichtbedingungen zu trainieren.
-Die Helligkeit kann in der ImageDataGenrator-Klasse über das Brightness_range-Argument gesteuert werden.
+Zum Beispiel wäre das vertikale Umdrehen eines Autos keine sinnvolle Sache im Vergleich zu einem symmetrischen Objekt wie einer Schraube.</p>
+<p><strong>4. Random Brightness</strong></p>
+<p>Da das Objekt unter realen Bedingungen die meiste Zeit nicht unter perfekten Lichtbedingungen steht, ist es auch sehr nützlich, die Helligkeit der Trainingsbilder zufällig zu ändern. So kann das Modell auf Bildern unter verschiedenen Lichtbedingungen trainiert werden.</p>
+<p>Die Helligkeit kann über das <em>Brightness_range</em>-Argument gesteuert werden.
 Es akzeptiert eine Liste mit zwei Float-Werten und wählt einen Helligkeitsverschiebungswert aus diesem Bereich aus.</p>
-<p><strong>5. Random Zoom</strong>
-Das Zoom-Augmentationsverfahren wird zum Zoomen des Bildes verwendet. Diese Methode zoomt das Bild nach dem Zufallsprinzip entweder durch Vergrößern oder fügt einige Pixel um das Bild herum hinzu, um das Bild zu vergrößern. Diese Methode verwendet das Zoom_range-Argument der ImageDataGenerator-Klasse. Der Zoomwert kann entweder in einem Float, einem Bereich in Form eines Arrays oder einem Python-Tupel angegeben werden.
-Wenn der Wert des Zoom-in mit Float-Wert angegeben wird, dann ist es [1-floatValue, 1+floatValue]. Wenn wir beispielsweise den Float-Wert als 0,5 angeben, wird er tatsächlich wie [0,5, 1,5], wenn wir im ersten Bereich 0,5 von 1 subtrahieren und im zweiten Bereich 0,5 zu 1 addieren, was tatsächlich eine Vergrößerung um 50 % und bedeutet 150 % verkleinern.
-Zoom hat auch einige Grenzwerte, wie wir es im Fall des Helligkeitsparameters haben. Ein Zoomwert von weniger als 1,0 vergrößert das Bild, und ein Wert von mehr als 1,0 verkleinert das Bild.
-Zum Beispiel: [0.6,0.6], in diesem Bereich vergrößert der Zoom das Bild, was bedeutet, dass das Objekt des Bildes um 60 % größer wird oder näher kommt, und wenn der Wert größer als 1,0 ist, z.B. [1.6, 1.6] zoomt das Bild um 60 % heraus.</p>
-<div class="cell docutils container">
+<p><strong>5. Random Zoom</strong></p>
+<ul class="simple">
+<li><p>Diese Methode zoomt das Bild nach dem Zufallsprinzip mit dem Argument <em>Zoom_range</em>.</p></li>
+<li><p>Wird beispielsweise [0.5, 1.5] eingegeben bedeutet das eine Vergrößerung um 50 % und Verkleinerung um 150 %.</p></li>
+<li><p>Wird [0.6,0.6] eingegeben, wird das Bild in dem Bereich 0 bis 60 % vergrößert. Wenn der Wert größer als 1,0 ist, z.<span class="math notranslate nohighlight">\(~\)</span>B. [1.6, 1.6] dann zoomt das Bild um 60 % heraus und wird kleiner.</p></li>
+</ul>
+</div>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">gridspec</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.preprocessing.image</span> <span class="kn">import</span> <span class="n">ImageDataGenerator</span><span class="p">,</span> <span class="n">load_img</span><span class="p">,</span> <span class="n">img_to_array</span>
 
+<span class="c1"># Bild laden</span>
 <span class="n">img</span> <span class="o">=</span> <span class="n">pozidriv</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
 
@@ -583,12 +601,8 @@ Zum Beispiel: [0.6,0.6], in diesem Bereich vergrößert der Zoom das Bild, was b
                              <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,)</span>
 
 
-<span class="c1"># von: https://www.analyticsvidhya.com/blog/2020/08/image-augmentation-on-the-fly-using-keras-imagedatagenerator/</span>
-<span class="c1"># iterator</span>
-<span class="n">aug_iter</span> <span class="o">=</span> <span class="n">datagen</span><span class="o">.</span><span class="n">flow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-
-
+<span class="c1"># Plot konfiguration</span>
 <span class="n">nrow</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">ncol</span> <span class="o">=</span> <span class="mi">5</span>
 
@@ -600,9 +614,12 @@ Zum Beispiel: [0.6,0.6], in diesem Bereich vergrößert der Zoom das Bild, was b
          <span class="n">top</span><span class="o">=</span><span class="mf">1.</span><span class="o">-</span><span class="mf">0.5</span><span class="o">/</span><span class="p">(</span><span class="n">nrow</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.5</span><span class="o">/</span><span class="p">(</span><span class="n">nrow</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> 
          <span class="n">left</span><span class="o">=</span><span class="mf">0.5</span><span class="o">/</span><span class="p">(</span><span class="n">ncol</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">right</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.5</span><span class="o">/</span><span class="p">(</span><span class="n">ncol</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> 
 <span class="n">im</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">aug_iter</span> <span class="o">=</span> <span class="n">datagen</span><span class="o">.</span><span class="n">flow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># plot 5x5 Bilder</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrow</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncol</span><span class="p">):</span>
-        <span class="c1"># convert to unsigned integers</span>
+        <span class="c1"># Iteration über Generator mit plot der Bilder</span>
         <span class="n">image</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">aug_iter</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">])</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
@@ -615,13 +632,14 @@ Zum Beispiel: [0.6,0.6], in diesem Bereich vergrößert der Zoom das Bild, was b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dataset_28x28_14_0.png" src="../_images/dataset_28x28_14_0.png" />
+<img alt="../_images/dataset_28x28_9_0.png" src="../_images/dataset_28x28_9_0.png" />
 </div>
 </div>
+<p>Die generierten Pozidriv-Bilder lassen sich teilweise kaum noch vom Philips-Profil unterscheiden. Es wird sich zeigen, ob die Modelle diese noch korrekt identifizieren können.</p>
 </div>
 <div class="section" id="image-data-generator-speichern">
 <h2>Image Data Generator (Speichern)<a class="headerlink" href="#image-data-generator-speichern" title="Permalink to this headline">¶</a></h2>
-<p>Mit dem konfigurierten Generator die Bilder klassenweise erzeugen und speichern.</p>
+<p>Ist das Ergebnis der generierten Bilder zufriedenstellend, können mit dem konfigurierten Generator die Bilder klassenweise erzeugt und gespeichert werden. Die Klassen können somit individuell transformiert werden.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bild laden</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">sechskant</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
@@ -639,17 +657,14 @@ Zum Beispiel: [0.6,0.6], in diesem Bereich vergrößert der Zoom das Bild, was b
 <span class="p">)</span>
 
 <span class="c1"># Samples in Ordner schreiben</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2001</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2000</span><span class="p">):</span>
     <span class="n">itr</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Die Bilder der Klassen können unterschiedlich stark transformiert werden.</p>
 </div>
-<div class="section" id="label-erzeugen">
-<h2>Label erzeugen<a class="headerlink" href="#label-erzeugen" title="Permalink to this headline">¶</a></h2>
-<p>Die künstlich erzeugten Bilder wurden nach Klassen sortiert.<br />
-Nun wird aus dieser Ordner Struktur ein Datensatz mit Labels erzeugt (image_dataset).
-Die folgende Ordnerstruktur sollte verwendet werden:</p>
+<div class="section" id="labels-erzeugen">
+<h2>Labels erzeugen<a class="headerlink" href="#labels-erzeugen" title="Permalink to this headline">¶</a></h2>
+<p>Die künstlich erzeugten Bilder wurden in folgende Ordnerstruktur abgelegt:</p>
 <p>main_directory/<br />
 …category_a/<br />
 ……a_image_1.jpg<br />
@@ -657,12 +672,17 @@ Die folgende Ordnerstruktur sollte verwendet werden:</p>
 …category_b/<br />
 ……b_image_1.jpg<br />
 ……b_image_2.jpg</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># training_data anlegen</span>
+<p>Diese Ordnerstruktur, zählt als Standard und kann beliebig, um weitere Klassen ergänzt werden. Nun wird aus dieser Ordnerstruktur ein Datensatz (image_dataset) mit Labels erzeugt. Die Labels entsprechen den Ordnernamen (category_a).</p>
+<p><span class="math notranslate nohighlight">\(~\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ziel ist es, alle generierten Bilder in der angelegten Ordnerstruktur, mit zugehörigen Labels in eine Liste &#39;training_data&#39; abzulegen</span>
+
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="c1"># Liste anlegen</span>
 <span class="n">image_dataset</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="c1"># Bildgröße</span>
@@ -700,6 +720,8 @@ Die folgende Ordnerstruktur sollte verwendet werden:</p>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">image_dataset</span><span class="p">))</span>
 </pre></div>
 </div>
+<p>Der Datensatz wurde nun erzeugt und in eine Liste gespeichert. Diese Liste enthält die Arrays mit den Bildern und den zugehörigen Labels.</p>
+<p>Für die weitere Verwendung mit verschiedenen Modellen ist es notwendig, die Bilder in ein einzelnes Array (<strong>X</strong>) zu speichern und die Labels in eine separate Liste (<strong>y</strong>):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -713,6 +735,7 @@ Die folgende Ordnerstruktur sollte verwendet werden:</p>
 </div>
 <div class="section" id="datensatz-mischen">
 <h2>Datensatz mischen<a class="headerlink" href="#datensatz-mischen" title="Permalink to this headline">¶</a></h2>
+<p>Der Datensatz wird gemischt, um anschließend eine Aufteilung in Trainings- und Testdaten vorzunehmen:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">shuffle</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -729,51 +752,24 @@ Die folgende Ordnerstruktur sollte verwendet werden:</p>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load numpy array from npy file</span>
-
-<span class="c1"># load array</span>
-
-<span class="n">X_train</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../01_Dataset/dataset_28x28/X_train.npy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">255.0</span> <span class="c1"># normalisieren</span>
-<span class="n">y_train</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../01_Dataset/dataset_28x28/y_train.npy&#39;</span><span class="p">)</span>
-<span class="n">X_test</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../01_Dataset/dataset_28x28/X_test.npy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">255.0</span>  <span class="c1"># normalisieren</span>
-<span class="n">y_test</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../01_Dataset/dataset_28x28/y_test.npy&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_3928</span><span class="o">/</span><span class="mf">361840572.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># load array</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">X_train</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../01_Dataset/dataset_28x28/X_train.npy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">255.0</span> <span class="c1"># normalisieren</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">y_train</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../01_Dataset/dataset_28x28/y_train.npy&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">X_test</span><span class="o">=</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../01_Dataset/dataset_28x28/X_test.npy&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">255.0</span>  <span class="c1"># normalisieren</span>
-
-<span class="ne">NameError</span>: name &#39;load&#39; is not defined
-</pre></div>
-</div>
-</div>
-</div>
 </div>
 <div class="section" id="datensatz-vorschau">
 <h2>Datensatz Vorschau<a class="headerlink" href="#datensatz-vorschau" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nrow</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">ncol</span> <span class="o">=</span> <span class="mi">5</span>
 
 
+
 <span class="c1">#fig = plt.figure(figsize=(ncol+1, nrow+1)) </span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">24</span><span class="p">))</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">gs = gridspec.GridSpec(nrow, ncol,</span>
-<span class="sd">         wspace=0.0, hspace=0.0, </span>
-<span class="sd">         top=1.-0.5/(nrow+1), bottom=0.5/(nrow+1), </span>
-<span class="sd">         left=0.5/(ncol+1), right=1-0.5/(ncol+1))</span>
-<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">nrow</span><span class="p">,</span> <span class="n">ncol</span><span class="p">,</span>
+         <span class="n">wspace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> 
+         <span class="n">top</span><span class="o">=</span><span class="mf">1.</span><span class="o">-</span><span class="mf">0.5</span><span class="o">/</span><span class="p">(</span><span class="n">nrow</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.5</span><span class="o">/</span><span class="p">(</span><span class="n">nrow</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> 
+         <span class="n">left</span><span class="o">=</span><span class="mf">0.5</span><span class="o">/</span><span class="p">(</span><span class="n">ncol</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">right</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="mf">0.5</span><span class="o">/</span><span class="p">(</span><span class="n">ncol</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+
 <span class="n">im</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nrow</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ncol</span><span class="p">):</span>
@@ -790,54 +786,56 @@ Die folgende Ordnerstruktur sollte verwendet werden:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dataset_28x28_32_0.png" src="../_images/dataset_28x28_32_0.png" />
+<img alt="../_images/dataset_28x28_27_0.png" src="../_images/dataset_28x28_27_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="datensatz-untersuchen">
 <h2>Datensatz untersuchen<a class="headerlink" href="#datensatz-untersuchen" title="Permalink to this headline">¶</a></h2>
-<p>Wie sieht der Datensatz aus? wurden die Bilder gemischt oder sind sie immer noch nach Klassen sortiert?</p>
+<p>Bevor der Datensatz exportiert wird, sollte er nochmal auf Inhalt und Format geprüft werden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Anzahl Trainingsbilder: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Anzahl Testbilder: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6421, 28, 28, 1)
 (2753, 28, 28, 1)
-6421
-2753
+Anzahl Trainingsbilder: 6421
+Anzahl Testbilder: 2753
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0 = innensechskant</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Label Check</span>
+
+<span class="c1"># Schraubenkategorien:</span>
+
+<span class="c1"># 0 = innensechskant</span>
 <span class="c1"># 1 = philips</span>
 <span class="c1"># 2 = pozidriv</span>
 <span class="c1"># 3 = sechskant</span>
 <span class="c1"># 4 = torx</span>
 
 <span class="n">i</span><span class="o">=</span><span class="mi">2348</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y_test</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kategorie: &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y_test</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kategorie: 1
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function matplotlib.pyplot.show(close=None, block=None)&gt;
-</pre></div>
-</div>
-<img alt="../_images/dataset_28x28_36_2.png" src="../_images/dataset_28x28_36_2.png" />
+<img alt="../_images/dataset_28x28_31_1.png" src="../_images/dataset_28x28_31_1.png" />
 </div>
 </div>
 </div>
@@ -904,7 +902,12 @@ Die folgende Ordnerstruktur sollte verwendet werden:</p>
     
       By Martin Weilepp<br/>
     
-        &copy; Copyright 2021.<br/>
+      <div class="extra_footer">
+        <p>
+HTWG Konstanz
+</p>
+
+      </div>
   </p>
 </footer>
 </main>

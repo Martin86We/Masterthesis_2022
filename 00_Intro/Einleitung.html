@@ -43,6 +43,8 @@
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe,.cell"
@@ -50,10 +52,11 @@
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://martin86we.github.io/Masterthesis_2022/00_Intro/Einleitung.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Datensatz 1 (Schraubenköpfe)" href="../01_Dataset/dataset_28x28.html" />
-    <link rel="prev" title="Masterarbeit" href="intro.html" />
+    <link rel="prev" title="Nomenklatur" href="Nomenklatur.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -106,8 +109,18 @@
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="Eigenst.html">
+   Eidesstattliche Erklärung
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Masterarbeit
+   Aufgabenstellung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Nomenklatur.html">
+   Nomenklatur
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -145,17 +158,22 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/logReg_28x28.html">
+  <a class="reference internal" href="../02_NN/2_logReg_learning.html">
+   Logistische Regression (Funktionsweise)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02_NN/3_logReg_28x28.html">
    Logistische Regression
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/2_NN_learning.html">
+  <a class="reference internal" href="../02_NN/4_NN_learning.html">
    Neuronales Netz (Funktionsweise)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../02_NN/NN_28x28.html">
+  <a class="reference internal" href="../02_NN/5_NN_28x28.html">
    Neuronales Netz
   </a>
  </li>
@@ -250,6 +268,21 @@
 
             <!-- Source interaction buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/Martin86We/Masterthesis_2022"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        <a class="edit-button" href="https://github.com/Martin86We/Masterthesis_2022/edit/main/00_Intro/Einleitung.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -264,7 +297,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/Martin86We/Masterthesis_2022/main?urlpath=lab/tree/00_Intro/Einleitung.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/Martin86We/Masterthesis_2022/main?urlpath=tree/00_Intro/Einleitung.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -272,7 +305,7 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/drive/1Q_-4-XPH8WrtrilVFsH9ng-QvGbCD4iF/github/Martin86We/Masterthesis_2022/blob/main/00_Intro/Einleitung.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/Martin86We/Masterthesis_2022/blob/main/00_Intro/Einleitung.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -294,11 +327,6 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#vorstellung-des-themas">
-   Vorstellung des Themas
-  </a>
- </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ziel">
    Ziel
@@ -335,11 +363,6 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#vorstellung-des-themas">
-   Vorstellung des Themas
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ziel">
    Ziel
   </a>
@@ -365,25 +388,36 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="einleitung">
 <h1>Einleitung<a class="headerlink" href="#einleitung" title="Permalink to this headline">¶</a></h1>
-<p>Künstliche Neuronale Netze sind aus der heutigen Zeit nicht mehr weg zu denken und stellen ein sehr mächtiges Werkzeug für viele Fachgebiete bereit. Um in den jeweiligen Fachgebieten Anwendungsfälle zu identifizieren und Neuronale Netze erfolgreich einsetzen zu können ist auch Domänenwissen aus dem jeweiligen Fachgebiet nötig. Ob Erkennung von Brustkrebs durch Neuronale Netze in der Medizin oder “Predictive Maintenance” im Maschinenbau, in beiden Fällen sind Kenntnisse aus beiden Bereichen nötig, Domänenwissen um die Daten richtig interpretieren zu können und die Fähigkeit NN’s auf diese Daten anzuwenden. Die folgenden Statistik soll zeigen, dass KI-Methoden und Fachkräfte mit Kenntnissen in diesem Bereich, in der Zukunft eine immer wichtigere Rolle spielen werden um Wettbewerbsfähig zu bleiben.</p>
-<p><a href="https://de.statista.com/infografik/23703/arbeitsproduktivitaetssteigerung-durch-ki/" title="Infografik: Künstliche Intelligenz kurbelt die Produktivität an | Statista"><img src="https://cdn.statcdn.com/Infographic/images/normal/23703.jpeg" alt="Infografik: Künstliche Intelligenz kurbelt die Produktivität an | Statista" width="100%" height="auto" style="width: 50%; height: auto !important; max-width:480px;-ms-interpolation-mode: bicubic;"/></a> Quelle: <a href="https://de.statista.com/infografik/">Statista</a></p>
+<p>Die KI basierte Bilderkennung stellt ein sehr wirksames Werkzeug dar.
+Obwohl neuronale Netze bereits vor Jahrzehnten entwickelt wurden, ist es erst in jüngster Zeit möglich, Objekte unter schwierigen Umständen und aus wechselnden Winkeln zu erkennen. Der Hauptgrund dafür sind rasante Fortschritte bei der Hardware.</p>
+<p>Durch Bilderkennung lassen sich Objekte sicher identifizieren, trotz Schatten, Lichteinflüsse oder gemusterte Bildhintergründe.</p>
+<p>Mit der klassischen Bildverarbeitung (Computer Vision) ist das alles nicht oder nur mit großem Aufwand zu erreichen. Zudem ist die Einrichtung von Systemen der Bilderkennung schneller durchführbar, als bei den bisher gängigen Methoden der Bildverarbeitung.</p>
+<p>Entscheidend für die flexiblere visuelle Analyse durch Bilderkennung ist die Nutzung von künstlichen neuronalen Netzen (KNN). Denn im Unterschied zur Bildverarbeitung, orientiert sich die Bilderkennung nicht an fest programmierten Regeln, wie etwa der Form, Anzahl oder Lage von Objekten. Vielmehr erlernt der Computer durch Bildbeispiele, Objekte ähnlich wie ein Mensch an gemeinsamen Merkmalen zu identifizieren.</p>
+<p>Zum Beispiel erkennt ein Mensch Schrauben unabhängig von der Lage, der Größe, der Kopfform und Gewindelänge. Auch spezielle Schraubenformen wie Gewindestifte, Rändelschrauben und Schraubhaken erkennt der Mensch als Schraube. Ein KI-System kann durch maschinelles Lernen eine fast so hohe Erkennungsrate wie ein Mensch erreichen. Dazu genügt es, ausreichend viele Bilder von Schrauben unterschiedlichen Typs auszuwerten. Dadurch erfasst die KI, welche Merkmale zum Typ „Schraube“ gehören.</p>
+<p>Durch maschinelles Lernen lässt sich ein Computer auch darauf trainieren, Objekte von Schatten und Hintergrund zu unterscheiden. Durch diese Eigenschaft kann KI-basierte Bilderkennung unstrukturierte Bilder und Live-Videos auswerten, bei denen die Objekte nicht gleichförmig positioniert wurden. Menschen machen das unbewusst. Doch für die einfache Bildverarbeitung stellt das ein schwer überwindbares Hindernis dar.</p>
+<p>Zu den typischen Anwendungen der industriellen Bilderkennung zählen zum Beispiel:</p>
+<ul class="simple">
+<li><p>Oberflächenprüfung</p></li>
+<li><p>Vermessung von Größen und Formen</p></li>
+<li><p>Vollständigkeitsprüfung</p></li>
+<li><p>Objekterkennung</p></li>
+<li><p>Lage- und Positionserkennung</p></li>
+</ul>
+<p>Auch die Entwicklung von Software gestaltet sich für KI-basierte Bilderkennungssysteme einfacher. Denn die Algorithmen der Bilderkennung bleiben gleich. Sie werden lediglich für neue Prüfaufgaben mit Musterbildern gespeist, wobei ein menschlicher Tutor die Bilder bewertet. Je nach Aufgabe können die Prüfobjekte aus unterschiedlichen Blickwinkeln und vor verschiedenen Hintergründen dargestellt werden.</p>
+<p>Das Prinzip des maschinellen Lernens anhand von Beispielen, Automatisierungen und hierarchischer Merkmalsextraktion, zusammengefasst als Deep Learning bezeichnet, bildet hierbei die Grundlage der Bildverarbeitung. (vgl. <a class="reference external" href="https://www.elunic.com/de/wie-ki-basierte-bilderkennung-die-qualitaetssicherung-veraendert/#:~:text=Das%20Prinzip%20der%20Bilderkennung%20mittels,rasante%20Fortschritte%20bei%20der%20Hardware.">elunic</a>)</p>
+<div class="section" id="ziel">
+<h2>Ziel<a class="headerlink" href="#ziel" title="Permalink to this headline">¶</a></h2>
+<p>Neuronale Netze sind für viele Fachbereiche ein immer wichtiger werdendes Thema. Diese Masterarbeit hat das Ziel zu zeigen, dass es auch mit einfachen Mitteln möglich ist, einen umfangreichen Datensatz zu erzeugen und ein neuronales Netz (NN) darauf zu trainieren.
+Der Weg vom Datensatz zum NN soll dabei möglichst einfach und intuitiv dargestellt werden, um auch ohne tiefgreifendes Vorwissen ein Verständnis über neuronale Netze zu entwickeln.</p>
 <blockquote class="epigraph">
 <div><p>Auch ist das Suchen und Irren gut, denn durch Suchen und Irren lernt man.</p>
 <p class="attribution">—Johann Wolfgang Goethe</p>
 </div></blockquote>
-<p><a class="reference external" href="http://ebookcentral.proquest.com/lib/htwg-konstanz/detail.action?docID=6714813">Quelle</a></p>
-<div class="section" id="vorstellung-des-themas">
-<h2>Vorstellung des Themas<a class="headerlink" href="#vorstellung-des-themas" title="Permalink to this headline">¶</a></h2>
-<p>Neuronale Netze werden bereits in vielen Bereichen eingesetzt und sind in aller Munde. Ein häufiger Anwendungsfall und Paradebeispiel für die Nutzung von Neuronalen Netzen ist die Bilderkennung, mit der sich diese Arbeit beschäftigt. Obwohl NN’s bereits vor Jahrzehnten entwickelt wurden, gelangen sie erst in den letzten Jahren zu größerer Bedeutung. Die Weiterentwicklung der Algorithmen und Prozessoren hat es ermöglicht, die Netze mit riesigen Datenmengen, effizient zu trainieren.</p>
-</div>
-<div class="section" id="ziel">
-<h2>Ziel<a class="headerlink" href="#ziel" title="Permalink to this headline">¶</a></h2>
-<p>Diese Masterarbeit hat das Ziel, zu zeigen, dass es auch mit einfachen Mitteln möglich ist einen umfangreichen Datensatz zu erzeugen und ein NN darauf zu trainieren.
-Der Weg vom Datensatz zum NN soll dabei möglichst einfach und intuitiv dargestellt werden.</p>
+<p><span id="id1">[<a class="reference internal" href="../bibliography.html#id4">Kersken, 2021</a>]</span></p>
 </div>
 <div class="section" id="jupyter-book">
 <h2>Jupyter Book<a class="headerlink" href="#jupyter-book" title="Permalink to this headline">¶</a></h2>
-<p>Das Format in dem diese Masterarbeit verfasst ist, ist ein <a class="reference external" href="https://jupyterbook.org/intro.html">Jupyter Book</a>, ein neues Open-Source-Projekt zum druckreifen Veröffentlichen rechnergestützer technischer und insbesondere ausführbarer Inhalte in Buch- und HTML-Form. So ist es möglich die Abschnitte dieses Buchs, die Code enthalten, interaktiv auszuführen, zu reproduzieren und zu ändern.</p>
+<p>Das Format, in dem diese Masterarbeit verfasst ist, ist ein <a class="reference external" href="https://jupyterbook.org/intro.html">Jupyter Book</a>. Ein neues Open-Source-Projekt zum druckreifen Veröffentlichen rechnergestützter technischer und insbesondere ausführbarer Inhalte in Buch- und HTML-Form. So ist es möglich, die Abschnitte dieses Buchs, die Code enthalten, interaktiv auszuführen, zu reproduzieren und zu ändern.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello World&#39;</span><span class="p">)</span>
@@ -399,14 +433,13 @@ Der Weg vom Datensatz zum NN soll dabei möglichst einfach und intuitiv dargeste
 </div>
 <div class="section" id="aufbau">
 <h2>Aufbau<a class="headerlink" href="#aufbau" title="Permalink to this headline">¶</a></h2>
-<p>Im ersten Kapitel werden zwei verschiedene Datensätze erzeugt.</p>
+<p>Im <a class="reference internal" href="../01_Dataset/dataset_28x28.html#dataset"><span class="std std-ref">ersten Kapitel</span></a> werden zwei verschiedene Datensätze erzeugt.</p>
 <ul class="simple">
-<li><p>Der erste Datensatz wird durch “Data Augmentation” erzeugt, d.h. die Trainingsbilder werden künstlich erzeugt.</p></li>
-<li><p>Der zweite Datensatz wird aus echten Fotos erzeugt, die mit einer Smartphone Kamera aufgenommen wurden.</p></li>
+<li><p>Der <a class="reference internal" href="../01_Dataset/dataset_28x28.html#dataset1"><span class="std std-ref">erste Datensatz</span></a> wird durch “Data Augmentation” erzeugt, d.<span class="math notranslate nohighlight">\(~\)</span>h. die Trainingsbilder werden künstlich erzeugt.</p></li>
+<li><p>Der <a class="reference internal" href="../01_Dataset/dataset_224x224.html#dataset2"><span class="std std-ref">zweite Datensatz</span></a> wird aus echten Fotos erzeugt, die mit einer Smartphone-Kamera aufgenommen wurden.</p></li>
 </ul>
-<p>Das zweite Kapitel beschreibt die Funktionsweise von Neuronalen Netzen. Es wird gezeigt wie ein einzelnes künstliches Neuron funktioniert und wie viele solcher Neuronen zu einem Neuronalen Netz verschaltet werden.</p>
-<p>Das dritte Kapitel beschäftigt sich mit “Convolutional Neural Nets”, es wird gezeigt wie CNN’s funktionieren und weshalb diese so Leistungsfähig sind.</p>
-<p>Das vierte Kapitel wird als Abschluss zeigen was Transfer Learning ist und wie man vortrainierte Netzwerke für eigene Datensätze verwenden kann.</p>
+<p>Das <a class="reference internal" href="../02_NN/1_neuron.html#neural-net"><span class="std std-ref">zweite Kapitel</span></a> beschreibt die Funktionsweise von neuronalen Netzen. Es wird gezeigt, wie ein einzelnes künstliches Neuron funktioniert und wie viele solcher Neuronen zu einem neuronalen Netz verschaltet werden.</p>
+<p>Das <a class="reference internal" href="../03_CNN/CNN.html#cnn"><span class="std std-ref">dritte Kapitel</span></a> beschäftigt sich mit “Convolutional Neural Nets”, es wird gezeigt wie CNNs funktionieren und weshalb diese so leistungsfähig sind.</p>
 </div>
 </div>
 
@@ -435,11 +468,11 @@ Der Weg vom Datensatz zum NN soll dabei möglichst einfach und intuitiv dargeste
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Nomenklatur.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Masterarbeit</p>
+            <p class="prev-next-title">Nomenklatur</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../01_Dataset/dataset_28x28.html" title="next page">
@@ -458,7 +491,12 @@ Der Weg vom Datensatz zum NN soll dabei möglichst einfach und intuitiv dargeste
     
       By Martin Weilepp<br/>
     
-        &copy; Copyright 2021.<br/>
+      <div class="extra_footer">
+        <p>
+HTWG Konstanz
+</p>
+
+      </div>
   </p>
 </footer>
 </main>
